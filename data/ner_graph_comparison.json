@@ -93,69 +93,27 @@
   "relations": {
     "test": {
       "ALL": {
-        "precision": 0.515,
-        "recall": 0.586,
-        "f1": 0.548,
-        "gold": 58,
-        "predicted": 66,
-        "matched": 34
+        "precision": 0.491,
+        "recall": 0.574,
+        "f1": 0.529,
+        "gold": 47,
+        "predicted": 55,
+        "matched": 27
       },
       "USES": {
-        "precision": 0.882,
-        "recall": 0.682,
-        "f1": 0.769,
-        "gold": 22,
-        "predicted": 17,
-        "matched": 15
-      },
-      "USES_TECHNIQUE": {
-        "precision": 0.429,
-        "recall": 0.429,
-        "f1": 0.429,
-        "gold": 7,
-        "predicted": 7,
-        "matched": 3
-      },
-      "EXPLOITS": {
-        "precision": 0.0,
-        "recall": 0.0,
-        "f1": 0.0,
-        "gold": 0,
-        "predicted": 0,
-        "matched": 0
-      },
-      "TARGETS": {
-        "precision": 0.381,
-        "recall": 0.552,
-        "f1": 0.451,
-        "gold": 29,
-        "predicted": 42,
-        "matched": 16
-      }
-    },
-    "dev": {
-      "ALL": {
-        "precision": 0.926,
-        "recall": 0.568,
-        "f1": 0.704,
-        "gold": 44,
-        "predicted": 27,
-        "matched": 25
-      },
-      "USES": {
-        "precision": 0.857,
-        "recall": 0.3,
-        "f1": 0.444,
-        "gold": 20,
-        "predicted": 7,
-        "matched": 6
-      },
-      "USES_TECHNIQUE": {
         "precision": 1.0,
-        "recall": 1.0,
-        "f1": 1.0,
-        "gold": 1,
-        "predicted": 1,
+        "recall": 0.733,
+        "f1": 0.846,
+        "gold": 15,
+        "predicted": 11,
+        "matched": 11
+      },
+      "USES_TECHNIQUE": {
+        "precision": 0.333,
+        "recall": 0.25,
+        "f1": 0.286,
+        "gold": 4,
+        "predicted": 3,
         "matched": 1
       },
       "EXPLOITS": {
@@ -167,38 +125,80 @@
         "matched": 0
       },
       "TARGETS": {
-        "precision": 0.947,
-        "recall": 0.783,
-        "f1": 0.857,
-        "gold": 23,
-        "predicted": 19,
+        "precision": 0.366,
+        "recall": 0.536,
+        "f1": 0.435,
+        "gold": 28,
+        "predicted": 41,
+        "matched": 15
+      }
+    },
+    "dev": {
+      "ALL": {
+        "precision": 0.96,
+        "recall": 0.585,
+        "f1": 0.727,
+        "gold": 41,
+        "predicted": 25,
+        "matched": 24
+      },
+      "USES": {
+        "precision": 0.857,
+        "recall": 0.316,
+        "f1": 0.462,
+        "gold": 19,
+        "predicted": 7,
+        "matched": 6
+      },
+      "USES_TECHNIQUE": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "gold": 0,
+        "predicted": 0,
+        "matched": 0
+      },
+      "EXPLOITS": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "gold": 0,
+        "predicted": 0,
+        "matched": 0
+      },
+      "TARGETS": {
+        "precision": 1.0,
+        "recall": 0.818,
+        "f1": 0.9,
+        "gold": 22,
+        "predicted": 18,
         "matched": 18
       }
     },
     "train": {
       "ALL": {
-        "precision": 0.795,
-        "recall": 0.882,
-        "f1": 0.836,
-        "gold": 136,
-        "predicted": 151,
-        "matched": 120
+        "precision": 0.754,
+        "recall": 0.851,
+        "f1": 0.8,
+        "gold": 101,
+        "predicted": 114,
+        "matched": 86
       },
       "USES": {
-        "precision": 0.951,
-        "recall": 0.983,
-        "f1": 0.967,
-        "gold": 59,
-        "predicted": 61,
-        "matched": 58
+        "precision": 0.93,
+        "recall": 0.976,
+        "f1": 0.952,
+        "gold": 41,
+        "predicted": 43,
+        "matched": 40
       },
       "USES_TECHNIQUE": {
-        "precision": 0.389,
-        "recall": 0.438,
-        "f1": 0.412,
-        "gold": 16,
-        "predicted": 18,
-        "matched": 7
+        "precision": 0.357,
+        "recall": 0.385,
+        "f1": 0.37,
+        "gold": 13,
+        "predicted": 14,
+        "matched": 5
       },
       "EXPLOITS": {
         "precision": 1.0,
@@ -209,12 +209,12 @@
         "matched": 3
       },
       "TARGETS": {
-        "precision": 0.754,
-        "recall": 0.897,
-        "f1": 0.819,
-        "gold": 58,
-        "predicted": 69,
-        "matched": 52
+        "precision": 0.704,
+        "recall": 0.864,
+        "f1": 0.776,
+        "gold": 44,
+        "predicted": 54,
+        "matched": 38
       }
     }
   }

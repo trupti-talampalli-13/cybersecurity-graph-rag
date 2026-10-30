@@ -33910,15 +33910,6 @@
       "entity_class": null
     },
     {
-      "id": "NORM_SECTOR_energy industry",
-      "node_type": "ENTITY",
-      "name": "energy industry",
-      "entity_type": "SECTOR",
-      "canonical_id": null,
-      "link": null,
-      "entity_class": null
-    },
-    {
       "id": "NORM_SECTOR_defense industrial base",
       "node_type": "ENTITY",
       "name": "defense industrial base",
@@ -33937,15 +33928,6 @@
       "entity_class": null
     },
     {
-      "id": "NORM_SECTOR_government bodies",
-      "node_type": "ENTITY",
-      "name": "government bodies",
-      "entity_type": "SECTOR",
-      "canonical_id": null,
-      "link": null,
-      "entity_class": null
-    },
-    {
       "id": "NORM_SECTOR_gaming sector",
       "node_type": "ENTITY",
       "name": "gaming sector",
@@ -33955,36 +33937,9 @@
       "entity_class": null
     },
     {
-      "id": "NORM_SECTOR_financial services industry",
-      "node_type": "ENTITY",
-      "name": "financial services industry",
-      "entity_type": "SECTOR",
-      "canonical_id": null,
-      "link": null,
-      "entity_class": null
-    },
-    {
-      "id": "NORM_TECHNIQUE_ransomware",
-      "node_type": "ENTITY",
-      "name": "ransomware",
-      "entity_type": "TECHNIQUE",
-      "canonical_id": null,
-      "link": null,
-      "entity_class": null
-    },
-    {
       "id": "NORM_SECTOR_healthcare sector",
       "node_type": "ENTITY",
       "name": "healthcare sector",
-      "entity_type": "SECTOR",
-      "canonical_id": null,
-      "link": null,
-      "entity_class": null
-    },
-    {
-      "id": "NORM_SECTOR_critical infrastructures",
-      "node_type": "ENTITY",
-      "name": "critical infrastructures",
       "entity_type": "SECTOR",
       "canonical_id": null,
       "link": null,
@@ -138188,7 +138143,7 @@
         "confidence": "medium",
         "head_mention": "Emotet",
         "tail_mention": "Trickbot",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -138206,7 +138161,7 @@
         "confidence": "high",
         "head_mention": "TA542",
         "tail_mention": "Emotet",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -138224,7 +138179,7 @@
         "confidence": "high",
         "head_mention": "Redline stealer",
         "tail_mention": "SOAP",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -138242,7 +138197,7 @@
         "confidence": "medium",
         "head_mention": "Redline stealer",
         "tail_mention": "C & C",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -138260,7 +138215,7 @@
         "confidence": "high",
         "head_mention": "APT29",
         "tail_mention": "Cobalt Strike",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -138278,7 +138233,7 @@
         "confidence": "medium",
         "head_mention": "TA800",
         "tail_mention": "BazaLoader",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -138296,7 +138251,7 @@
         "confidence": "high",
         "head_mention": "BazaLoader",
         "tail_mention": "Cobalt Strike",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -138314,7 +138269,7 @@
         "confidence": "high",
         "head_mention": "TA547",
         "tail_mention": "Cobalt Strike",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -138332,7 +138287,7 @@
         "confidence": "high",
         "head_mention": "TA415",
         "tail_mention": "Cobalt Strike",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -138350,7 +138305,7 @@
         "confidence": "high",
         "head_mention": "TA415",
         "tail_mention": "Cobalt Strike",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -138368,25 +138323,7 @@
         "confidence": "medium",
         "head_mention": "TA415",
         "tail_mention": "airlines sector",
-        "method": "rule_based_v1"
-      }
-    },
-    {
-      "source": "ENT_1049",
-      "target": "NORM_SECTOR_airlines sector",
-      "relation": "TARGETS",
-      "properties": {
-        "document": "proofpoint_2021-06-29_cobalt-strike-favorite-tool-apt",
-        "segment": 71,
-        "source": "Proofpoint",
-        "publication_date": "2021-06-29",
-        "evidence_text": "TA415 used Cobalt Strike in a campaign against an entity in the airlines sector.",
-        "trigger": "against",
-        "direction": "active",
-        "confidence": "high",
-        "head_mention": "Cobalt Strike",
-        "tail_mention": "airlines sector",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -138404,7 +138341,7 @@
         "confidence": "medium",
         "head_mention": "Cobalt Strike",
         "tail_mention": "C2 communication",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -138422,7 +138359,7 @@
         "confidence": "high",
         "head_mention": "Emotet",
         "tail_mention": "Trickbot",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -138437,10 +138374,10 @@
         "evidence_text": "It was unclear whether the Trickbot operators will return to using Trickbot or will completely move to using BazarLoader as a replacement.",
         "trigger": "using",
         "direction": "active",
-        "confidence": "medium",
+        "confidence": "high",
         "head_mention": "Trickbot",
         "tail_mention": "BazarLoader",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -138455,10 +138392,10 @@
         "evidence_text": "Additionally, during our analysis we uncovered a previously unknown stolen digital certificate being used to digitally sign Winnti related drivers, and a potential campaign against an already known South Korean video game company.",
         "trigger": "against",
         "direction": "active",
-        "confidence": "medium",
+        "confidence": "low",
         "head_mention": "Winnti",
         "tail_mention": "South Korean video game company",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -138476,7 +138413,7 @@
         "confidence": "medium",
         "head_mention": "Winnti",
         "tail_mention": "Henkel",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -138494,7 +138431,7 @@
         "confidence": "medium",
         "head_mention": "Winnti",
         "tail_mention": "BASF",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -138512,7 +138449,7 @@
         "confidence": "medium",
         "head_mention": "Winnti",
         "tail_mention": "Bayer",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -138530,7 +138467,7 @@
         "confidence": "medium",
         "head_mention": "Winnti",
         "tail_mention": "Roche",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -138548,25 +138485,7 @@
         "confidence": "medium",
         "head_mention": "Winnti",
         "tail_mention": "German chemical company",
-        "method": "rule_based_v1"
-      }
-    },
-    {
-      "source": "ENT_1170",
-      "target": "ENT_1359",
-      "relation": "USES",
-      "properties": {
-        "document": "quoteintelligence_2020-04-20_winnti-group-insights-from-the",
-        "segment": 109,
-        "source": "QuoIntelligence",
-        "publication_date": "2020-04-20",
-        "evidence_text": "Interestingly, we are not aware of any earlier documentation highlighting Winnti specifically leveraging iodine for DNS tunneling.",
-        "trigger": "leveraging",
-        "direction": "active",
-        "confidence": "high",
-        "head_mention": "Winnti",
-        "tail_mention": "iodine",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -138584,7 +138503,25 @@
         "confidence": "medium",
         "head_mention": "APT32",
         "tail_mention": "C2",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
+      }
+    },
+    {
+      "source": "ENT_1170",
+      "target": "ENT_1359",
+      "relation": "USES",
+      "properties": {
+        "document": "quoteintelligence_2020-04-20_winnti-group-insights-from-the",
+        "segment": 111,
+        "source": "QuoIntelligence",
+        "publication_date": "2020-04-20",
+        "evidence_text": "The implementation of iodine used in the Winnti sample is integrated and uses some custom wrapper, as evidence by the matching functions we discuss in further detail in the following section.",
+        "trigger": "used in",
+        "direction": "passive",
+        "confidence": "high",
+        "head_mention": "Winnti",
+        "tail_mention": "iodine",
+        "method": "rule_based_v2"
       }
     },
     {
@@ -138602,7 +138539,7 @@
         "confidence": "high",
         "head_mention": "Winnti",
         "tail_mention": "German chemical company",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -138617,10 +138554,10 @@
         "evidence_text": "Based on previous knowledge and targeting of the Winnti Group, we assess that this sample was likely used to target Gravity Co., Ltd., a South Korean video game company.",
         "trigger": "target",
         "direction": "active",
-        "confidence": "medium",
+        "confidence": "low",
         "head_mention": "Winnti",
         "tail_mention": "Gravity Co . , Ltd .",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -138635,10 +138572,10 @@
         "evidence_text": "Based on previous knowledge and targeting of the Winnti Group, we assess that this sample was likely used to target Gravity Co., Ltd., a South Korean video game company.",
         "trigger": "target",
         "direction": "active",
-        "confidence": "medium",
+        "confidence": "low",
         "head_mention": "Winnti",
         "tail_mention": "South Korean video game company",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -138656,7 +138593,7 @@
         "confidence": "high",
         "head_mention": "Winnti",
         "tail_mention": "video game industry",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -138674,7 +138611,7 @@
         "confidence": "medium",
         "head_mention": "Winnti",
         "tail_mention": "German chemical company",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -138692,79 +138629,7 @@
         "confidence": "medium",
         "head_mention": "TA453",
         "tail_mention": "University of London ’ s SOAS",
-        "method": "rule_based_v1"
-      }
-    },
-    {
-      "source": "ENT_1153",
-      "target": "ENT_2228289",
-      "relation": "TARGETS",
-      "properties": {
-        "document": "proofpoint_2021-07-13_operation-spoofedscholars-conversation-ta453",
-        "segment": 55,
-        "source": "Proofpoint",
-        "publication_date": "2021-07-13",
-        "evidence_text": "Based on the variety of email providers along with TA453's insistence that the target log on when TA453 was online, Proofpoint assesses that TA453 was planning on immediately validating the captured credentials manually.",
-        "trigger": "target",
-        "direction": "active",
-        "confidence": "medium",
-        "head_mention": "TA453",
-        "tail_mention": "Proofpoint",
-        "method": "rule_based_v1"
-      }
-    },
-    {
-      "source": "ENT_1153",
-      "target": "ENT_783851",
-      "relation": "TARGETS",
-      "properties": {
-        "document": "proofpoint_2021-07-13_operation-spoofedscholars-conversation-ta453",
-        "segment": 63,
-        "source": "Proofpoint",
-        "publication_date": "2021-07-13",
-        "evidence_text": "As discussed previously in Proofpoint's research on TA453's [BadBlood](/us/blog/threat-insight/badblood-ta453-targets-us-and-israeli-medical-research-personnel-credential \"BadBlood: TA453 Targets US and Israeli Medical Research Personnel in Credential Phishing Campaigns \") campaign, Proofpoint analysts cannot independently confirm that TA453 is part of the IRGC.",
-        "trigger": "targets",
-        "direction": "active",
-        "confidence": "high",
-        "head_mention": "TA453",
-        "tail_mention": "US",
-        "method": "rule_based_v1"
-      }
-    },
-    {
-      "source": "ENT_1153",
-      "target": "ENT_1453596",
-      "relation": "TARGETS",
-      "properties": {
-        "document": "proofpoint_2021-07-13_operation-spoofedscholars-conversation-ta453",
-        "segment": 63,
-        "source": "Proofpoint",
-        "publication_date": "2021-07-13",
-        "evidence_text": "As discussed previously in Proofpoint's research on TA453's [BadBlood](/us/blog/threat-insight/badblood-ta453-targets-us-and-israeli-medical-research-personnel-credential \"BadBlood: TA453 Targets US and Israeli Medical Research Personnel in Credential Phishing Campaigns \") campaign, Proofpoint analysts cannot independently confirm that TA453 is part of the IRGC.",
-        "trigger": "targets",
-        "direction": "active",
-        "confidence": "medium",
-        "head_mention": "TA453",
-        "tail_mention": "Israeli",
-        "method": "rule_based_v1"
-      }
-    },
-    {
-      "source": "ENT_1153",
-      "target": "ENT_2228289",
-      "relation": "TARGETS",
-      "properties": {
-        "document": "proofpoint_2021-07-13_operation-spoofedscholars-conversation-ta453",
-        "segment": 63,
-        "source": "Proofpoint",
-        "publication_date": "2021-07-13",
-        "evidence_text": "As discussed previously in Proofpoint's research on TA453's [BadBlood](/us/blog/threat-insight/badblood-ta453-targets-us-and-israeli-medical-research-personnel-credential \"BadBlood: TA453 Targets US and Israeli Medical Research Personnel in Credential Phishing Campaigns \") campaign, Proofpoint analysts cannot independently confirm that TA453 is part of the IRGC.",
-        "trigger": "targets",
-        "direction": "active",
-        "confidence": "medium",
-        "head_mention": "TA453",
-        "tail_mention": "Proofpoint",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -138782,7 +138647,7 @@
         "confidence": "high",
         "head_mention": "RustyBuer",
         "tail_mention": "Cobalt Strike",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -138800,25 +138665,7 @@
         "confidence": "high",
         "head_mention": "RustyBuer",
         "tail_mention": "Cobalt Strike",
-        "method": "rule_based_v1"
-      }
-    },
-    {
-      "source": "ENT_1156",
-      "target": "ENT_3256575",
-      "relation": "TARGETS",
-      "properties": {
-        "document": "intel471_2020-10-13_travelex-ddos-attack-lazarus-group",
-        "segment": 2,
-        "source": "Intel 471",
-        "publication_date": "2020-10-13",
-        "evidence_text": "A group posing as notorious nation-state-linked hacking group \"Lazarus Group\" threatened to hit British foreign exchange company Travelex with a distributed-denial-of-service (DDoS) attack unless it paid 20 bitcoins.",
-        "trigger": "hit",
-        "direction": "active",
-        "confidence": "medium",
-        "head_mention": "Lazarus Group",
-        "tail_mention": "Travelex",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -138836,7 +138683,7 @@
         "confidence": "high",
         "head_mention": "Emotet",
         "tail_mention": "Trickbot",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -138854,43 +138701,7 @@
         "confidence": "high",
         "head_mention": "Emotet",
         "tail_mention": "Trickbot",
-        "method": "rule_based_v1"
-      }
-    },
-    {
-      "source": "ENT_688",
-      "target": "ENT_603",
-      "relation": "USES",
-      "properties": {
-        "document": "zscaler_2021-01-29_did-covid-cancel-christmas-cybercriminals",
-        "segment": 48,
-        "source": "Zscaler",
-        "publication_date": "2021-01-29",
-        "evidence_text": "Trickbot is operated by the same threat actor that deploys Conti and Ryuk ransomware.",
-        "trigger": "deploys",
-        "direction": "active",
-        "confidence": "medium",
-        "head_mention": "Trickbot",
-        "tail_mention": "Conti",
-        "method": "rule_based_v1"
-      }
-    },
-    {
-      "source": "ENT_688",
-      "target": "ENT_854",
-      "relation": "USES",
-      "properties": {
-        "document": "zscaler_2021-01-29_did-covid-cancel-christmas-cybercriminals",
-        "segment": 48,
-        "source": "Zscaler",
-        "publication_date": "2021-01-29",
-        "evidence_text": "Trickbot is operated by the same threat actor that deploys Conti and Ryuk ransomware.",
-        "trigger": "deploys",
-        "direction": "active",
-        "confidence": "medium",
-        "head_mention": "Trickbot",
-        "tail_mention": "Ryuk",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -138908,7 +138719,7 @@
         "confidence": "high",
         "head_mention": "Emotet",
         "tail_mention": "Trickbot",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -138926,7 +138737,7 @@
         "confidence": "medium",
         "head_mention": "Dridex",
         "tail_mention": "RIG exploit kit",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -138944,7 +138755,7 @@
         "confidence": "medium",
         "head_mention": "ZLoader",
         "tail_mention": "US   and EU banks",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -138962,7 +138773,7 @@
         "confidence": "medium",
         "head_mention": "ZLoader",
         "tail_mention": "financial institutions",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -138977,10 +138788,10 @@
         "evidence_text": "Days after this, Intel471 learned the actor obtained and modified a version of Thanos, and allegedly deployed it against U.S. businesses.",
         "trigger": "against",
         "direction": "active",
-        "confidence": "high",
+        "confidence": "low",
         "head_mention": "Thanos",
         "tail_mention": "U.S .",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -138998,7 +138809,7 @@
         "confidence": "high",
         "head_mention": "TA543",
         "tail_mention": "JSSLoader",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -139016,7 +138827,7 @@
         "confidence": "high",
         "head_mention": "JSSLoader",
         "tail_mention": "Griffon",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -139034,7 +138845,7 @@
         "confidence": "high",
         "head_mention": "TA543",
         "tail_mention": "JSSLoader",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -139052,7 +138863,7 @@
         "confidence": "high",
         "head_mention": "TA543",
         "tail_mention": "JSSLoader",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -139070,7 +138881,7 @@
         "confidence": "medium",
         "head_mention": "TA543",
         "tail_mention": "JSSLoader",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -139088,7 +138899,7 @@
         "confidence": "medium",
         "head_mention": "Dharma",
         "tail_mention": "brute-force attack .",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -139106,7 +138917,7 @@
         "confidence": "medium",
         "head_mention": "BokBot",
         "tail_mention": "EtterSilent",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -139124,7 +138935,7 @@
         "confidence": "medium",
         "head_mention": "Gozi ISFB",
         "tail_mention": "EtterSilent",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -139142,7 +138953,7 @@
         "confidence": "high",
         "head_mention": "QBot",
         "tail_mention": "EtterSilent",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -139160,7 +138971,7 @@
         "confidence": "medium",
         "head_mention": "BokBot",
         "tail_mention": "EtterSilent",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -139178,7 +138989,7 @@
         "confidence": "high",
         "head_mention": "ReconHellcat",
         "tail_mention": "BlackSoul",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -139196,7 +139007,7 @@
         "confidence": "high",
         "head_mention": "ReconHellcat",
         "tail_mention": "BlackWater",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -139214,7 +139025,7 @@
         "confidence": "medium",
         "head_mention": "BlackSoul",
         "tail_mention": "C2",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -139232,7 +139043,7 @@
         "confidence": "high",
         "head_mention": "BlackSoul",
         "tail_mention": "Decoding a C2 URL",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -139247,28 +139058,10 @@
         "evidence_text": "However, it is likely that the BlackSoul campaign targeted a government-related body based on the theme lure, since NIST develops and publicizes security compliance standard for the US Federal Government and any organization who handles government data.",
         "trigger": "targeted",
         "direction": "active",
-        "confidence": "high",
+        "confidence": "low",
         "head_mention": "BlackSoul",
         "tail_mention": "government-related body",
-        "method": "rule_based_v1"
-      }
-    },
-    {
-      "source": "ENT_1405",
-      "target": "ENT_10756",
-      "relation": "TARGETS",
-      "properties": {
-        "document": "quoteintelligence_2021-01-06_reconhellcat-uses-nist-theme-as",
-        "segment": 87,
-        "source": "QuoIntelligence",
-        "publication_date": "2021-01-06",
-        "evidence_text": "However, it is likely that the BlackSoul campaign targeted a government-related body based on the theme lure, since NIST develops and publicizes security compliance standard for the US Federal Government and any organization who handles government data.",
-        "trigger": "targeted",
-        "direction": "active",
-        "confidence": "medium",
-        "head_mention": "BlackSoul",
-        "tail_mention": "NIST",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -139286,7 +139079,7 @@
         "confidence": "medium",
         "head_mention": "ReconHellcat",
         "tail_mention": "defense",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -139304,7 +139097,7 @@
         "confidence": "medium",
         "head_mention": "ReconHellcat",
         "tail_mention": "diplomatic government bodies",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -139322,7 +139115,7 @@
         "confidence": "medium",
         "head_mention": "VenomKit",
         "tail_mention": "CVE-2017–11882",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -139340,7 +139133,7 @@
         "confidence": "medium",
         "head_mention": "VenomKit",
         "tail_mention": "CVE-2018–0802",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -139358,7 +139151,7 @@
         "confidence": "high",
         "head_mention": "Cobalt Group",
         "tail_mention": "CobInt",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -139376,7 +139169,7 @@
         "confidence": "medium",
         "head_mention": "Cobalt Group",
         "tail_mention": "Cobalt Strike",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -139394,25 +139187,7 @@
         "confidence": "high",
         "head_mention": "Njrat",
         "tail_mention": "Middle East",
-        "method": "rule_based_v1"
-      }
-    },
-    {
-      "source": "ENT_763",
-      "target": "ENT_726",
-      "relation": "USES",
-      "properties": {
-        "document": "intel471_2020-05-04_changes-in-revil-ransomware-version",
-        "segment": 17,
-        "source": "Intel 471",
-        "publication_date": "2020-05-04",
-        "evidence_text": "To circumvent this, the REvil developers have implemented a technique using the Windows Restart Manager also used by other ransomware such as SamSam and LockerGoga (see: ).",
-        "trigger": "using",
-        "direction": "active",
-        "confidence": "medium",
-        "head_mention": "REvil",
-        "tail_mention": "SamSam",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -139430,7 +139205,7 @@
         "confidence": "medium",
         "head_mention": "Fancy Lazarus",
         "tail_mention": "energy",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -139448,7 +139223,7 @@
         "confidence": "medium",
         "head_mention": "Fancy Lazarus",
         "tail_mention": "financial",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -139466,25 +139241,7 @@
         "confidence": "medium",
         "head_mention": "Fancy Lazarus",
         "tail_mention": "insurance",
-        "method": "rule_based_v1"
-      }
-    },
-    {
-      "source": "ENT_1316",
-      "target": "ENT_5289",
-      "relation": "TARGETS",
-      "properties": {
-        "document": "proofpoint_2021-06-10_ransom-ddos-extortion-actor-fancy",
-        "segment": 49,
-        "source": "Proofpoint",
-        "publication_date": "2021-06-10",
-        "evidence_text": "While Proofpoint does not have visibility into the actual \"Fancy Lazarus\" DDoS attacks and whether they are carried out, FBI reporting indicates that many affected companies that pass the threatened deadline either do not see any additional activity or the activity is successfully mitigated.",
-        "trigger": "attacks",
-        "direction": "active",
-        "confidence": "medium",
-        "head_mention": "Fancy Lazarus",
-        "tail_mention": "FBI",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -139502,7 +139259,7 @@
         "confidence": "high",
         "head_mention": "Emissary Panda",
         "tail_mention": "ZxShell",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -139520,7 +139277,7 @@
         "confidence": "medium",
         "head_mention": "Emissary Panda",
         "tail_mention": "RootKit",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -139538,7 +139295,7 @@
         "confidence": "high",
         "head_mention": "TA456",
         "tail_mention": "Defense",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -139556,7 +139313,7 @@
         "confidence": "medium",
         "head_mention": "LEMPO",
         "tail_mention": "exfiltrate sensitive information .",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -139574,7 +139331,7 @@
         "confidence": "medium",
         "head_mention": "TA456",
         "tail_mention": "defense",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -139592,25 +139349,7 @@
         "confidence": "medium",
         "head_mention": "LEMPO",
         "tail_mention": "reconnaissance",
-        "method": "rule_based_v1"
-      }
-    },
-    {
-      "source": "ENT_1296",
-      "target": "NORM_SECTOR_energy industry",
-      "relation": "TARGETS",
-      "properties": {
-        "document": "proofpoint_2021-07-28_i-knew-you-were-trouble",
-        "segment": 70,
-        "source": "Proofpoint",
-        "publication_date": "2021-07-28",
-        "evidence_text": "Notably, the Yandex email within the 2020 version of the LEMPO implant masqueraded as large technology company focused on supporting the energy industry.",
-        "trigger": "focused on",
-        "direction": "active",
-        "confidence": "medium",
-        "head_mention": "LEMPO",
-        "tail_mention": "energy industry",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -139628,7 +139367,7 @@
         "confidence": "medium",
         "head_mention": "TA456",
         "tail_mention": "defense",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -139646,7 +139385,7 @@
         "confidence": "medium",
         "head_mention": "TA456",
         "tail_mention": "defense",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -139664,7 +139403,7 @@
         "confidence": "medium",
         "head_mention": "LEMPO",
         "tail_mention": "defense industrial base",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -139682,25 +139421,7 @@
         "confidence": "high",
         "head_mention": "Bazar",
         "tail_mention": "download and execute",
-        "method": "rule_based_v1"
-      }
-    },
-    {
-      "source": "ENT_685",
-      "target": "ENT_688",
-      "relation": "USES",
-      "properties": {
-        "document": "zscaler_2020-09-29_spear-phishing-campaign-delivers-buer",
-        "segment": 45,
-        "source": "Zscaler",
-        "publication_date": "2020-09-29",
-        "evidence_text": "The C&C TLS communications of the Bazar backdoor have been using certificates created in the same manner that TrickBot certificates have been created.",
-        "trigger": "using",
-        "direction": "active",
-        "confidence": "medium",
-        "head_mention": "Bazar",
-        "tail_mention": "TrickBot",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -139718,7 +139439,7 @@
         "confidence": "medium",
         "head_mention": "Leviathan",
         "tail_mention": "Cambodia",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -139736,7 +139457,7 @@
         "confidence": "medium",
         "head_mention": "Leviathan",
         "tail_mention": "Belgium",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -139754,7 +139475,7 @@
         "confidence": "medium",
         "head_mention": "Leviathan",
         "tail_mention": "Germany",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -139772,25 +139493,7 @@
         "confidence": "medium",
         "head_mention": "Leviathan",
         "tail_mention": "Hong Kong",
-        "method": "rule_based_v1"
-      }
-    },
-    {
-      "source": "ENT_1143",
-      "target": "ENT_2397",
-      "relation": "TARGETS",
-      "properties": {
-        "document": "lab52_2019-05-30_leviathan-geostrategy-and-ttp-technical",
-        "segment": 30,
-        "source": "Lab52",
-        "publication_date": "2019-05-30",
-        "evidence_text": "The relation among the States involved in this geostrategic conflict in the Chinese Sea and the organizations that have been targeted by APT 40 is highly strong.",
-        "trigger": "targeted by",
-        "direction": "passive",
-        "confidence": "medium",
-        "head_mention": "APT 40",
-        "tail_mention": "Chinese",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -139808,7 +139511,7 @@
         "confidence": "medium",
         "head_mention": "Leviathan",
         "tail_mention": "Saudi Arabia",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -139826,7 +139529,7 @@
         "confidence": "medium",
         "head_mention": "Leviathan",
         "tail_mention": "Germany",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -139844,7 +139547,7 @@
         "confidence": "medium",
         "head_mention": "Leviathan",
         "tail_mention": "Norway",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -139862,7 +139565,7 @@
         "confidence": "high",
         "head_mention": "Leviathan",
         "tail_mention": "UK",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -139880,7 +139583,7 @@
         "confidence": "high",
         "head_mention": "Leviathan",
         "tail_mention": "SouthEast",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -139898,7 +139601,7 @@
         "confidence": "medium",
         "head_mention": "Leviathan",
         "tail_mention": "web shells",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -139916,7 +139619,7 @@
         "confidence": "high",
         "head_mention": "Leviathan",
         "tail_mention": "web shells",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -139934,7 +139637,7 @@
         "confidence": "high",
         "head_mention": "APT28",
         "tail_mention": "Zebrocy",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -139952,7 +139655,7 @@
         "confidence": "high",
         "head_mention": "APT28",
         "tail_mention": "Zebrocy",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -139970,43 +139673,7 @@
         "confidence": "medium",
         "head_mention": "Zebrocy",
         "tail_mention": "BlackWater",
-        "method": "rule_based_v1"
-      }
-    },
-    {
-      "source": "ENT_1342",
-      "target": "NORM_SECTOR_government bodies",
-      "relation": "TARGETS",
-      "properties": {
-        "document": "quoteintelligence_2020-09-22_apt28-zebrocy-malware-campaign-nato",
-        "segment": 90,
-        "source": "QuoIntelligence",
-        "publication_date": "2020-09-22",
-        "evidence_text": "The victimology we identified for the ReconHellcat campaign is in line with the one targeted by the Zebrocy attack (i.e. similar type of government bodies).",
-        "trigger": "attack",
-        "direction": "active",
-        "confidence": "medium",
-        "head_mention": "ReconHellcat",
-        "tail_mention": "government bodies",
-        "method": "rule_based_v1"
-      }
-    },
-    {
-      "source": "ENT_1355",
-      "target": "NORM_SECTOR_government bodies",
-      "relation": "TARGETS",
-      "properties": {
-        "document": "quoteintelligence_2020-09-22_apt28-zebrocy-malware-campaign-nato",
-        "segment": 90,
-        "source": "QuoIntelligence",
-        "publication_date": "2020-09-22",
-        "evidence_text": "The victimology we identified for the ReconHellcat campaign is in line with the one targeted by the Zebrocy attack (i.e. similar type of government bodies).",
-        "trigger": "attack",
-        "direction": "active",
-        "confidence": "high",
-        "head_mention": "Zebrocy",
-        "tail_mention": "government bodies",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -140024,7 +139691,7 @@
         "confidence": "high",
         "head_mention": "Winnti Group",
         "tail_mention": "gaming sector",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -140042,25 +139709,7 @@
         "confidence": "medium",
         "head_mention": "Winnti Group",
         "tail_mention": "Thailand",
-        "method": "rule_based_v1"
-      }
-    },
-    {
-      "source": "ENT_1270",
-      "target": "NORM_SECTOR_financial services industry",
-      "relation": "TARGETS",
-      "properties": {
-        "document": "intel471_2020-12-17_jokers-stash-fbi-interpol-dns",
-        "segment": 24,
-        "source": "Intel 471",
-        "publication_date": "2020-12-17",
-        "evidence_text": "\"Payment card fraud has shifted its attention to e-commerce targets due to a handful of factors including the pandemic forcing consumers to stay at home, and the rise of Magecart-type attacks,\" said a security expert in the financial services industry who asked to remain anonymous.",
-        "trigger": "attacks",
-        "direction": "active",
-        "confidence": "medium",
-        "head_mention": "Magecart-type",
-        "tail_mention": "financial services industry",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -140078,43 +139727,7 @@
         "confidence": "medium",
         "head_mention": "Crimson",
         "tail_mention": "financial",
-        "method": "rule_based_v1"
-      }
-    },
-    {
-      "source": "ENT_711",
-      "target": "ENT_1096",
-      "relation": "USES",
-      "properties": {
-        "document": "zscaler_2021-05-05_catching-rats-over-custom-protocols",
-        "segment": 53,
-        "source": "Zscaler",
-        "publication_date": "2021-05-05",
-        "evidence_text": "Typically, the NetWire RAT is downloaded as a second-stage payload to systems that have been compromised using other malware such as GuLoader.",
-        "trigger": "downloaded",
-        "direction": "active",
-        "confidence": "medium",
-        "head_mention": "NetWire",
-        "tail_mention": "GuLoader",
-        "method": "rule_based_v1"
-      }
-    },
-    {
-      "source": "ENT_1348",
-      "target": "ENT_1334",
-      "relation": "USES",
-      "properties": {
-        "document": "zscaler_2021-03-30_ares-malware-grandson-kronos-banking",
-        "segment": 78,
-        "source": "Zscaler",
-        "publication_date": "2021-03-30",
-        "evidence_text": "Ares uses the same function hashing algorithm as Kronos, which consists of calculating a CRC64 hash, converting the digest to uppercase hexadecimal characters.",
-        "trigger": "uses",
-        "direction": "active",
-        "confidence": "medium",
-        "head_mention": "Ares",
-        "tail_mention": "Kronos",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -140132,7 +139745,7 @@
         "confidence": "medium",
         "head_mention": "Smoke Loader",
         "tail_mention": "Racoon Stealer",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -140150,7 +139763,7 @@
         "confidence": "medium",
         "head_mention": "Smoke Loader",
         "tail_mention": "RedLine",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -140168,7 +139781,7 @@
         "confidence": "medium",
         "head_mention": "ReconHellcat",
         "tail_mention": "Bulgaria",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -140186,7 +139799,7 @@
         "confidence": "medium",
         "head_mention": "ReconHellcat",
         "tail_mention": "Azerbaijan",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -140204,43 +139817,7 @@
         "confidence": "high",
         "head_mention": "DoppelPaymer",
         "tail_mention": "Düsseldorf University Clinic",
-        "method": "rule_based_v1"
-      }
-    },
-    {
-      "source": "ENT_1345",
-      "target": "NORM_TECHNIQUE_ransomware",
-      "relation": "USES_TECHNIQUE",
-      "properties": {
-        "document": "intel471_2020-11-16_ransomware-as-a-service-2020",
-        "segment": 60,
-        "source": "Intel 471",
-        "publication_date": "2020-11-16",
-        "evidence_text": "DoppelPaymer has been used in over 125 ransomware incidents in 2020.",
-        "trigger": "used",
-        "direction": "active",
-        "confidence": "high",
-        "head_mention": "DoppelPaymer",
-        "tail_mention": "ransomware",
-        "method": "rule_based_v1"
-      }
-    },
-    {
-      "source": "ENT_805",
-      "target": "NORM_TECHNIQUE_ransomware",
-      "relation": "USES_TECHNIQUE",
-      "properties": {
-        "document": "intel471_2020-11-16_ransomware-as-a-service-2020",
-        "segment": 70,
-        "source": "Intel 471",
-        "publication_date": "2020-11-16",
-        "evidence_text": "Intel 471 found that Maze was used in over 250 ransomware incidents in 2020.",
-        "trigger": "used",
-        "direction": "active",
-        "confidence": "high",
-        "head_mention": "Maze",
-        "tail_mention": "ransomware",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -140258,12 +139835,12 @@
         "confidence": "medium",
         "head_mention": "REvil",
         "tail_mention": "CVE-2019-2725",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
-      "source": "ENT_854",
-      "target": "ENT_685",
+      "source": "ENT_685",
+      "target": "ENT_854",
       "relation": "USES",
       "properties": {
         "document": "intel471_2020-11-16_ransomware-as-a-service-2020",
@@ -140271,12 +139848,12 @@
         "source": "Intel 471",
         "publication_date": "2020-11-16",
         "evidence_text": "Recently, we have also witnessed that Ryuk is delivered through the Bazar loader.",
-        "trigger": "delivered",
-        "direction": "active",
+        "trigger": "delivered through",
+        "direction": "passive",
         "confidence": "high",
-        "head_mention": "Ryuk",
-        "tail_mention": "Bazar",
-        "method": "rule_based_v1"
+        "head_mention": "Bazar",
+        "tail_mention": "Ryuk",
+        "method": "rule_based_v2"
       }
     },
     {
@@ -140294,25 +139871,7 @@
         "confidence": "high",
         "head_mention": "Ryuk",
         "tail_mention": "healthcare sector",
-        "method": "rule_based_v1"
-      }
-    },
-    {
-      "source": "ENT_1137",
-      "target": "NORM_SECTOR_critical infrastructures",
-      "relation": "TARGETS",
-      "properties": {
-        "document": "lab52_2020-02-18_the-role-of-china-in",
-        "segment": 6,
-        "source": "Lab52",
-        "publication_date": "2020-02-18",
-        "evidence_text": "During 2019, some technical traces were detected and this traces where potentially related to certain APT groups presumably associated with the People's Republic of China (APT10) that would be carrying out malicious campaigns against various targets like critical infrastructures organizations among others ([14]) ([15]).",
-        "trigger": "against",
-        "direction": "active",
-        "confidence": "medium",
-        "head_mention": "APT10",
-        "tail_mention": "critical infrastructures",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -140330,7 +139889,7 @@
         "confidence": "high",
         "head_mention": "TA2722",
         "tail_mention": "Shipping / Logistics",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -140348,7 +139907,7 @@
         "confidence": "medium",
         "head_mention": "TA2722",
         "tail_mention": "Manufacturing",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -140366,7 +139925,7 @@
         "confidence": "medium",
         "head_mention": "TA2722",
         "tail_mention": "Business Services",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -140384,7 +139943,7 @@
         "confidence": "medium",
         "head_mention": "TA2722",
         "tail_mention": "Pharmaceutical",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -140402,7 +139961,7 @@
         "confidence": "medium",
         "head_mention": "TA2722",
         "tail_mention": "Energy entities",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -140420,7 +139979,7 @@
         "confidence": "high",
         "head_mention": "TA2722",
         "tail_mention": "Remcos",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -140438,7 +139997,7 @@
         "confidence": "medium",
         "head_mention": "Remcos",
         "tail_mention": "Shipping",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -140456,7 +140015,7 @@
         "confidence": "medium",
         "head_mention": "Remcos",
         "tail_mention": "Logistics",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -140474,7 +140033,7 @@
         "confidence": "medium",
         "head_mention": "Remcos",
         "tail_mention": "Manufacturing",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -140492,7 +140051,7 @@
         "confidence": "high",
         "head_mention": "APT10",
         "tail_mention": "Turkey",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -140507,10 +140066,10 @@
         "evidence_text": "A malicious campaign allegedly attributed to APT10 against Turkish organizations from various sectors such as telecommunications and finance has been identified by Adeo in January of 2020 ([14]).",
         "trigger": "against",
         "direction": "active",
-        "confidence": "high",
+        "confidence": "low",
         "head_mention": "APT10",
         "tail_mention": "Turkish",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -140525,10 +140084,10 @@
         "evidence_text": "A malicious campaign allegedly attributed to APT10 against Turkish organizations from various sectors such as telecommunications and finance has been identified by Adeo in January of 2020 ([14]).",
         "trigger": "against",
         "direction": "active",
-        "confidence": "medium",
+        "confidence": "low",
         "head_mention": "APT10",
         "tail_mention": "telecommunications",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -140543,28 +140102,10 @@
         "evidence_text": "A malicious campaign allegedly attributed to APT10 against Turkish organizations from various sectors such as telecommunications and finance has been identified by Adeo in January of 2020 ([14]).",
         "trigger": "against",
         "direction": "active",
-        "confidence": "medium",
+        "confidence": "low",
         "head_mention": "APT10",
         "tail_mention": "finance",
-        "method": "rule_based_v1"
-      }
-    },
-    {
-      "source": "ENT_1137",
-      "target": "ENT_2397",
-      "relation": "TARGETS",
-      "properties": {
-        "document": "lab52_2020-05-14_the-energy-reserves-in-the",
-        "segment": 51,
-        "source": "Lab52",
-        "publication_date": "2020-05-14",
-        "evidence_text": "It has been identified that APT10 usually carries out malicious campaigns against organizations that could damage the China's State interests into the global market.",
-        "trigger": "against",
-        "direction": "active",
-        "confidence": "medium",
-        "head_mention": "APT10",
-        "tail_mention": "China",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -140582,7 +140123,7 @@
         "confidence": "high",
         "head_mention": "APT10",
         "tail_mention": "Turkey",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -140600,7 +140141,7 @@
         "confidence": "medium",
         "head_mention": "APT10",
         "tail_mention": "Turkish",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -140618,7 +140159,7 @@
         "confidence": "high",
         "head_mention": "TA544",
         "tail_mention": "Italian",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -140636,7 +140177,7 @@
         "confidence": "high",
         "head_mention": "TA544",
         "tail_mention": "Ursnif",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -140651,10 +140192,10 @@
         "evidence_text": "Typically, this group varies its payloads which appear to be targeted by region - for example, in 2021, all TA544 Ursnif campaigns have specifically targeted Italian organizations while Dridex payloads associated with this threat actor do not have specific geographic targeting.",
         "trigger": "targeted",
         "direction": "active",
-        "confidence": "medium",
+        "confidence": "low",
         "head_mention": "TA544",
         "tail_mention": "Italian",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -140672,7 +140213,7 @@
         "confidence": "high",
         "head_mention": "Ursnif",
         "tail_mention": "Italian",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -140690,7 +140231,7 @@
         "confidence": "high",
         "head_mention": "TA544",
         "tail_mention": "Italy",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -140708,7 +140249,7 @@
         "confidence": "medium",
         "head_mention": "Ursnif",
         "tail_mention": "Italian",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -140726,7 +140267,7 @@
         "confidence": "high",
         "head_mention": "TA544",
         "tail_mention": "Italian",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -140744,7 +140285,7 @@
         "confidence": "high",
         "head_mention": "APT40",
         "tail_mention": "Taiwanese government",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -140762,25 +140303,7 @@
         "confidence": "medium",
         "head_mention": "Winnti",
         "tail_mention": "supply chains",
-        "method": "rule_based_v1"
-      }
-    },
-    {
-      "source": "ENT_763",
-      "target": "NORM_TECHNIQUE_ransomware",
-      "relation": "USES_TECHNIQUE",
-      "properties": {
-        "document": "zscaler_2021-07-04_coverage-advisory-kaseya-vsa-supply",
-        "segment": 59,
-        "source": "Zscaler",
-        "publication_date": "2021-07-04",
-        "evidence_text": "The detailed technical analysis of the REvil payload used in Kaseya's VSA server supply chain ransomware attack can be found [here](/blogs/security-research/kaseya-supply-chain-ransomware-attack-technical-analysis-revil-payload).",
-        "trigger": "used",
-        "direction": "active",
-        "confidence": "medium",
-        "head_mention": "REvil",
-        "tail_mention": "ransomware",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -140798,7 +140321,7 @@
         "confidence": "high",
         "head_mention": "TA505",
         "tail_mention": "FlawedGrace",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -140816,7 +140339,7 @@
         "confidence": "high",
         "head_mention": "MirrorBlast",
         "tail_mention": "Rebol",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -140834,7 +140357,7 @@
         "confidence": "medium",
         "head_mention": "ReflectiveGnome",
         "tail_mention": "FlawedGrace",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -140852,7 +140375,7 @@
         "confidence": "medium",
         "head_mention": "TA505",
         "tail_mention": "FlawedGrace",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -140870,7 +140393,7 @@
         "confidence": "high",
         "head_mention": "MirrorBlast",
         "tail_mention": "Rebol",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -140888,7 +140411,7 @@
         "confidence": "medium",
         "head_mention": "MirrorBlast",
         "tail_mention": "ReflectiveGnome",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -140906,7 +140429,7 @@
         "confidence": "medium",
         "head_mention": "ReflectiveGnome",
         "tail_mention": "FlawedGrace",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -140924,7 +140447,7 @@
         "confidence": "high",
         "head_mention": "MirrorBlast",
         "tail_mention": "Rebol",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -140942,25 +140465,7 @@
         "confidence": "high",
         "head_mention": "MirrorBlast",
         "tail_mention": "ReflectiveGnome",
-        "method": "rule_based_v1"
-      }
-    },
-    {
-      "source": "ENT_1392",
-      "target": "ENT_1350",
-      "relation": "USES",
-      "properties": {
-        "document": "proofpoint_2021-10-19_whatta-ta-ta505-ramps-activity",
-        "segment": 93,
-        "source": "Proofpoint",
-        "publication_date": "2021-10-19",
-        "evidence_text": "*Figure 14. Rebol script downloaded by MirrorBlast that drops ReflectiveGnome loader (dwm-x64.exe / dwm-x32.exe).*",
-        "trigger": "downloaded by",
-        "direction": "passive",
-        "confidence": "medium",
-        "head_mention": "ReflectiveGnome",
-        "tail_mention": "Rebol",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -140978,7 +140483,7 @@
         "confidence": "high",
         "head_mention": "TA551",
         "tail_mention": "SLIVER",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -140996,7 +140501,7 @@
         "confidence": "high",
         "head_mention": "TA551",
         "tail_mention": "Red Team & adversary simulation Framework",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -141014,7 +140519,7 @@
         "confidence": "medium",
         "head_mention": "TA551",
         "tail_mention": "Ursnif",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -141032,7 +140537,7 @@
         "confidence": "medium",
         "head_mention": "TA551",
         "tail_mention": "IcedID",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -141050,7 +140555,7 @@
         "confidence": "medium",
         "head_mention": "TA551",
         "tail_mention": "Qbot",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -141068,7 +140573,7 @@
         "confidence": "medium",
         "head_mention": "TA551",
         "tail_mention": "Emotet",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -141086,7 +140591,7 @@
         "confidence": "high",
         "head_mention": "TA551",
         "tail_mention": "SLIVER",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -141101,10 +140606,10 @@
         "evidence_text": "As an established initial access broker leveraging initial access via email threat campaigns, TA551 would compromise a victim and potentially broker access to enable the deployment of Cobalt Strike and eventually ransomware.",
         "trigger": "deployment",
         "direction": "active",
-        "confidence": "medium",
+        "confidence": "low",
         "head_mention": "TA551",
         "tail_mention": "Cobalt Strike",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -141122,7 +140627,7 @@
         "confidence": "medium",
         "head_mention": "TinyNuke",
         "tail_mention": "French",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -141140,25 +140645,7 @@
         "confidence": "medium",
         "head_mention": "TinyNuke",
         "tail_mention": "French",
-        "method": "rule_based_v1"
-      }
-    },
-    {
-      "source": "ENT_1281",
-      "target": "ENT_1308",
-      "relation": "USES",
-      "properties": {
-        "document": "proofpoint_2021-12-13_tinynuke-banking-malware-targets-french",
-        "segment": 13,
-        "source": "Proofpoint",
-        "publication_date": "2021-12-13",
-        "evidence_text": "It is similar to the notorious banking trojan Zeus, which has [many variants](/us/blog/threat-insight/zloader-loads-again-new-zloader-variant-returns \"ZLoader Loads Again: New ZLoader Variant Returns\") with identical functionality.",
-        "trigger": "loads",
-        "direction": "active",
-        "confidence": "medium",
-        "head_mention": "Zeus",
-        "tail_mention": "ZLoader",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -141176,25 +140663,7 @@
         "confidence": "high",
         "head_mention": "TinyNuke",
         "tail_mention": "French",
-        "method": "rule_based_v1"
-      }
-    },
-    {
-      "source": "ENT_1403",
-      "target": "ENT_1281",
-      "relation": "USES",
-      "properties": {
-        "document": "proofpoint_2021-12-13_tinynuke-banking-malware-targets-french",
-        "segment": 25,
-        "source": "Proofpoint",
-        "publication_date": "2021-12-13",
-        "evidence_text": "Proofpoint first observed TinyNuke in 2017 used as a second-stage payload in a Zeus banking trojan campaign targeting French entities.",
-        "trigger": "used",
-        "direction": "active",
-        "confidence": "medium",
-        "head_mention": "TinyNuke",
-        "tail_mention": "Zeus",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -141212,7 +140681,7 @@
         "confidence": "medium",
         "head_mention": "TinyNuke",
         "tail_mention": "French",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -141230,7 +140699,7 @@
         "confidence": "medium",
         "head_mention": "Zeus",
         "tail_mention": "French",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -141248,43 +140717,7 @@
         "confidence": "medium",
         "head_mention": "TinyNuke",
         "tail_mention": "French",
-        "method": "rule_based_v1"
-      }
-    },
-    {
-      "source": "ENT_1403",
-      "target": "ENT_581",
-      "relation": "USES_TECHNIQUE",
-      "properties": {
-        "document": "proofpoint_2021-12-13_tinynuke-banking-malware-targets-french",
-        "segment": 35,
-        "source": "Proofpoint",
-        "publication_date": "2021-12-13",
-        "evidence_text": "Specifically, one intrusion set associated with the initial TinyNuke actors uses Tor for C2 since 2018, while commodity actors typically leverage clear web C2.",
-        "trigger": "uses",
-        "direction": "active",
-        "confidence": "high",
-        "head_mention": "TinyNuke",
-        "tail_mention": "C2",
-        "method": "rule_based_v1"
-      }
-    },
-    {
-      "source": "ENT_1403",
-      "target": "ENT_1276",
-      "relation": "USES",
-      "properties": {
-        "document": "proofpoint_2021-12-13_tinynuke-banking-malware-targets-french",
-        "segment": 59,
-        "source": "Proofpoint",
-        "publication_date": "2021-12-13",
-        "evidence_text": "Proofpoint identified TinyNuke infrastructure used in campaigns in 2018 overlapped with PyLocky ransomware attacks first reported that year.",
-        "trigger": "used",
-        "direction": "active",
-        "confidence": "medium",
-        "head_mention": "TinyNuke",
-        "tail_mention": "PyLocky ransomware",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -141302,7 +140735,7 @@
         "confidence": "high",
         "head_mention": "Emotet",
         "tail_mention": "push malspam",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -141320,7 +140753,7 @@
         "confidence": "high",
         "head_mention": "Mount Locker",
         "tail_mention": "Santa Clara Valley Transportation Authority",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -141338,7 +140771,7 @@
         "confidence": "medium",
         "head_mention": "Emotet",
         "tail_mention": "banking",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -141356,7 +140789,7 @@
         "confidence": "medium",
         "head_mention": "APT29",
         "tail_mention": "private-sector organizations",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -141374,7 +140807,7 @@
         "confidence": "high",
         "head_mention": "APT28",
         "tail_mention": "government",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -141392,7 +140825,7 @@
         "confidence": "medium",
         "head_mention": "APT28",
         "tail_mention": "military",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -141410,7 +140843,7 @@
         "confidence": "high",
         "head_mention": "APT28",
         "tail_mention": "Zebrocy",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -141428,7 +140861,7 @@
         "confidence": "high",
         "head_mention": "Turla",
         "tail_mention": "government",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -141446,7 +140879,7 @@
         "confidence": "medium",
         "head_mention": "Turla",
         "tail_mention": "military",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -141464,7 +140897,7 @@
         "confidence": "medium",
         "head_mention": "Turla",
         "tail_mention": "technology",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -141482,7 +140915,7 @@
         "confidence": "medium",
         "head_mention": "Turla",
         "tail_mention": "energy sectors",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -141500,7 +140933,7 @@
         "confidence": "high",
         "head_mention": "Turla",
         "tail_mention": "foreign embassies",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -141518,7 +140951,7 @@
         "confidence": "high",
         "head_mention": "Berserk Bear",
         "tail_mention": "US",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -141536,7 +140969,7 @@
         "confidence": "medium",
         "head_mention": "Berserk Bear",
         "tail_mention": "Germany",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -141554,7 +140987,7 @@
         "confidence": "medium",
         "head_mention": "Berserk Bear",
         "tail_mention": "energy",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -141572,7 +141005,7 @@
         "confidence": "medium",
         "head_mention": "Berserk Bear",
         "tail_mention": "utilities",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -141590,7 +141023,7 @@
         "confidence": "medium",
         "head_mention": "Berserk Bear",
         "tail_mention": "telecommunications sectors",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -141608,7 +141041,7 @@
         "confidence": "high",
         "head_mention": "E.K.P",
         "tail_mention": "Origin Logger",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -141626,7 +141059,7 @@
         "confidence": "high",
         "head_mention": "ShinyHunters",
         "tail_mention": "GitHub",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -141644,7 +141077,7 @@
         "confidence": "medium",
         "head_mention": "APT-C - 36",
         "tail_mention": "LimeRAT",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -141662,43 +141095,7 @@
         "confidence": "medium",
         "head_mention": "Blind Eagle",
         "tail_mention": "LimeRAT",
-        "method": "rule_based_v1"
-      }
-    },
-    {
-      "source": "ENT_1393",
-      "target": "ENT_161",
-      "relation": "USES_TECHNIQUE",
-      "properties": {
-        "document": "lab52_2021-05-17_literature-lover-targeting-colombia-with",
-        "segment": 24,
-        "source": "Lab52",
-        "publication_date": "2021-05-17",
-        "evidence_text": "Despite having seen the string \"ALOSH\" repetitively through the different stages, suggesting that this could be an individual going by this nickname, it is worth mentioning the fact that the APT group referred as APT-C-36, or Blind Eagle, have been spotted many times using this same toolset including LimeRAT, targeting same geographic area through phishing emails written in perfect Spanish, and also using Duckdns as part of their infrastructure.",
-        "trigger": "through",
-        "direction": "active",
-        "confidence": "medium",
-        "head_mention": "LimeRAT",
-        "tail_mention": "phishing emails",
-        "method": "rule_based_v1"
-      }
-    },
-    {
-      "source": "ENT_1393",
-      "target": "ENT_13191",
-      "relation": "TARGETS",
-      "properties": {
-        "document": "lab52_2021-05-17_literature-lover-targeting-colombia-with",
-        "segment": 24,
-        "source": "Lab52",
-        "publication_date": "2021-05-17",
-        "evidence_text": "Despite having seen the string \"ALOSH\" repetitively through the different stages, suggesting that this could be an individual going by this nickname, it is worth mentioning the fact that the APT group referred as APT-C-36, or Blind Eagle, have been spotted many times using this same toolset including LimeRAT, targeting same geographic area through phishing emails written in perfect Spanish, and also using Duckdns as part of their infrastructure.",
-        "trigger": "targeting",
-        "direction": "active",
-        "confidence": "medium",
-        "head_mention": "LimeRAT",
-        "tail_mention": "Spanish",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -141716,7 +141113,7 @@
         "confidence": "medium",
         "head_mention": "CloudFall",
         "tail_mention": "International Military Conferences",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -141734,7 +141131,7 @@
         "confidence": "medium",
         "head_mention": "CloudFall",
         "tail_mention": "Central Asia",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -141752,7 +141149,7 @@
         "confidence": "high",
         "head_mention": "CloudAtlas APT",
         "tail_mention": "Central Asia",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -141770,7 +141167,7 @@
         "confidence": "medium",
         "head_mention": "CloudAtlas APT",
         "tail_mention": "Eastern Europe",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -141788,7 +141185,7 @@
         "confidence": "medium",
         "head_mention": "Vidar",
         "tail_mention": "Babuk",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -141806,7 +141203,7 @@
         "confidence": "high",
         "head_mention": "TA575",
         "tail_mention": "Dridex",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -141824,7 +141221,7 @@
         "confidence": "high",
         "head_mention": "TA575",
         "tail_mention": "Dridex",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -141842,7 +141239,7 @@
         "confidence": "medium",
         "head_mention": "TA575",
         "tail_mention": "Dridex",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -141860,7 +141257,7 @@
         "confidence": "medium",
         "head_mention": "TA575",
         "tail_mention": "Dridex",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -141878,7 +141275,7 @@
         "confidence": "medium",
         "head_mention": "TA575",
         "tail_mention": "Excel and Word attachments",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -141896,7 +141293,7 @@
         "confidence": "high",
         "head_mention": "Squirrelwaffle",
         "tail_mention": "Cobalt Strike",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -141914,25 +141311,7 @@
         "confidence": "high",
         "head_mention": "Squirrelwaffle",
         "tail_mention": "Cobalt Strike",
-        "method": "rule_based_v1"
-      }
-    },
-    {
-      "source": "ENT_1274",
-      "target": "ENT_612",
-      "relation": "USES",
-      "properties": {
-        "document": "zscaler_2021-09-28_squirrelwaffle-new-loader-delivering-cobalt",
-        "segment": 5,
-        "source": "Zscaler",
-        "publication_date": "2021-09-28",
-        "evidence_text": "The Squirrelwaffle loader is being delivered from the same infrastructure that was delivering the Qakbot banking trojan.",
-        "trigger": "delivered",
-        "direction": "active",
-        "confidence": "medium",
-        "head_mention": "Squirrelwaffle",
-        "tail_mention": "Qakbot",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -141950,7 +141329,7 @@
         "confidence": "medium",
         "head_mention": "Squirrelwaffle",
         "tail_mention": "Cobalt Strike",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -141968,7 +141347,7 @@
         "confidence": "high",
         "head_mention": "Squirrelwaffle",
         "tail_mention": "Cobalt Strike",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -141986,25 +141365,7 @@
         "confidence": "high",
         "head_mention": "Squirrelwaffle",
         "tail_mention": "Cobalt Strike",
-        "method": "rule_based_v1"
-      }
-    },
-    {
-      "source": "ENT_600",
-      "target": "ENT_467",
-      "relation": "USES_TECHNIQUE",
-      "properties": {
-        "document": "intel471_2021-11-02_shipping-companies-ransomware-credentials",
-        "segment": 18,
-        "source": "Intel 471",
-        "publication_date": "2021-11-02",
-        "evidence_text": "It's most likely that access was obtained through a SonicWall vulnerability, given that FiveHands is known to use that access to launch its ransomware attacks.",
-        "trigger": "use",
-        "direction": "active",
-        "confidence": "medium",
-        "head_mention": "FiveHands",
-        "tail_mention": "ransomware",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -142022,7 +141383,7 @@
         "confidence": "medium",
         "head_mention": "NotPetya",
         "tail_mention": "Maersk",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -142037,28 +141398,10 @@
         "evidence_text": "On the whole, this infection campaign seems to be related to the threat group Transparent Tribe, trying to compromise Indian government once again.",
         "trigger": "compromise",
         "direction": "active",
-        "confidence": "high",
+        "confidence": "low",
         "head_mention": "Transparent Tribe",
         "tail_mention": "Indian government",
-        "method": "rule_based_v1"
-      }
-    },
-    {
-      "source": "ENT_1036",
-      "target": "ENT_770",
-      "relation": "USES",
-      "properties": {
-        "document": "lab52_2022-01-24_new-transparentribe-operation-targeting-india",
-        "segment": 70,
-        "source": "Lab52",
-        "publication_date": "2022-01-24",
-        "evidence_text": "Even though this threat group usually deploys CrimsonRAT as an initial access threat, this time they have deployed PeppyRAT.",
-        "trigger": "deployed",
-        "direction": "active",
-        "confidence": "medium",
-        "head_mention": "CrimsonRAT",
-        "tail_mention": "PeppyRAT",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -142076,7 +141419,7 @@
         "confidence": "high",
         "head_mention": "TA406",
         "tail_mention": "credential harvesting",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     },
     {
@@ -142094,7 +141437,7 @@
         "confidence": "high",
         "head_mention": "TA406",
         "tail_mention": "credential collection",
-        "method": "rule_based_v1"
+        "method": "rule_based_v2"
       }
     }
   ]

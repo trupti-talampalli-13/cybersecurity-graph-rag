@@ -29,7 +29,7 @@ SCHEMA = {
     "TARGETS": ({"GROUP", "MALWARE"}, VICTIMS),
 }
 
-NOT_PASSIVE = r"(?!\s+by\b)"   # "distributed by X" is passive, not "X distributed ..."
+NOT_PASSIVE = r"(?!\s+(?:by|through|via|from|as)\b)"   # "delivered by/through X", "used as a payload" are passive
 ACTIVE = {
     "USES": r"\b(us(?:e|es|ed|ing)|utili[sz]\w*|employ\w*|deploy\w*|drop(?:s|ped|ping)?|deliver\w*|"
             r"distribut\w*|install\w*|download\w*|load(?:s|ed|ing)?|fetch\w*|leverag\w*|"
@@ -42,7 +42,8 @@ ACTIVE = {
 }
 # passive: "<tail> ... <participle> by <head>"  (reverses reading direction)
 PASSIVE = {
-    "USES": r"\b(us|utili[sz]|employ|deploy|drop|deliver|distribut|install|download|load|launch|execut)ed\s+by\b",
+    "USES": r"\b(us|utili[sz]|employ|deploy|drop|deliver|distribut|install|download|load|launch|execut)ed"
+            r"\s+(?:by|through|via)\b|\b(?:us|utili[sz])ed\s+in\b",   # "Crypter used in Emotet": Emotet uses it
     "USES_TECHNIQUE": r"\b(us|employ|perform|leverag|conduct|implement|utili[sz])ed\s+by\b",
     "EXPLOITS": r"\b(exploit|leverag|abus|weaponi[sz])ed\s+by\b",
     "TARGETS": r"\b(target|attack|hit|victimi[sz]|compromis|infect|affect)ed\s+by\b",
@@ -52,8 +53,39 @@ PASSIVE_RE = {r: re.compile(p, re.I) for r, p in PASSIVE.items()}
 # max characters between the two mentions, per relation (and for passive phrasing)
 MAX_GAP = {"USES": 120, "USES_TECHNIQUE": 70, "EXPLOITS": 160, "TARGETS": 100}
 MAX_PASSIVE_GAP = 60
+MAX_PASSIVE_AGENT_GAP = 30   # characters allowed between "by" and the agent that follows it
+MAX_PREP_GAP = 20            # characters allowed between "via"/"through" and its object
 MAX_TAIL_WORDS = {"USES_TECHNIQUE": 4}
 STRONG_TARGET = re.compile(r"target\w*|aim\w*|against|focus\w* on|go(?:es|ing)? after|victimi[sz]\w*", re.I)
+
+# Text between head and tail that means the relation is not asserted between these two entities:
+# comparisons, shared infrastructure/overlap, reasons, relative clauses with a new subject, "other X such as Y"
+BLOCK_BETWEEN = re.compile(
+    r"\bsame\b[^.,;]{0,40}\b(?:as|that|manner)\b|\b(?:similar|overlap\w*|compar\w*|alike)\b|\bin line with\b"
+    r"|\b(?:since|because|due to|based on)\b|\bother\b[^.]*\bsuch as\b|\bthat\s+(?:could|would|may|might|can)\b"
+    r"|\b(?:reminiscent|resembl\w+|background in|specializ\w+ in)\b|\b(?:connected|tied|linked|related) to\b",
+    re.I)
+# Negated or disputed claims in the words around the pair ("we've never seen TA505 use Emotet")
+NEGATION = re.compile(r"\b(?:never|not|cannot|neither|nor|incorrectly|wrongly|falsely|disputed|unexplained)\b|n't\b",
+                      re.I)
+PRONOUN_SUBJECT = re.compile(r"\b(?:they|he|she)\s+(?:\w+\s+){0,2}$", re.I)   # clause has a new (human) subject
+IMPERSONATION = re.compile(r"\b(?:posing as|impersonat\w+|masquerad\w+|claim(?:s|ed|ing)? to)\b", re.I)
+HEDGE = re.compile(r"\b(?:likely|probably|possibly|potentially|potential|allegedly|presumably|might|could|would|"
+                   r"suspect\w*|appear(?:s|ed)? to|seem(?:s|ed)? to|assess\w* that)\b", re.I)
+HEAD_ROLE_NOUN = re.compile(r"^\s+(?:operators?|developers?|authors?|actors?|gang|affiliates?|creators?)\b", re.I)
+REPORTER_AFTER = re.compile(r"^\s+\[?(?:reporting|reports?|research|researchers?|analysts?|assess\w*)\b", re.I)
+REPORTER_BEFORE = re.compile(r"(?:expert|analyst|researcher|spokesperson)\s+(?:in|at|from|with)\s+(?:the\s+)?$", re.I)
+REPORTER_NAMES = {"proofpoint", "zscaler", "intel 471", "intel471", "lab52", "quointelligence", "threatlabz",
+                  "mandiant", "eset", "kaspersky", "fireeye", "crowdstrike", "symantec", "trend micro"}
+GENERIC_TECHNIQUE_TAILS = {"ransomware", "malware", "trojan", "backdoor", "botnet"}
+GENERIC_HEADS = {"apt", "actor", "actors", "group", "threat actor", "attacker", "attackers"}
+# "Microsoft Office", "Oracle WebLogic": the organization is part of a product name, not a victim
+PRODUCT_AFTER = re.compile(r"^\s+(?:Office|Word|Excel|PowerPoint|Outlook|OneNote|Windows|Exchange|Defender|Azure|"
+                           r"SharePoint|Teams|WebLogic|SQL|Server|Edge|Explorer|Flash|Java|Acrobat|Reader)\b", re.I)
+# "Banking Trojan", "initial access malware": the word belongs to a malware description
+MALWARE_CLASS_AFTER = re.compile(r"^\s+(?:trojans?|malware|ransomware|botnet|backdoor|stealer|loader|rat|payloads?)\b",
+                                 re.I)
+LINK_TARGET = re.compile(r"\]\([^)]*\)")   # markdown link target/title: not prose
 
 
 def norm(text):
@@ -83,8 +115,64 @@ def resolve(doc, seg, ent, resolution):
                                          "canonical_id": None, "link": None}
 
 
+def mask_links(text):
+    """Blank out markdown link targets/titles (same length, so offsets stay valid)."""
+    chars = list(text)
+    spans = []
+    for m in LINK_TARGET.finditer(text):
+        spans.append((m.start(), m.end()))
+        for i in range(m.start(), m.end()):
+            chars[i] = " "
+    return "".join(chars), spans
+
+
+def candidate_ok(rel, h, t, trig, direction, text, between, ents):
+    """Reject a (head, trigger, tail) candidate that the sentence does not really assert."""
+    if BLOCK_BETWEEN.search(between):
+        return False
+    if norm(h["text"]) == norm(t["text"]) or norm(h["text"]) in GENERIC_HEADS:
+        return False           # an entity cannot target itself; "APT"/"group" alone is not an actor name
+    lo = min(h["char_start"], t["char_start"])
+    hi = max(h["char_end"], t["char_end"])
+    if IMPERSONATION.search(text[max(0, lo - 80):hi]) or NEGATION.search(text[max(0, lo - 60):hi]):
+        return False
+    if direction == "active":
+        if PRONOUN_SUBJECT.search(between[:trig.start()]):
+            return False
+        if rel in ("USES", "USES_TECHNIQUE", "EXPLOITS") and h["type"] in ("MALWARE", "TOOL") \
+                and HEAD_ROLE_NOUN.match(text[h["char_end"]:]):
+            return False       # "<malware> operators/actors ..." is about the people, not the malware
+        if trig.group(0).lower() in ("via", "through") and len(between) - trig.end() > MAX_PREP_GAP:
+            return False
+        if trig.group(0).lower() in ("used", "utilized", "utilised") and re.match(r"\s+in\b", between[trig.end():]):
+            return False       # "X used in Y" means Y uses X (handled as passive)
+    else:
+        if len(between) - trig.end() > MAX_PASSIVE_AGENT_GAP:
+            return False       # the agent must follow "by" directly
+        agent_from = t["char_end"] + trig.end()
+        if any(e is not h and e is not t and agent_from <= e["char_start"] and e["char_end"] <= h["char_start"]
+               for e in ents):
+            return False       # another entity sits between "by" and the head, so it is not the agent
+    if rel == "USES_TECHNIQUE" and norm(t["text"]) in GENERIC_TECHNIQUE_TAILS:
+        return False           # "ransomware" etc. name a malware class, not a technique
+    if rel == "USES_TECHNIQUE" and MALWARE_CLASS_AFTER.match(text[t["char_end"]:]):
+        return False           # "initial access malware": describes the malware, not a technique it uses
+    if rel == "TARGETS":
+        if norm(t["text"]) in REPORTER_NAMES:
+            return False       # the vendor reporting on the activity is not the victim
+        if PRODUCT_AFTER.match(text[t["char_end"]:]) or MALWARE_CLASS_AFTER.match(text[t["char_end"]:]):
+            return False       # "Microsoft Office", "Banking Trojan": part of a product/malware name
+        if REPORTER_AFTER.match(text[t["char_end"]:]) or REPORTER_BEFORE.search(text[:t["char_start"]]):
+            return False
+        if t["type"] == "LOC" and re.match(r"\s+(?:Sea|Ocean)\b", text[t["char_end"]:]):
+            return False       # "Chinese Sea" is a place name, not a target
+    return True
+
+
 def find_relations(seg, resolution):
-    text, ents = seg["text"], [e for e in seg["entities"] if e["char_start"] is not None]
+    text, spans = mask_links(seg["text"])
+    ents = [e for e in seg["entities"] if e["char_start"] is not None
+            and not any(a <= e["char_start"] and e["char_end"] <= b for a, b in spans)]
     ents.sort(key=lambda e: e["char_start"])
     out = []
     for rel, (head_types, tail_types) in SCHEMA.items():
@@ -110,13 +198,34 @@ def find_relations(seg, resolution):
                     continue
                 if rel == "TARGETS" and t["type"] == "LOC" and not STRONG_TARGET.match(trig.group(0)):
                     continue
+                if not candidate_ok(rel, h, t, trig, direction, text, between, ents):
+                    continue
+                lo, hi = min(h["char_start"], t["char_start"]), max(h["char_end"], t["char_end"])
                 inner = [e for e in ents if e not in (h, t)
                          and min(h["char_end"], t["char_end"]) <= e["char_start"]
                          and e["char_end"] <= max(h["char_start"], t["char_start"])
                          and (e["type"] in head_types or e["type"] in tail_types)]
-                conf = "high" if not inner and len(between) <= 40 else "medium"
+                if HEDGE.search(text[max(0, lo - 60):hi]):
+                    conf = "low"       # hedged ("likely", "potentially"...): kept but not trusted
+                else:
+                    conf = "high" if not inner and len(between) <= 40 else "medium"
                 out.append((rel, h, t, trig.group(0).lower(), direction, conf))
-    return out
+    # "TA415 used Cobalt Strike in a campaign against X": the group, not its tool, is the subject
+    uses = {(id(h), id(t)) for rel, h, t, *_ in out if rel == "USES" and h["type"] == "GROUP"}
+    group_targets = {(id(h), id(t)) for rel, h, t, *_ in out if rel == "TARGETS" and h["type"] == "GROUP"}
+    used_by_group = {used_id for _, used_id in uses}
+    keep = []
+    for item in out:
+        rel, h, t, direction = item[0], item[1], item[2], item[4]
+        if rel == "TARGETS" and h["type"] in ("MALWARE", "TOOL") and any(
+                (gid, id(h)) in uses and (gid, id(t)) in group_targets for gid, _ in uses):
+            continue
+        # "<group> ... using <tool>, targeting/using X": the clause after the comma still has the group as subject
+        if rel in ("USES_TECHNIQUE", "TARGETS") and direction == "active" and id(h) in used_by_group \
+                and "," in text[h["char_end"]:t["char_start"]]:
+            continue
+        keep.append(item)
+    return keep
 
 
 def cross_segment_exploits(seg, recent_carriers):
@@ -199,7 +308,7 @@ def main():
                          "evidence_text": seg["clean_text"], "trigger": trig,
                          "direction": direction, "confidence": conf,
                          "head_mention": h["text"], "tail_mention": t["text"],
-                         "method": "rule_based_v1"}
+                         "method": "rule_based_v2"}
                 records.append({"head": hid, "relation": rel, "tail": tid, **props})
                 edges.append({"source": hid, "target": tid, "relation": rel, "properties": props})
                 stats[(rel, conf)] += 1
