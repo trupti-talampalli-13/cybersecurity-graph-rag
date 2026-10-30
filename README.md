@@ -49,6 +49,44 @@ python src/prepare_azerg.py
 
 `src/prepare_azerg.py` extracts source entity, target entity, passage text, and the labeled relation from the T4 records. It writes `data/azerg/t4_train_clean.jsonl` and `data/azerg/t4_test_clean.jsonl`. The T3 files are retained in their original format by the download step.
 
+## CTI Knowledge Graph Pipeline (Data, NER and Graph)
+
+This pipeline turns the AnnoCTR reports (train, dev and test: 120 reports, 12,179 segments) into a cybersecurity knowledge graph. Run each step from the repository root, in order:
+
+| Step | Script | Output |
+|---|---|---|
+| 1. Clean and preprocess | `python src/preprocess_reports.py` | `data/reports.jsonl`, `data/processed_segments.jsonl` |
+| 2. Entity table | `python src/build_entities.py` | `data/entities.jsonl` |
+| 3. Normalize | `python src/normalize_entities.py` | `data/normalized_entities.jsonl` |
+| 4. Link | `python src/link_entities.py` | `data/linked_entities_candidates.jsonl` |
+| 5. Relation candidates | `python src/build_relation_candidates.py` then `python src/filter_relation_candidates.py` | `data/annoctr_relation_candidates*.jsonl` |
+| 6. Base graph | `python src/build_knowledge_graph.py` | `data/knowledge_graph.json` |
+| 7. Relations and final graph | `python src/extract_relations.py` | `data/relations.jsonl`, `data/cti_knowledge_graph.json` |
+| 8. Visualizations | `python src/visualize_graph.py` | `figures/` |
+
+**Preprocessing.** Every segment keeps its report ID, source vendor, publication date (from the AnnoCTR document creation time) and segment number. `text` is the original sentence and `clean_text` has Markdown, URLs and curly quotes normalized. Entity spans are rebuilt from the gold BIO tags with character offsets into `text`. `data/processed_segments.jsonl` contains the corpus text, so it is generated locally and not tracked.
+
+**Entities.** Types come from the AnnoCTR gold tags (`GROUP` is the threat-actor type, plus `MALWARE`, `TOOL`, `TECHNIQUE`, `TACTIC`, `ORG`, `SECTOR`, `LOC`, `CON`, `DATE`). AnnoCTR has no CVE label, so `CVE-YYYY-NNNN` ids are added by regex. Mentions are normalized (case, spacing, dashes) and linked to Wikipedia/MITRE entries using the AnnoCTR linking annotations. CVEs link to their NVD page. Mentions without a link stay as `MENTION` nodes.
+
+**Relations.** `extract_relations.py` proposes entity pairs within a segment, keeps those whose types fit the schema and that are joined by a trigger phrase, and handles passive wording ("distributed by X"):
+
+| Relation | Head | Tail |
+|---|---|---|
+| `USES` | group, malware | malware, tool |
+| `USES_TECHNIQUE` | group, malware, tool | technique, tactic |
+| `EXPLOITS` | group, malware, tool | CVE |
+| `TARGETS` | group, malware | organization, sector, location |
+
+Each relation edge stores its evidence sentence, trigger, report, date and a `high`/`medium`/`low` confidence. Entity nodes that are spelling variants of one entity (for example TrickBot and Trickbot) are merged and listed in `aliases`. Relations are automatic and not manually validated; in a hand check of a small sample `TARGETS` and `USES` were mostly correct, `USES_TECHNIQUE` was noisy, and `EXPLOITS` finds only a few cases because CVE sentences often do not name the actor.
+
+**Visualizations.** `figures/` holds entity and relation count charts, an overview graph, neighborhood graphs for the best-connected actors, and `graph_interactive.html` (hover an edge for its evidence; loads vis-network from a CDN).
+
+## Semantic Relation Verification
+
+The V1 NLI and Hybrid outputs are preserved as baselines. The separate,
+deterministic V2 rule verifier and its conservative decision policy are
+documented in [`docs/semantic_verifier_v2_implementation.md`](docs/semantic_verifier_v2_implementation.md).
+
 ## Data Tracking
 
 The full AnnoCTR corpus remains in its upstream repository and is not copied into this repository. Selected AZERG input splits and the three derived knowledge-graph JSON files are tracked here. Generated predictions, annotations, audits, and other intermediate outputs are selectively excluded; do not assume that every file under `data/` should be committed. Check redistribution terms before sharing any dataset files.
