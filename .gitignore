@@ -23,7 +23,12 @@ data/second_annotator_100.jsonl
 
 # Semantic verifier generated outputs
 data/semantic_verifier_v1_*.jsonl
+data/semantic_verifier_v2*.jsonl
 
 # Temporary files
 *.log
 *.tmp
+# Downloaded and fine-tuned model weights
+models/
+# Kaggle upload artifacts
+kaggle_upload/

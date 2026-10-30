@@ -1,0 +1,221 @@
+{
+  "note": "relations from gold entities are the reference; train split is optimistic because the model was trained on it",
+  "entity_counts": {
+    "test": {
+      "gold": {
+        "MALWARE": 421,
+        "SECTOR": 141,
+        "CON": 446,
+        "LOC": 189,
+        "DATE": 272,
+        "ORG": 372,
+        "TACTIC": 189,
+        "TECHNIQUE": 359,
+        "TOOL": 52,
+        "CLICommand/CodeSnippet": 39,
+        "GROUP": 213,
+        "CVE": 2
+      },
+      "predicted": {
+        "MALWARE": 358,
+        "SECTOR": 189,
+        "CON": 384,
+        "LOC": 176,
+        "DATE": 281,
+        "ORG": 387,
+        "TOOL": 44,
+        "TECHNIQUE": 309,
+        "TACTIC": 140,
+        "GROUP": 136,
+        "CLICommand/CodeSnippet": 40,
+        "CVE": 2
+      }
+    },
+    "dev": {
+      "gold": {
+        "GROUP": 99,
+        "TECHNIQUE": 103,
+        "TACTIC": 72,
+        "DATE": 146,
+        "ORG": 266,
+        "MALWARE": 205,
+        "CON": 192,
+        "LOC": 233,
+        "SECTOR": 124,
+        "TOOL": 31,
+        "CLICommand/CodeSnippet": 63
+      },
+      "predicted": {
+        "MALWARE": 135,
+        "GROUP": 94,
+        "CON": 195,
+        "TACTIC": 78,
+        "DATE": 139,
+        "ORG": 221,
+        "LOC": 188,
+        "TOOL": 21,
+        "TECHNIQUE": 106,
+        "SECTOR": 124,
+        "CLICommand/CodeSnippet": 15
+      }
+    },
+    "train": {
+      "gold": {
+        "ORG": 940,
+        "DATE": 709,
+        "CLICommand/CodeSnippet": 213,
+        "CON": 908,
+        "TECHNIQUE": 648,
+        "LOC": 733,
+        "SECTOR": 287,
+        "MALWARE": 1031,
+        "TACTIC": 433,
+        "GROUP": 387,
+        "TOOL": 136,
+        "CVE": 35
+      },
+      "predicted": {
+        "ORG": 956,
+        "DATE": 725,
+        "CLICommand/CodeSnippet": 218,
+        "CON": 1018,
+        "TECHNIQUE": 602,
+        "LOC": 723,
+        "SECTOR": 350,
+        "MALWARE": 1046,
+        "TACTIC": 441,
+        "GROUP": 394,
+        "TOOL": 126,
+        "CVE": 35
+      }
+    }
+  },
+  "relations": {
+    "test": {
+      "ALL": {
+        "precision": 0.515,
+        "recall": 0.586,
+        "f1": 0.548,
+        "gold": 58,
+        "predicted": 66,
+        "matched": 34
+      },
+      "USES": {
+        "precision": 0.882,
+        "recall": 0.682,
+        "f1": 0.769,
+        "gold": 22,
+        "predicted": 17,
+        "matched": 15
+      },
+      "USES_TECHNIQUE": {
+        "precision": 0.429,
+        "recall": 0.429,
+        "f1": 0.429,
+        "gold": 7,
+        "predicted": 7,
+        "matched": 3
+      },
+      "EXPLOITS": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "gold": 0,
+        "predicted": 0,
+        "matched": 0
+      },
+      "TARGETS": {
+        "precision": 0.381,
+        "recall": 0.552,
+        "f1": 0.451,
+        "gold": 29,
+        "predicted": 42,
+        "matched": 16
+      }
+    },
+    "dev": {
+      "ALL": {
+        "precision": 0.926,
+        "recall": 0.568,
+        "f1": 0.704,
+        "gold": 44,
+        "predicted": 27,
+        "matched": 25
+      },
+      "USES": {
+        "precision": 0.857,
+        "recall": 0.3,
+        "f1": 0.444,
+        "gold": 20,
+        "predicted": 7,
+        "matched": 6
+      },
+      "USES_TECHNIQUE": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "gold": 1,
+        "predicted": 1,
+        "matched": 1
+      },
+      "EXPLOITS": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "gold": 0,
+        "predicted": 0,
+        "matched": 0
+      },
+      "TARGETS": {
+        "precision": 0.947,
+        "recall": 0.783,
+        "f1": 0.857,
+        "gold": 23,
+        "predicted": 19,
+        "matched": 18
+      }
+    },
+    "train": {
+      "ALL": {
+        "precision": 0.795,
+        "recall": 0.882,
+        "f1": 0.836,
+        "gold": 136,
+        "predicted": 151,
+        "matched": 120
+      },
+      "USES": {
+        "precision": 0.951,
+        "recall": 0.983,
+        "f1": 0.967,
+        "gold": 59,
+        "predicted": 61,
+        "matched": 58
+      },
+      "USES_TECHNIQUE": {
+        "precision": 0.389,
+        "recall": 0.438,
+        "f1": 0.412,
+        "gold": 16,
+        "predicted": 18,
+        "matched": 7
+      },
+      "EXPLOITS": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "gold": 3,
+        "predicted": 3,
+        "matched": 3
+      },
+      "TARGETS": {
+        "precision": 0.754,
+        "recall": 0.897,
+        "f1": 0.819,
+        "gold": 58,
+        "predicted": 69,
+        "matched": 52
+      }
+    }
+  }
+}

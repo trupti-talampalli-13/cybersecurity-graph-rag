@@ -81,6 +81,35 @@ Each relation edge stores its evidence sentence, trigger, report, date and a `hi
 
 **Visualizations.** `figures/` holds entity and relation count charts, an overview graph, neighborhood graphs for the best-connected actors, and `graph_interactive.html` (hover an edge for its evidence; loads vis-network from a CDN).
 
+## Trained NER Model
+
+Besides using the AnnoCTR gold tags, the project includes a fine-tuned NER model so new reports can be tagged automatically.
+
+| Script | Purpose |
+|---|---|
+| `src/train_ner.py` | Fine-tunes a transformer for token classification on AnnoCTR train, selects the best epoch on dev, and scores dev and test. Uses a GPU when available. |
+| `src/predict_ner.py` | Loads `models/ner/ner_model.pth` and tags every sentence of the three splits (`data/predicted_entities.jsonl`, `data/ner_vs_gold.json`). |
+| `src/compare_gold_vs_predicted.py` | Runs the relation extractor on gold and on predicted entities and compares them (`data/ner_graph_comparison.json`). |
+
+The model was trained on a Kaggle GPU:
+
+```bash
+python train_ner.py --model roberta-base --epochs 5 --corpus <folder with train.json, dev.json, test.json> --out <output folder>
+```
+
+It writes `ner_model/ner_model.pth` (PyTorch weights), `ner_model/labels.json`, `ner_eval.json` and `ner_predictions_test.jsonl`. The weights (about 500 MB) are not tracked in Git.
+
+**Results** (roberta-base, 5 epochs, best epoch 3 by dev; entity-level exact match of span and type):
+
+| Split | Precision | Recall | F1 |
+|---|---|---|---|
+| Dev | 0.692 | 0.594 | 0.639 |
+| Test | 0.724 | 0.657 | 0.689 |
+
+Test F1 by type: DATE 0.87, ORG 0.87, LOC 0.85, MALWARE 0.72, CON 0.68, SECTOR 0.66, TACTIC 0.59, GROUP 0.53, TECHNIQUE 0.49, CLICommand/CodeSnippet 0.33, TOOL 0.15. The cybersecurity-specific types (threat actors, tools, techniques) are the weakest; they are also the rarest in training.
+
+**Effect on the graph.** On dev and test text, running the relation rules on model-tagged entities reproduces about 58% of the relations found from gold tags, with about 63% precision against them. Missed `GROUP` entities (136 predicted against 213 gold in test) are the main cause. These counts are small (102 reference relations) and the reference relations are themselves automatic, so treat them as indicative. For the 120 AnnoCTR reports the gold-tag graph remains the more accurate one.
+
 ## Semantic Relation Verification
 
 The V1 NLI and Hybrid outputs are preserved as baselines. The separate,
