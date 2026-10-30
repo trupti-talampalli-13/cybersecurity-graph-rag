@@ -135,6 +135,8 @@ def main():
     ap.add_argument("--lr", type=float, default=5e-5)
     ap.add_argument("--seed", type=int, default=13)
     ap.add_argument("--limit", type=int, default=0, help="use only N training sentences (smoke test)")
+    ap.add_argument("--train-on-dev", action="store_true",
+                    help="train on train+dev and keep the last epoch (dev scores are then not held-out)")
     ap.add_argument("--corpus", default=None, help="folder with train.json, dev.json, test.json")
     ap.add_argument("--out", default=None, help="output folder for model, metrics and predictions")
     args, _ = ap.parse_known_args()  # ignores extra notebook kernel arguments
@@ -154,6 +156,8 @@ def main():
     torch.set_num_threads(torch.get_num_threads())
 
     train, dev, test = load("train"), load("dev"), load("test")
+    if args.train_on_dev:
+        train = train + dev
     if args.limit:
         train, dev, test = train[:args.limit], dev[:args.limit // 2], test[:args.limit // 2]
     labels = sorted({t for r in train + dev + test for t in r["all_tags"]}, key=lambda t: (t != "O", t))
@@ -192,7 +196,7 @@ def main():
         dev_m = score([r["all_tags"] for r in dev], dev_pred)
         history.append({"epoch": epoch, "train_loss": total / n, "dev_micro_f1": dev_m["micro"]["f1"]})
         print(f"epoch {epoch}: loss {total / n:.4f}  dev micro-F1 {dev_m['micro']['f1']:.4f}", flush=True)
-        if dev_m["micro"]["f1"] > best_f1:
+        if args.train_on_dev or dev_m["micro"]["f1"] > best_f1:
             best_f1 = dev_m["micro"]["f1"]
             MODEL_DIR.mkdir(parents=True, exist_ok=True)
             model.save_pretrained(MODEL_DIR)
@@ -206,7 +210,7 @@ def main():
     test_pred = [fix_bio(p) for p in predict(model, te, test, id2label, pad)]
     result = {
         "model": args.model, "epochs": args.epochs, "lr": args.lr, "batch_size": args.batch_size,
-        "train_sentences": len(tr), "history": history,
+        "train_sentences": len(tr), "train_on_dev": args.train_on_dev, "history": history,
         "dev": score([r["all_tags"] for r in dev], dev_pred),
         "test": score([r["all_tags"] for r in test], test_pred),
         "metric": "entity-level exact match (span and type)",

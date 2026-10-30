@@ -108,6 +108,22 @@ It writes `ner_model/ner_model.pth` (PyTorch weights), `ner_model/labels.json`, 
 
 Test F1 by type: DATE 0.87, ORG 0.87, LOC 0.85, MALWARE 0.72, CON 0.68, SECTOR 0.66, TACTIC 0.59, GROUP 0.53, TECHNIQUE 0.49, CLICommand/CodeSnippet 0.33, TOOL 0.15. The cybersecurity-specific types (threat actors, tools, techniques) are the weakest; they are also the rarest in training.
 
+**Model comparison.** Two further runs were tried on Kaggle (scores copied from the training logs; each is a single run with one random seed, test set never used for training or model selection):
+
+| Model | Precision | Recall | F1 | Macro-F1 |
+|---|---|---|---|---|
+| roberta-base, train only (used) | 0.724 | 0.657 | 0.689 | 0.612 |
+| roberta-base, train + dev, 3 epochs | 0.681 | 0.668 | 0.675 | 0.592 |
+| SecureBERT (`ehsanaghaei/SecureBERT`), train only, 5 epochs | 0.690 | 0.657 | 0.673 | 0.591 |
+
+| Test F1 | GROUP | MALWARE | TACTIC | TECHNIQUE | TOOL |
+|---|---|---|---|---|---|
+| roberta-base, train only | 0.533 | 0.716 | 0.590 | 0.488 | 0.146 |
+| roberta-base, train + dev | 0.471 | 0.716 | 0.625 | 0.394 | 0.052 |
+| SecureBERT | 0.586 | 0.718 | 0.618 | 0.399 | 0.077 |
+
+Adding dev to training did not help (its dev score is not held-out and is not reported). SecureBERT improved `GROUP` but lost on `TECHNIQUE` and `TOOL`. The differences are within about 1.6 F1 points on single runs, so none of the variants is clearly better, and the original model is kept. SecureBERT is released under the BigScience OpenRAIL-M licence.
+
 **Effect on the graph.** On dev and test text, running the relation rules on model-tagged entities reproduces about 58% of the relations found from gold tags, with about 63% precision against them. Missed `GROUP` entities (136 predicted against 213 gold in test) are the main cause. These counts are small (102 reference relations) and the reference relations are themselves automatic, so treat them as indicative. For the 120 AnnoCTR reports the gold-tag graph remains the more accurate one.
 
 ## Semantic Relation Verification
