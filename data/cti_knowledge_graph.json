@@ -360,7 +360,10 @@
       "name": "TrickBot",
       "entity_class": "CE",
       "entity_type": "MALWARE",
-      "link": "https://attack.mitre.org/software/S0266"
+      "link": "https://attack.mitre.org/software/S0266",
+      "aliases": [
+        "Trickbot"
+      ]
     },
     {
       "id": "ENT_914",
@@ -1252,15 +1255,6 @@
       "status": "UNLINKED"
     },
     {
-      "id": "ENT_773",
-      "node_type": "ENTITY",
-      "canonical_id": 773,
-      "name": "njRAT",
-      "entity_class": "CE",
-      "entity_type": "MALWARE",
-      "link": "https://attack.mitre.org/software/S0385"
-    },
-    {
       "id": "DOC_proofpoint_2021-08-24_delta-variant-spreads-covid-19",
       "node_type": "DOCUMENT",
       "document": "proofpoint_2021-08-24_delta-variant-spreads-covid-19",
@@ -1642,15 +1636,6 @@
       "status": "AMBIGUOUS"
     },
     {
-      "id": "ENT_452",
-      "node_type": "ENTITY",
-      "canonical_id": 452,
-      "name": "Application Layer Protocol",
-      "entity_class": "CI",
-      "entity_type": "TECHNIQUE",
-      "link": "https://attack.mitre.org/techniques/T1071"
-    },
-    {
       "id": "ENT_6407",
       "node_type": "ENTITY",
       "canonical_id": 6407,
@@ -1864,7 +1849,8 @@
       "name": "curl",
       "entity_class": "CE",
       "entity_type": "TOOL",
-      "link": "http://www.bosch.com#node1fuu313m0x6"
+      "link": "http://www.bosch.com#node1fuu313m0x6",
+      "aliases": []
     },
     {
       "id": "LOCAL_1a9be052ac51",
@@ -7606,16 +7592,8 @@
       "name": "Magecart",
       "entity_class": "CE",
       "entity_type": "MALWARE",
-      "link": "http://www.bosch.com#node1frhbstcrx2"
-    },
-    {
-      "id": "ENT_1275",
-      "node_type": "ENTITY",
-      "canonical_id": 1275,
-      "name": "Magecart",
-      "entity_class": "CE",
-      "entity_type": "MALWARE",
-      "link": "http://www.bosch.com#node1frhbstcrx1"
+      "link": "http://www.bosch.com#node1frhbstcrx2",
+      "aliases": []
     },
     {
       "id": "LOCAL_aa506008485d",
@@ -8836,7 +8814,10 @@
       "name": "Reconnaissance",
       "entity_class": "CE",
       "entity_type": "TACTIC",
-      "link": "https://attack.mitre.org/tactics/TA0043"
+      "link": "https://attack.mitre.org/tactics/TA0043",
+      "aliases": [
+        "reconnaissance"
+      ]
     },
     {
       "id": "LOCAL_2eb101e99a97",
@@ -10257,7 +10238,10 @@
       "name": "njrat",
       "entity_class": "CE",
       "entity_type": "MALWARE",
-      "link": "http://www.bosch.com#node1g4aefeb0x1"
+      "link": "http://www.bosch.com#node1g4aefeb0x1",
+      "aliases": [
+        "njRAT"
+      ]
     },
     {
       "id": "LOCAL_235925a08a18",
@@ -11979,15 +11963,6 @@
       "entity_class": "CE",
       "entity_type": "TOOL",
       "link": "https://attack.mitre.org/software/S0097"
-    },
-    {
-      "id": "ENT_1314",
-      "node_type": "ENTITY",
-      "canonical_id": 1314,
-      "name": "curl",
-      "entity_class": "CE",
-      "entity_type": "TOOL",
-      "link": "http://www.bosch.com#node1g51dalmax5"
     },
     {
       "id": "LOCAL_6a41c32a13a5",
@@ -15950,7 +15925,8 @@
       "name": "Application Layer Protocol",
       "entity_class": "CE",
       "entity_type": "TECHNIQUE",
-      "link": "https://attack.mitre.org/techniques/T1437"
+      "link": "https://attack.mitre.org/techniques/T1437",
+      "aliases": []
     },
     {
       "id": "LOCAL_9db45fa979d8",
@@ -29912,7 +29888,10 @@
       "name": "APT-C-36",
       "entity_class": "CE",
       "entity_type": "GROUP",
-      "link": "https://attack.mitre.org/groups/G0099"
+      "link": "https://attack.mitre.org/groups/G0099",
+      "aliases": [
+        "APT-C - 36"
+      ]
     },
     {
       "id": "LOCAL_54d1d431dfdc",
@@ -33760,15 +33739,6 @@
       "status": "UNLINKED"
     },
     {
-      "id": "NORM_MALWARE_trickbot",
-      "node_type": "ENTITY",
-      "name": "Trickbot",
-      "entity_type": "MALWARE",
-      "canonical_id": null,
-      "link": null,
-      "entity_class": null
-    },
-    {
       "id": "NORM_TECHNIQUE_soap",
       "node_type": "ENTITY",
       "name": "SOAP",
@@ -33934,15 +33904,6 @@
       "id": "NORM_TACTIC_exfiltrate sensitive information .",
       "node_type": "ENTITY",
       "name": "exfiltrate sensitive information .",
-      "entity_type": "TACTIC",
-      "canonical_id": null,
-      "link": null,
-      "entity_class": null
-    },
-    {
-      "id": "NORM_TACTIC_reconnaissance",
-      "node_type": "ENTITY",
-      "name": "reconnaissance",
       "entity_type": "TACTIC",
       "canonical_id": null,
       "link": null,
@@ -34196,15 +34157,6 @@
       "node_type": "ENTITY",
       "name": "telecommunications sectors",
       "entity_type": "SECTOR",
-      "canonical_id": null,
-      "link": null,
-      "entity_class": null
-    },
-    {
-      "id": "NORM_GROUP_apt-c-36",
-      "node_type": "ENTITY",
-      "name": "APT-C - 36",
-      "entity_type": "GROUP",
       "canonical_id": null,
       "link": null,
       "entity_class": null
@@ -37614,7 +37566,7 @@
       }
     },
     {
-      "source": "ENT_773",
+      "source": "ENT_1313",
       "target": "DOC_zscaler_2021-04-14_look-hydrojiin-campaign",
       "relation": "MENTIONED_IN",
       "properties": {
@@ -39383,7 +39335,7 @@
     },
     {
       "source": "LOCAL_dbbb8bf00c57",
-      "target": "ENT_452",
+      "target": "ENT_1603",
       "relation": "CANDIDATE_FOR",
       "properties": {
         "confidence": null
@@ -39437,7 +39389,7 @@
     },
     {
       "source": "LOCAL_b5eb239e39ee",
-      "target": "ENT_452",
+      "target": "ENT_1603",
       "relation": "CANDIDATE_FOR",
       "properties": {
         "confidence": null
@@ -39491,7 +39443,7 @@
     },
     {
       "source": "LOCAL_3bfc6cd23f69",
-      "target": "ENT_452",
+      "target": "ENT_1603",
       "relation": "CANDIDATE_FOR",
       "properties": {
         "confidence": null
@@ -45607,7 +45559,7 @@
       }
     },
     {
-      "source": "ENT_452",
+      "source": "ENT_1603",
       "target": "DOC_quoteintelligence_2020-04-20_winnti-group-insights-from-the",
       "relation": "MENTIONED_IN",
       "properties": {
@@ -48053,7 +48005,7 @@
       }
     },
     {
-      "source": "ENT_773",
+      "source": "ENT_1313",
       "target": "DOC_intel471_2020-12-10_china-cybercrime-undergrond-deepmix-tea",
       "relation": "MENTIONED_IN",
       "properties": {
@@ -54230,7 +54182,7 @@
       }
     },
     {
-      "source": "ENT_452",
+      "source": "ENT_1603",
       "target": "DOC_zscaler_2020-08-14_purplewave-new-infostealer-russia",
       "relation": "MENTIONED_IN",
       "properties": {
@@ -55855,7 +55807,7 @@
       }
     },
     {
-      "source": "ENT_452",
+      "source": "ENT_1603",
       "target": "DOC_proofpoint_2021-06-24_jssloader-recoded-and-reloaded",
       "relation": "MENTIONED_IN",
       "properties": {
@@ -57251,7 +57203,7 @@
     },
     {
       "source": "LOCAL_e9f1becd08f2",
-      "target": "ENT_1275",
+      "target": "ENT_1270",
       "relation": "CANDIDATE_FOR",
       "properties": {
         "confidence": null
@@ -57305,7 +57257,7 @@
     },
     {
       "source": "LOCAL_6d93b382a963",
-      "target": "ENT_1275",
+      "target": "ENT_1270",
       "relation": "CANDIDATE_FOR",
       "properties": {
         "confidence": null
@@ -68363,7 +68315,7 @@
       }
     },
     {
-      "source": "ENT_452",
+      "source": "ENT_1603",
       "target": "DOC_lab52_2019-04-02_wirte-group-attacking-the-middle",
       "relation": "MENTIONED_IN",
       "properties": {
@@ -69426,7 +69378,7 @@
       }
     },
     {
-      "source": "ENT_452",
+      "source": "ENT_1603",
       "target": "DOC_lab52_2019-04-02_wirte-group-attacking-the-middle",
       "relation": "MENTIONED_IN",
       "properties": {
@@ -70672,7 +70624,7 @@
       }
     },
     {
-      "source": "ENT_1314",
+      "source": "ENT_1272",
       "target": "DOC_proofpoint_2021-07-28_i-knew-you-were-trouble",
       "relation": "MENTIONED_IN",
       "properties": {
@@ -77927,7 +77879,7 @@
       }
     },
     {
-      "source": "ENT_452",
+      "source": "ENT_1603",
       "target": "DOC_lab52_2019-05-30_leviathan-geostrategy-and-ttp-technical",
       "relation": "MENTIONED_IN",
       "properties": {
@@ -81535,7 +81487,7 @@
       }
     },
     {
-      "source": "ENT_1275",
+      "source": "ENT_1270",
       "target": "DOC_intel471_2020-12-17_jokers-stash-fbi-interpol-dns",
       "relation": "MENTIONED_IN",
       "properties": {
@@ -82804,7 +82756,7 @@
     },
     {
       "source": "LOCAL_891474bee08a",
-      "target": "ENT_452",
+      "target": "ENT_1603",
       "relation": "CANDIDATE_FOR",
       "properties": {
         "confidence": null
@@ -83260,7 +83212,7 @@
       }
     },
     {
-      "source": "ENT_773",
+      "source": "ENT_1313",
       "target": "DOC_zscaler_2021-05-05_catching-rats-over-custom-protocols",
       "relation": "MENTIONED_IN",
       "properties": {
@@ -83270,7 +83222,7 @@
       }
     },
     {
-      "source": "ENT_773",
+      "source": "ENT_1313",
       "target": "DOC_zscaler_2021-05-05_catching-rats-over-custom-protocols",
       "relation": "MENTIONED_IN",
       "properties": {
@@ -83280,7 +83232,7 @@
       }
     },
     {
-      "source": "ENT_773",
+      "source": "ENT_1313",
       "target": "DOC_zscaler_2021-05-05_catching-rats-over-custom-protocols",
       "relation": "MENTIONED_IN",
       "properties": {
@@ -83328,7 +83280,7 @@
       }
     },
     {
-      "source": "ENT_773",
+      "source": "ENT_1313",
       "target": "DOC_zscaler_2021-05-05_catching-rats-over-custom-protocols",
       "relation": "MENTIONED_IN",
       "properties": {
@@ -83347,7 +83299,7 @@
       }
     },
     {
-      "source": "ENT_773",
+      "source": "ENT_1313",
       "target": "DOC_zscaler_2021-05-05_catching-rats-over-custom-protocols",
       "relation": "MENTIONED_IN",
       "properties": {
@@ -83415,7 +83367,7 @@
     },
     {
       "source": "LOCAL_431965605971",
-      "target": "ENT_452",
+      "target": "ENT_1603",
       "relation": "CANDIDATE_FOR",
       "properties": {
         "confidence": null
@@ -109907,7 +109859,7 @@
       }
     },
     {
-      "source": "ENT_452",
+      "source": "ENT_1603",
       "target": "DOC_proofpoint_2021-10-20_ta551-uses-sliver-red-team",
       "relation": "MENTIONED_IN",
       "properties": {
@@ -112830,7 +112782,7 @@
       }
     },
     {
-      "source": "ENT_452",
+      "source": "ENT_1603",
       "target": "DOC_proofpoint_2021-12-13_tinynuke-banking-malware-targets-french",
       "relation": "MENTIONED_IN",
       "properties": {
@@ -125612,7 +125564,7 @@
       }
     },
     {
-      "source": "ENT_773",
+      "source": "ENT_1313",
       "target": "DOC_lab52_2021-05-17_literature-lover-targeting-colombia-with",
       "relation": "MENTIONED_IN",
       "properties": {
@@ -125651,7 +125603,7 @@
       }
     },
     {
-      "source": "ENT_773",
+      "source": "ENT_1313",
       "target": "DOC_lab52_2021-05-17_literature-lover-targeting-colombia-with",
       "relation": "MENTIONED_IN",
       "properties": {
@@ -138223,7 +138175,7 @@
     },
     {
       "source": "ENT_944",
-      "target": "NORM_MALWARE_trickbot",
+      "target": "ENT_688",
       "relation": "USES",
       "properties": {
         "document": "intel471_2020-10-15_trickbot-online-emotet-microsoft-cyber",
@@ -139627,7 +139579,7 @@
     },
     {
       "source": "ENT_1296",
-      "target": "NORM_TACTIC_reconnaissance",
+      "target": "ENT_590",
       "relation": "USES_TECHNIQUE",
       "properties": {
         "document": "proofpoint_2021-07-28_i-knew-you-were-trouble",
@@ -139735,7 +139687,7 @@
     },
     {
       "source": "ENT_685",
-      "target": "NORM_MALWARE_trickbot",
+      "target": "ENT_688",
       "relation": "USES",
       "properties": {
         "document": "zscaler_2020-09-29_spear-phishing-campaign-delivers-buer",
@@ -140094,7 +140046,7 @@
       }
     },
     {
-      "source": "ENT_1275",
+      "source": "ENT_1270",
       "target": "NORM_SECTOR_financial services industry",
       "relation": "TARGETS",
       "properties": {
@@ -141678,7 +141630,7 @@
       }
     },
     {
-      "source": "NORM_GROUP_apt-c-36",
+      "source": "ENT_1251",
       "target": "ENT_1393",
       "relation": "USES",
       "properties": {

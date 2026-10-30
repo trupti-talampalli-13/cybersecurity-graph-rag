@@ -131,6 +131,43 @@ def cross_segment_exploits(seg, recent_carriers):
     return [("EXPLOITS", carrier, c, m.group(0).lower(), "context", "low") for c in cves] if m else []
 
 
+GENERIC_SUFFIX = re.compile(r"(group|apt|team|ransomware|malware|trojan|loader|botnet|rat|stealer|"
+                            r"banking|backdoor)")
+MERGE_TYPES = {"GROUP", "MALWARE", "TOOL", "TECHNIQUE", "TACTIC", "CVE"}
+
+
+def alias_key(node):
+    """Same type + same name once case, punctuation and generic words (group, trojan...) are dropped."""
+    name = (node.get("name") or "").lower()
+    if node["entity_type"] in ("GROUP", "MALWARE", "TOOL"):
+        name = GENERIC_SUFFIX.sub("", name) or name
+    return node["entity_type"], re.sub(r"[^a-z0-9]", "", name)
+
+
+def merge_aliases(nodes, edges, records):
+    """Collapse entity nodes that are spelling/linking variants of one entity.
+    Prefers a linked (ENT_) node as the survivor and records the others in `aliases`."""
+    groups = {}
+    for n in nodes.values():
+        if n["node_type"] == "ENTITY" and n.get("entity_type") in MERGE_TYPES and n.get("name"):
+            groups.setdefault(alias_key(n), []).append(n)
+    remap = {}
+    for members in groups.values():
+        if len(members) < 2:
+            continue
+        members.sort(key=lambda n: (n["id"].startswith("NORM_"), n["id"]))
+        keep = members[0]
+        keep["aliases"] = sorted({m["name"] for m in members[1:]} - {keep["name"]})
+        for m in members[1:]:
+            remap[m["id"]] = keep["id"]
+            del nodes[m["id"]]
+    for e in edges:
+        e["source"], e["target"] = remap.get(e["source"], e["source"]), remap.get(e["target"], e["target"])
+    for r in records:
+        r["head"], r["tail"] = remap.get(r["head"], r["head"]), remap.get(r["tail"], r["tail"])
+    return remap
+
+
 def main():
     resolution = load_resolution()
     recent = {}  # report_id -> [(segment_id, carrier entities)]
@@ -166,6 +203,9 @@ def main():
                 records.append({"head": hid, "relation": rel, "tail": tid, **props})
                 edges.append({"source": hid, "target": tid, "relation": rel, "properties": props})
                 stats[(rel, conf)] += 1
+
+    remap = merge_aliases(nodes, edges, records)
+    print(f"Merged {len(remap)} alias nodes into their canonical entities")
 
     with open(DATA / "relations.jsonl", "w", encoding="utf-8") as f:
         for r in records:
