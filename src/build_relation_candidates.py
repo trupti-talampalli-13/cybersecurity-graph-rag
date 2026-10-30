@@ -9,7 +9,7 @@ from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SEGMENTS_FILE = BASE_DIR / "data" / "train_segments.jsonl"
+SEGMENTS_FILE = BASE_DIR / "data" / "processed_segments.jsonl"
 ENTITIES_FILE = BASE_DIR / "data" / "entities.jsonl"
 OUTPUT_FILE = BASE_DIR / "data" / "annoctr_relation_candidates.jsonl"
 
@@ -26,8 +26,8 @@ def load_segments(path):
             record = json.loads(line)
 
             key = (
-                record["document"],
-                record["segment"]
+                record["report_id"],
+                record["segment_id"]
             )
 
             segments[key] = record["text"]

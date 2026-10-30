@@ -9,7 +9,7 @@ from collections import Counter
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 
-INPUT_FILE = PROJECT_ROOT / "data" / "train_segments.jsonl"
+INPUT_FILE = PROJECT_ROOT / "data" / "processed_segments.jsonl"
 OUTPUT_FILE = PROJECT_ROOT / "data" / "entities.jsonl"
 
 
@@ -45,8 +45,8 @@ def main():
 
             record = json.loads(line)
 
-            document = record["document"]
-            segment = record["segment"]
+            document = record["report_id"]
+            segment = record["segment_id"]
             entities = record.get("entities", [])
 
             total_segments += 1
@@ -67,7 +67,12 @@ def main():
                     "document": document,
                     "segment": segment,
                     "entity_text": entity_text,
-                    "entity_type": entity_type
+                    "entity_type": entity_type,
+                    "source": record["source"],
+                    "publication_date": record["publication_date"],
+                    "split": record["split"],
+                    "char_start": entity["char_start"],
+                    "char_end": entity["char_end"]
                 })
 
     # -----------------------------------------------------

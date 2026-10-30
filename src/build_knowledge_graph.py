@@ -131,7 +131,9 @@ with open(
             nodes[document_id] = {
                 "id": document_id,
                 "node_type": "DOCUMENT",
-                "document": document
+                "document": document,
+                "source": record.get("source"),
+                "publication_date": record.get("publication_date")
             }
 
             document_nodes.add(document_id)
