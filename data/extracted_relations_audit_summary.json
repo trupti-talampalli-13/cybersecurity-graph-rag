@@ -1,0 +1,152 @@
+{
+  "status": "PROVISIONAL: single reviewer (the assistant that wrote the extractor), not human-verified",
+  "distinct_triples_note": "218 relation instances; several share one sentence, so labels are correlated",
+  "v1_rule_based_v1": {
+    "overall": {
+      "n": 218,
+      "TRUE": 170,
+      "FALSE": 29,
+      "UNCERTAIN": 19,
+      "true_rate": 0.78,
+      "precision_excluding_uncertain": 0.854
+    },
+    "by_relation": {
+      "USES": {
+        "n": 82,
+        "TRUE": 64,
+        "FALSE": 14,
+        "UNCERTAIN": 4,
+        "true_rate": 0.78,
+        "precision_excluding_uncertain": 0.821
+      },
+      "USES_TECHNIQUE": {
+        "n": 23,
+        "TRUE": 14,
+        "FALSE": 5,
+        "UNCERTAIN": 4,
+        "true_rate": 0.609,
+        "precision_excluding_uncertain": 0.737
+      },
+      "EXPLOITS": {
+        "n": 3,
+        "TRUE": 2,
+        "FALSE": 0,
+        "UNCERTAIN": 1,
+        "true_rate": 0.667,
+        "precision_excluding_uncertain": 1.0
+      },
+      "TARGETS": {
+        "n": 110,
+        "TRUE": 90,
+        "FALSE": 10,
+        "UNCERTAIN": 10,
+        "true_rate": 0.818,
+        "precision_excluding_uncertain": 0.9
+      }
+    },
+    "by_confidence": {
+      "high": {
+        "n": 85,
+        "TRUE": 76,
+        "FALSE": 4,
+        "UNCERTAIN": 5,
+        "true_rate": 0.894,
+        "precision_excluding_uncertain": 0.95
+      },
+      "medium": {
+        "n": 133,
+        "TRUE": 94,
+        "FALSE": 25,
+        "UNCERTAIN": 14,
+        "true_rate": 0.707,
+        "precision_excluding_uncertain": 0.79
+      }
+    },
+    "error_categories": {
+      "WRONG_SUBJECT": 13,
+      "WRONG_RELATION_TYPE": 8,
+      "OTHER": 4,
+      "WRONG_OBJECT": 13,
+      "WRONG_DIRECTION": 3,
+      "NOT_ASSERTED": 6,
+      "ENTITY_ERROR": 1
+    }
+  },
+  "v2_rule_based_v2": {
+    "note": "Labels carried over from the v1 audit for relations that survived; one new relation labelled TRUE. In-sample: the v2 rules were written from the v1 errors, so these numbers are optimistic and need an unseen sample.",
+    "overall": {
+      "n": 184,
+      "TRUE": 167,
+      "FALSE": 1,
+      "UNCERTAIN": 16,
+      "true_rate": 0.908,
+      "precision_excluding_uncertain": 0.994
+    },
+    "by_relation": {
+      "USES": {
+        "n": 70,
+        "TRUE": 65,
+        "FALSE": 1,
+        "UNCERTAIN": 4,
+        "true_rate": 0.929,
+        "precision_excluding_uncertain": 0.985
+      },
+      "USES_TECHNIQUE": {
+        "n": 17,
+        "TRUE": 14,
+        "FALSE": 0,
+        "UNCERTAIN": 3,
+        "true_rate": 0.824,
+        "precision_excluding_uncertain": 1.0
+      },
+      "EXPLOITS": {
+        "n": 3,
+        "TRUE": 2,
+        "FALSE": 0,
+        "UNCERTAIN": 1,
+        "true_rate": 0.667,
+        "precision_excluding_uncertain": 1.0
+      },
+      "TARGETS": {
+        "n": 94,
+        "TRUE": 86,
+        "FALSE": 0,
+        "UNCERTAIN": 8,
+        "true_rate": 0.915,
+        "precision_excluding_uncertain": 1.0
+      }
+    },
+    "by_confidence": {
+      "high": {
+        "n": 76,
+        "TRUE": 72,
+        "FALSE": 1,
+        "UNCERTAIN": 3,
+        "true_rate": 0.947,
+        "precision_excluding_uncertain": 0.986
+      },
+      "medium": {
+        "n": 97,
+        "TRUE": 89,
+        "FALSE": 0,
+        "UNCERTAIN": 8,
+        "true_rate": 0.918,
+        "precision_excluding_uncertain": 1.0
+      },
+      "low": {
+        "n": 11,
+        "TRUE": 6,
+        "FALSE": 0,
+        "UNCERTAIN": 5,
+        "true_rate": 0.545,
+        "precision_excluding_uncertain": 1.0
+      }
+    },
+    "v1_rows_removed": {
+      "FALSE": 28,
+      "UNCERTAIN": 3,
+      "TRUE": 4
+    },
+    "carried_over": 183
+  }
+}
