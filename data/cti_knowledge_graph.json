@@ -138143,6 +138143,8 @@
         "confidence": "medium",
         "head_mention": "Emotet",
         "tail_mention": "Trickbot",
+        "head_type": "MALWARE",
+        "tail_type": "MALWARE",
         "method": "rule_based_v2"
       }
     },
@@ -138161,6 +138163,8 @@
         "confidence": "high",
         "head_mention": "TA542",
         "tail_mention": "Emotet",
+        "head_type": "GROUP",
+        "tail_type": "MALWARE",
         "method": "rule_based_v2"
       }
     },
@@ -138179,6 +138183,8 @@
         "confidence": "high",
         "head_mention": "Redline stealer",
         "tail_mention": "SOAP",
+        "head_type": "MALWARE",
+        "tail_type": "TECHNIQUE",
         "method": "rule_based_v2"
       }
     },
@@ -138197,6 +138203,8 @@
         "confidence": "medium",
         "head_mention": "Redline stealer",
         "tail_mention": "C & C",
+        "head_type": "MALWARE",
+        "tail_type": "TACTIC",
         "method": "rule_based_v2"
       }
     },
@@ -138215,6 +138223,8 @@
         "confidence": "high",
         "head_mention": "APT29",
         "tail_mention": "Cobalt Strike",
+        "head_type": "GROUP",
+        "tail_type": "MALWARE",
         "method": "rule_based_v2"
       }
     },
@@ -138233,6 +138243,8 @@
         "confidence": "medium",
         "head_mention": "TA800",
         "tail_mention": "BazaLoader",
+        "head_type": "GROUP",
+        "tail_type": "MALWARE",
         "method": "rule_based_v2"
       }
     },
@@ -138251,6 +138263,8 @@
         "confidence": "high",
         "head_mention": "BazaLoader",
         "tail_mention": "Cobalt Strike",
+        "head_type": "MALWARE",
+        "tail_type": "MALWARE",
         "method": "rule_based_v2"
       }
     },
@@ -138269,6 +138283,8 @@
         "confidence": "high",
         "head_mention": "TA547",
         "tail_mention": "Cobalt Strike",
+        "head_type": "GROUP",
+        "tail_type": "MALWARE",
         "method": "rule_based_v2"
       }
     },
@@ -138287,6 +138303,8 @@
         "confidence": "high",
         "head_mention": "TA415",
         "tail_mention": "Cobalt Strike",
+        "head_type": "GROUP",
+        "tail_type": "MALWARE",
         "method": "rule_based_v2"
       }
     },
@@ -138305,6 +138323,8 @@
         "confidence": "high",
         "head_mention": "TA415",
         "tail_mention": "Cobalt Strike",
+        "head_type": "GROUP",
+        "tail_type": "MALWARE",
         "method": "rule_based_v2"
       }
     },
@@ -138323,6 +138343,8 @@
         "confidence": "medium",
         "head_mention": "TA415",
         "tail_mention": "airlines sector",
+        "head_type": "GROUP",
+        "tail_type": "SECTOR",
         "method": "rule_based_v2"
       }
     },
@@ -138341,6 +138363,8 @@
         "confidence": "medium",
         "head_mention": "Cobalt Strike",
         "tail_mention": "C2 communication",
+        "head_type": "MALWARE",
+        "tail_type": "TACTIC",
         "method": "rule_based_v2"
       }
     },
@@ -138359,6 +138383,8 @@
         "confidence": "high",
         "head_mention": "Emotet",
         "tail_mention": "Trickbot",
+        "head_type": "MALWARE",
+        "tail_type": "MALWARE",
         "method": "rule_based_v2"
       }
     },
@@ -138377,6 +138403,8 @@
         "confidence": "high",
         "head_mention": "Trickbot",
         "tail_mention": "BazarLoader",
+        "head_type": "MALWARE",
+        "tail_type": "MALWARE",
         "method": "rule_based_v2"
       }
     },
@@ -138395,6 +138423,8 @@
         "confidence": "low",
         "head_mention": "Winnti",
         "tail_mention": "South Korean video game company",
+        "head_type": "GROUP",
+        "tail_type": "SECTOR",
         "method": "rule_based_v2"
       }
     },
@@ -138413,6 +138443,8 @@
         "confidence": "medium",
         "head_mention": "Winnti",
         "tail_mention": "Henkel",
+        "head_type": "GROUP",
+        "tail_type": "ORG",
         "method": "rule_based_v2"
       }
     },
@@ -138431,6 +138463,8 @@
         "confidence": "medium",
         "head_mention": "Winnti",
         "tail_mention": "BASF",
+        "head_type": "GROUP",
+        "tail_type": "ORG",
         "method": "rule_based_v2"
       }
     },
@@ -138449,6 +138483,8 @@
         "confidence": "medium",
         "head_mention": "Winnti",
         "tail_mention": "Bayer",
+        "head_type": "GROUP",
+        "tail_type": "ORG",
         "method": "rule_based_v2"
       }
     },
@@ -138467,6 +138503,8 @@
         "confidence": "medium",
         "head_mention": "Winnti",
         "tail_mention": "Roche",
+        "head_type": "GROUP",
+        "tail_type": "ORG",
         "method": "rule_based_v2"
       }
     },
@@ -138485,6 +138523,8 @@
         "confidence": "medium",
         "head_mention": "Winnti",
         "tail_mention": "German chemical company",
+        "head_type": "GROUP",
+        "tail_type": "SECTOR",
         "method": "rule_based_v2"
       }
     },
@@ -138503,6 +138543,8 @@
         "confidence": "medium",
         "head_mention": "APT32",
         "tail_mention": "C2",
+        "head_type": "GROUP",
+        "tail_type": "TACTIC",
         "method": "rule_based_v2"
       }
     },
@@ -138521,6 +138563,8 @@
         "confidence": "high",
         "head_mention": "Winnti",
         "tail_mention": "iodine",
+        "head_type": "GROUP",
+        "tail_type": "TOOL",
         "method": "rule_based_v2"
       }
     },
@@ -138539,6 +138583,8 @@
         "confidence": "high",
         "head_mention": "Winnti",
         "tail_mention": "German chemical company",
+        "head_type": "GROUP",
+        "tail_type": "SECTOR",
         "method": "rule_based_v2"
       }
     },
@@ -138557,6 +138603,8 @@
         "confidence": "low",
         "head_mention": "Winnti",
         "tail_mention": "Gravity Co . , Ltd .",
+        "head_type": "GROUP",
+        "tail_type": "ORG",
         "method": "rule_based_v2"
       }
     },
@@ -138575,6 +138623,8 @@
         "confidence": "low",
         "head_mention": "Winnti",
         "tail_mention": "South Korean video game company",
+        "head_type": "GROUP",
+        "tail_type": "SECTOR",
         "method": "rule_based_v2"
       }
     },
@@ -138593,6 +138643,8 @@
         "confidence": "high",
         "head_mention": "Winnti",
         "tail_mention": "video game industry",
+        "head_type": "GROUP",
+        "tail_type": "SECTOR",
         "method": "rule_based_v2"
       }
     },
@@ -138611,6 +138663,8 @@
         "confidence": "medium",
         "head_mention": "Winnti",
         "tail_mention": "German chemical company",
+        "head_type": "GROUP",
+        "tail_type": "SECTOR",
         "method": "rule_based_v2"
       }
     },
@@ -138629,6 +138683,8 @@
         "confidence": "medium",
         "head_mention": "TA453",
         "tail_mention": "University of London ’ s SOAS",
+        "head_type": "GROUP",
+        "tail_type": "ORG",
         "method": "rule_based_v2"
       }
     },
@@ -138647,6 +138703,8 @@
         "confidence": "high",
         "head_mention": "RustyBuer",
         "tail_mention": "Cobalt Strike",
+        "head_type": "MALWARE",
+        "tail_type": "MALWARE",
         "method": "rule_based_v2"
       }
     },
@@ -138665,6 +138723,8 @@
         "confidence": "high",
         "head_mention": "RustyBuer",
         "tail_mention": "Cobalt Strike",
+        "head_type": "MALWARE",
+        "tail_type": "MALWARE",
         "method": "rule_based_v2"
       }
     },
@@ -138683,6 +138743,8 @@
         "confidence": "high",
         "head_mention": "Emotet",
         "tail_mention": "Trickbot",
+        "head_type": "MALWARE",
+        "tail_type": "MALWARE",
         "method": "rule_based_v2"
       }
     },
@@ -138701,6 +138763,8 @@
         "confidence": "high",
         "head_mention": "Emotet",
         "tail_mention": "Trickbot",
+        "head_type": "MALWARE",
+        "tail_type": "MALWARE",
         "method": "rule_based_v2"
       }
     },
@@ -138719,6 +138783,8 @@
         "confidence": "high",
         "head_mention": "Emotet",
         "tail_mention": "Trickbot",
+        "head_type": "MALWARE",
+        "tail_type": "MALWARE",
         "method": "rule_based_v2"
       }
     },
@@ -138737,6 +138803,8 @@
         "confidence": "medium",
         "head_mention": "Dridex",
         "tail_mention": "RIG exploit kit",
+        "head_type": "MALWARE",
+        "tail_type": "MALWARE",
         "method": "rule_based_v2"
       }
     },
@@ -138755,6 +138823,8 @@
         "confidence": "medium",
         "head_mention": "ZLoader",
         "tail_mention": "US   and EU banks",
+        "head_type": "MALWARE",
+        "tail_type": "SECTOR",
         "method": "rule_based_v2"
       }
     },
@@ -138773,6 +138843,8 @@
         "confidence": "medium",
         "head_mention": "ZLoader",
         "tail_mention": "financial institutions",
+        "head_type": "MALWARE",
+        "tail_type": "SECTOR",
         "method": "rule_based_v2"
       }
     },
@@ -138791,6 +138863,8 @@
         "confidence": "low",
         "head_mention": "Thanos",
         "tail_mention": "U.S .",
+        "head_type": "MALWARE",
+        "tail_type": "LOC",
         "method": "rule_based_v2"
       }
     },
@@ -138809,6 +138883,8 @@
         "confidence": "high",
         "head_mention": "TA543",
         "tail_mention": "JSSLoader",
+        "head_type": "GROUP",
+        "tail_type": "MALWARE",
         "method": "rule_based_v2"
       }
     },
@@ -138827,6 +138903,8 @@
         "confidence": "high",
         "head_mention": "JSSLoader",
         "tail_mention": "Griffon",
+        "head_type": "MALWARE",
+        "tail_type": "MALWARE",
         "method": "rule_based_v2"
       }
     },
@@ -138845,6 +138923,8 @@
         "confidence": "high",
         "head_mention": "TA543",
         "tail_mention": "JSSLoader",
+        "head_type": "GROUP",
+        "tail_type": "MALWARE",
         "method": "rule_based_v2"
       }
     },
@@ -138863,6 +138943,8 @@
         "confidence": "high",
         "head_mention": "TA543",
         "tail_mention": "JSSLoader",
+        "head_type": "GROUP",
+        "tail_type": "MALWARE",
         "method": "rule_based_v2"
       }
     },
@@ -138881,6 +138963,8 @@
         "confidence": "medium",
         "head_mention": "TA543",
         "tail_mention": "JSSLoader",
+        "head_type": "GROUP",
+        "tail_type": "MALWARE",
         "method": "rule_based_v2"
       }
     },
@@ -138899,6 +138983,8 @@
         "confidence": "medium",
         "head_mention": "Dharma",
         "tail_mention": "brute-force attack .",
+        "head_type": "GROUP",
+        "tail_type": "TECHNIQUE",
         "method": "rule_based_v2"
       }
     },
@@ -138917,6 +139003,8 @@
         "confidence": "medium",
         "head_mention": "BokBot",
         "tail_mention": "EtterSilent",
+        "head_type": "MALWARE",
+        "tail_type": "TOOL",
         "method": "rule_based_v2"
       }
     },
@@ -138935,6 +139023,8 @@
         "confidence": "medium",
         "head_mention": "Gozi ISFB",
         "tail_mention": "EtterSilent",
+        "head_type": "MALWARE",
+        "tail_type": "TOOL",
         "method": "rule_based_v2"
       }
     },
@@ -138953,6 +139043,8 @@
         "confidence": "high",
         "head_mention": "QBot",
         "tail_mention": "EtterSilent",
+        "head_type": "MALWARE",
+        "tail_type": "TOOL",
         "method": "rule_based_v2"
       }
     },
@@ -138971,6 +139063,8 @@
         "confidence": "medium",
         "head_mention": "BokBot",
         "tail_mention": "EtterSilent",
+        "head_type": "MALWARE",
+        "tail_type": "TOOL",
         "method": "rule_based_v2"
       }
     },
@@ -138989,6 +139083,8 @@
         "confidence": "high",
         "head_mention": "ReconHellcat",
         "tail_mention": "BlackSoul",
+        "head_type": "GROUP",
+        "tail_type": "MALWARE",
         "method": "rule_based_v2"
       }
     },
@@ -139007,6 +139103,8 @@
         "confidence": "high",
         "head_mention": "ReconHellcat",
         "tail_mention": "BlackWater",
+        "head_type": "GROUP",
+        "tail_type": "MALWARE",
         "method": "rule_based_v2"
       }
     },
@@ -139025,6 +139123,8 @@
         "confidence": "medium",
         "head_mention": "BlackSoul",
         "tail_mention": "C2",
+        "head_type": "MALWARE",
+        "tail_type": "TACTIC",
         "method": "rule_based_v2"
       }
     },
@@ -139043,6 +139143,8 @@
         "confidence": "high",
         "head_mention": "BlackSoul",
         "tail_mention": "Decoding a C2 URL",
+        "head_type": "MALWARE",
+        "tail_type": "TECHNIQUE",
         "method": "rule_based_v2"
       }
     },
@@ -139061,6 +139163,8 @@
         "confidence": "low",
         "head_mention": "BlackSoul",
         "tail_mention": "government-related body",
+        "head_type": "MALWARE",
+        "tail_type": "SECTOR",
         "method": "rule_based_v2"
       }
     },
@@ -139079,6 +139183,8 @@
         "confidence": "medium",
         "head_mention": "ReconHellcat",
         "tail_mention": "defense",
+        "head_type": "GROUP",
+        "tail_type": "SECTOR",
         "method": "rule_based_v2"
       }
     },
@@ -139097,6 +139203,8 @@
         "confidence": "medium",
         "head_mention": "ReconHellcat",
         "tail_mention": "diplomatic government bodies",
+        "head_type": "GROUP",
+        "tail_type": "SECTOR",
         "method": "rule_based_v2"
       }
     },
@@ -139115,6 +139223,8 @@
         "confidence": "medium",
         "head_mention": "VenomKit",
         "tail_mention": "CVE-2017–11882",
+        "head_type": "TOOL",
+        "tail_type": "CVE",
         "method": "rule_based_v2"
       }
     },
@@ -139133,6 +139243,8 @@
         "confidence": "medium",
         "head_mention": "VenomKit",
         "tail_mention": "CVE-2018–0802",
+        "head_type": "TOOL",
+        "tail_type": "CVE",
         "method": "rule_based_v2"
       }
     },
@@ -139151,6 +139263,8 @@
         "confidence": "high",
         "head_mention": "Cobalt Group",
         "tail_mention": "CobInt",
+        "head_type": "GROUP",
+        "tail_type": "MALWARE",
         "method": "rule_based_v2"
       }
     },
@@ -139169,6 +139283,8 @@
         "confidence": "medium",
         "head_mention": "Cobalt Group",
         "tail_mention": "Cobalt Strike",
+        "head_type": "GROUP",
+        "tail_type": "MALWARE",
         "method": "rule_based_v2"
       }
     },
@@ -139187,6 +139303,8 @@
         "confidence": "high",
         "head_mention": "Njrat",
         "tail_mention": "Middle East",
+        "head_type": "MALWARE",
+        "tail_type": "LOC",
         "method": "rule_based_v2"
       }
     },
@@ -139205,6 +139323,8 @@
         "confidence": "medium",
         "head_mention": "Fancy Lazarus",
         "tail_mention": "energy",
+        "head_type": "GROUP",
+        "tail_type": "SECTOR",
         "method": "rule_based_v2"
       }
     },
@@ -139223,6 +139343,8 @@
         "confidence": "medium",
         "head_mention": "Fancy Lazarus",
         "tail_mention": "financial",
+        "head_type": "GROUP",
+        "tail_type": "SECTOR",
         "method": "rule_based_v2"
       }
     },
@@ -139241,6 +139363,8 @@
         "confidence": "medium",
         "head_mention": "Fancy Lazarus",
         "tail_mention": "insurance",
+        "head_type": "GROUP",
+        "tail_type": "SECTOR",
         "method": "rule_based_v2"
       }
     },
@@ -139259,6 +139383,8 @@
         "confidence": "high",
         "head_mention": "Emissary Panda",
         "tail_mention": "ZxShell",
+        "head_type": "GROUP",
+        "tail_type": "MALWARE",
         "method": "rule_based_v2"
       }
     },
@@ -139277,6 +139403,8 @@
         "confidence": "medium",
         "head_mention": "Emissary Panda",
         "tail_mention": "RootKit",
+        "head_type": "GROUP",
+        "tail_type": "TECHNIQUE",
         "method": "rule_based_v2"
       }
     },
@@ -139295,6 +139423,8 @@
         "confidence": "high",
         "head_mention": "TA456",
         "tail_mention": "Defense",
+        "head_type": "GROUP",
+        "tail_type": "SECTOR",
         "method": "rule_based_v2"
       }
     },
@@ -139313,6 +139443,8 @@
         "confidence": "medium",
         "head_mention": "LEMPO",
         "tail_mention": "exfiltrate sensitive information .",
+        "head_type": "MALWARE",
+        "tail_type": "TACTIC",
         "method": "rule_based_v2"
       }
     },
@@ -139331,6 +139463,8 @@
         "confidence": "medium",
         "head_mention": "TA456",
         "tail_mention": "defense",
+        "head_type": "GROUP",
+        "tail_type": "SECTOR",
         "method": "rule_based_v2"
       }
     },
@@ -139349,6 +139483,8 @@
         "confidence": "medium",
         "head_mention": "LEMPO",
         "tail_mention": "reconnaissance",
+        "head_type": "MALWARE",
+        "tail_type": "TACTIC",
         "method": "rule_based_v2"
       }
     },
@@ -139367,6 +139503,8 @@
         "confidence": "medium",
         "head_mention": "TA456",
         "tail_mention": "defense",
+        "head_type": "GROUP",
+        "tail_type": "SECTOR",
         "method": "rule_based_v2"
       }
     },
@@ -139385,6 +139523,8 @@
         "confidence": "medium",
         "head_mention": "TA456",
         "tail_mention": "defense",
+        "head_type": "GROUP",
+        "tail_type": "SECTOR",
         "method": "rule_based_v2"
       }
     },
@@ -139403,6 +139543,8 @@
         "confidence": "medium",
         "head_mention": "LEMPO",
         "tail_mention": "defense industrial base",
+        "head_type": "MALWARE",
+        "tail_type": "SECTOR",
         "method": "rule_based_v2"
       }
     },
@@ -139421,6 +139563,8 @@
         "confidence": "high",
         "head_mention": "Bazar",
         "tail_mention": "download and execute",
+        "head_type": "MALWARE",
+        "tail_type": "TACTIC",
         "method": "rule_based_v2"
       }
     },
@@ -139439,6 +139583,8 @@
         "confidence": "medium",
         "head_mention": "Leviathan",
         "tail_mention": "Cambodia",
+        "head_type": "GROUP",
+        "tail_type": "LOC",
         "method": "rule_based_v2"
       }
     },
@@ -139457,6 +139603,8 @@
         "confidence": "medium",
         "head_mention": "Leviathan",
         "tail_mention": "Belgium",
+        "head_type": "GROUP",
+        "tail_type": "LOC",
         "method": "rule_based_v2"
       }
     },
@@ -139475,6 +139623,8 @@
         "confidence": "medium",
         "head_mention": "Leviathan",
         "tail_mention": "Germany",
+        "head_type": "GROUP",
+        "tail_type": "LOC",
         "method": "rule_based_v2"
       }
     },
@@ -139493,6 +139643,8 @@
         "confidence": "medium",
         "head_mention": "Leviathan",
         "tail_mention": "Hong Kong",
+        "head_type": "GROUP",
+        "tail_type": "LOC",
         "method": "rule_based_v2"
       }
     },
@@ -139511,6 +139663,8 @@
         "confidence": "medium",
         "head_mention": "Leviathan",
         "tail_mention": "Saudi Arabia",
+        "head_type": "GROUP",
+        "tail_type": "LOC",
         "method": "rule_based_v2"
       }
     },
@@ -139529,6 +139683,8 @@
         "confidence": "medium",
         "head_mention": "Leviathan",
         "tail_mention": "Germany",
+        "head_type": "GROUP",
+        "tail_type": "LOC",
         "method": "rule_based_v2"
       }
     },
@@ -139547,6 +139703,8 @@
         "confidence": "medium",
         "head_mention": "Leviathan",
         "tail_mention": "Norway",
+        "head_type": "GROUP",
+        "tail_type": "LOC",
         "method": "rule_based_v2"
       }
     },
@@ -139565,6 +139723,8 @@
         "confidence": "high",
         "head_mention": "Leviathan",
         "tail_mention": "UK",
+        "head_type": "GROUP",
+        "tail_type": "LOC",
         "method": "rule_based_v2"
       }
     },
@@ -139583,6 +139743,8 @@
         "confidence": "high",
         "head_mention": "Leviathan",
         "tail_mention": "SouthEast",
+        "head_type": "GROUP",
+        "tail_type": "LOC",
         "method": "rule_based_v2"
       }
     },
@@ -139601,6 +139763,8 @@
         "confidence": "medium",
         "head_mention": "Leviathan",
         "tail_mention": "web shells",
+        "head_type": "GROUP",
+        "tail_type": "TECHNIQUE",
         "method": "rule_based_v2"
       }
     },
@@ -139619,6 +139783,8 @@
         "confidence": "high",
         "head_mention": "Leviathan",
         "tail_mention": "web shells",
+        "head_type": "GROUP",
+        "tail_type": "TECHNIQUE",
         "method": "rule_based_v2"
       }
     },
@@ -139637,6 +139803,8 @@
         "confidence": "high",
         "head_mention": "APT28",
         "tail_mention": "Zebrocy",
+        "head_type": "GROUP",
+        "tail_type": "MALWARE",
         "method": "rule_based_v2"
       }
     },
@@ -139655,6 +139823,8 @@
         "confidence": "high",
         "head_mention": "APT28",
         "tail_mention": "Zebrocy",
+        "head_type": "GROUP",
+        "tail_type": "MALWARE",
         "method": "rule_based_v2"
       }
     },
@@ -139673,6 +139843,8 @@
         "confidence": "medium",
         "head_mention": "Zebrocy",
         "tail_mention": "BlackWater",
+        "head_type": "MALWARE",
+        "tail_type": "MALWARE",
         "method": "rule_based_v2"
       }
     },
@@ -139691,6 +139863,8 @@
         "confidence": "high",
         "head_mention": "Winnti Group",
         "tail_mention": "gaming sector",
+        "head_type": "GROUP",
+        "tail_type": "SECTOR",
         "method": "rule_based_v2"
       }
     },
@@ -139709,6 +139883,8 @@
         "confidence": "medium",
         "head_mention": "Winnti Group",
         "tail_mention": "Thailand",
+        "head_type": "GROUP",
+        "tail_type": "LOC",
         "method": "rule_based_v2"
       }
     },
@@ -139727,6 +139903,8 @@
         "confidence": "medium",
         "head_mention": "Crimson",
         "tail_mention": "financial",
+        "head_type": "MALWARE",
+        "tail_type": "SECTOR",
         "method": "rule_based_v2"
       }
     },
@@ -139745,6 +139923,8 @@
         "confidence": "medium",
         "head_mention": "Smoke Loader",
         "tail_mention": "Racoon Stealer",
+        "head_type": "MALWARE",
+        "tail_type": "MALWARE",
         "method": "rule_based_v2"
       }
     },
@@ -139763,6 +139943,8 @@
         "confidence": "medium",
         "head_mention": "Smoke Loader",
         "tail_mention": "RedLine",
+        "head_type": "MALWARE",
+        "tail_type": "MALWARE",
         "method": "rule_based_v2"
       }
     },
@@ -139781,6 +139963,8 @@
         "confidence": "medium",
         "head_mention": "ReconHellcat",
         "tail_mention": "Bulgaria",
+        "head_type": "GROUP",
+        "tail_type": "LOC",
         "method": "rule_based_v2"
       }
     },
@@ -139799,6 +139983,8 @@
         "confidence": "medium",
         "head_mention": "ReconHellcat",
         "tail_mention": "Azerbaijan",
+        "head_type": "GROUP",
+        "tail_type": "LOC",
         "method": "rule_based_v2"
       }
     },
@@ -139817,6 +140003,8 @@
         "confidence": "high",
         "head_mention": "DoppelPaymer",
         "tail_mention": "Düsseldorf University Clinic",
+        "head_type": "MALWARE",
+        "tail_type": "ORG",
         "method": "rule_based_v2"
       }
     },
@@ -139835,6 +140023,8 @@
         "confidence": "medium",
         "head_mention": "REvil",
         "tail_mention": "CVE-2019-2725",
+        "head_type": "MALWARE",
+        "tail_type": "CVE",
         "method": "rule_based_v2"
       }
     },
@@ -139853,6 +140043,8 @@
         "confidence": "high",
         "head_mention": "Bazar",
         "tail_mention": "Ryuk",
+        "head_type": "MALWARE",
+        "tail_type": "MALWARE",
         "method": "rule_based_v2"
       }
     },
@@ -139871,6 +140063,8 @@
         "confidence": "high",
         "head_mention": "Ryuk",
         "tail_mention": "healthcare sector",
+        "head_type": "MALWARE",
+        "tail_type": "SECTOR",
         "method": "rule_based_v2"
       }
     },
@@ -139889,6 +140083,8 @@
         "confidence": "high",
         "head_mention": "TA2722",
         "tail_mention": "Shipping / Logistics",
+        "head_type": "GROUP",
+        "tail_type": "SECTOR",
         "method": "rule_based_v2"
       }
     },
@@ -139907,6 +140103,8 @@
         "confidence": "medium",
         "head_mention": "TA2722",
         "tail_mention": "Manufacturing",
+        "head_type": "GROUP",
+        "tail_type": "SECTOR",
         "method": "rule_based_v2"
       }
     },
@@ -139925,6 +140123,8 @@
         "confidence": "medium",
         "head_mention": "TA2722",
         "tail_mention": "Business Services",
+        "head_type": "GROUP",
+        "tail_type": "SECTOR",
         "method": "rule_based_v2"
       }
     },
@@ -139943,6 +140143,8 @@
         "confidence": "medium",
         "head_mention": "TA2722",
         "tail_mention": "Pharmaceutical",
+        "head_type": "GROUP",
+        "tail_type": "SECTOR",
         "method": "rule_based_v2"
       }
     },
@@ -139961,6 +140163,8 @@
         "confidence": "medium",
         "head_mention": "TA2722",
         "tail_mention": "Energy entities",
+        "head_type": "GROUP",
+        "tail_type": "SECTOR",
         "method": "rule_based_v2"
       }
     },
@@ -139979,6 +140183,8 @@
         "confidence": "high",
         "head_mention": "TA2722",
         "tail_mention": "Remcos",
+        "head_type": "GROUP",
+        "tail_type": "MALWARE",
         "method": "rule_based_v2"
       }
     },
@@ -139997,6 +140203,8 @@
         "confidence": "medium",
         "head_mention": "Remcos",
         "tail_mention": "Shipping",
+        "head_type": "MALWARE",
+        "tail_type": "SECTOR",
         "method": "rule_based_v2"
       }
     },
@@ -140015,6 +140223,8 @@
         "confidence": "medium",
         "head_mention": "Remcos",
         "tail_mention": "Logistics",
+        "head_type": "MALWARE",
+        "tail_type": "SECTOR",
         "method": "rule_based_v2"
       }
     },
@@ -140033,6 +140243,8 @@
         "confidence": "medium",
         "head_mention": "Remcos",
         "tail_mention": "Manufacturing",
+        "head_type": "MALWARE",
+        "tail_type": "SECTOR",
         "method": "rule_based_v2"
       }
     },
@@ -140051,6 +140263,8 @@
         "confidence": "high",
         "head_mention": "APT10",
         "tail_mention": "Turkey",
+        "head_type": "GROUP",
+        "tail_type": "LOC",
         "method": "rule_based_v2"
       }
     },
@@ -140069,6 +140283,8 @@
         "confidence": "low",
         "head_mention": "APT10",
         "tail_mention": "Turkish",
+        "head_type": "GROUP",
+        "tail_type": "LOC",
         "method": "rule_based_v2"
       }
     },
@@ -140087,6 +140303,8 @@
         "confidence": "low",
         "head_mention": "APT10",
         "tail_mention": "telecommunications",
+        "head_type": "GROUP",
+        "tail_type": "SECTOR",
         "method": "rule_based_v2"
       }
     },
@@ -140105,6 +140323,8 @@
         "confidence": "low",
         "head_mention": "APT10",
         "tail_mention": "finance",
+        "head_type": "GROUP",
+        "tail_type": "SECTOR",
         "method": "rule_based_v2"
       }
     },
@@ -140123,6 +140343,8 @@
         "confidence": "high",
         "head_mention": "APT10",
         "tail_mention": "Turkey",
+        "head_type": "GROUP",
+        "tail_type": "LOC",
         "method": "rule_based_v2"
       }
     },
@@ -140141,6 +140363,8 @@
         "confidence": "medium",
         "head_mention": "APT10",
         "tail_mention": "Turkish",
+        "head_type": "GROUP",
+        "tail_type": "LOC",
         "method": "rule_based_v2"
       }
     },
@@ -140159,6 +140383,8 @@
         "confidence": "high",
         "head_mention": "TA544",
         "tail_mention": "Italian",
+        "head_type": "GROUP",
+        "tail_type": "LOC",
         "method": "rule_based_v2"
       }
     },
@@ -140177,6 +140403,8 @@
         "confidence": "high",
         "head_mention": "TA544",
         "tail_mention": "Ursnif",
+        "head_type": "GROUP",
+        "tail_type": "MALWARE",
         "method": "rule_based_v2"
       }
     },
@@ -140195,6 +140423,8 @@
         "confidence": "low",
         "head_mention": "TA544",
         "tail_mention": "Italian",
+        "head_type": "GROUP",
+        "tail_type": "LOC",
         "method": "rule_based_v2"
       }
     },
@@ -140213,6 +140443,8 @@
         "confidence": "high",
         "head_mention": "Ursnif",
         "tail_mention": "Italian",
+        "head_type": "MALWARE",
+        "tail_type": "LOC",
         "method": "rule_based_v2"
       }
     },
@@ -140231,6 +140463,8 @@
         "confidence": "high",
         "head_mention": "TA544",
         "tail_mention": "Italy",
+        "head_type": "GROUP",
+        "tail_type": "LOC",
         "method": "rule_based_v2"
       }
     },
@@ -140249,6 +140483,8 @@
         "confidence": "medium",
         "head_mention": "Ursnif",
         "tail_mention": "Italian",
+        "head_type": "MALWARE",
+        "tail_type": "LOC",
         "method": "rule_based_v2"
       }
     },
@@ -140267,6 +140503,8 @@
         "confidence": "high",
         "head_mention": "TA544",
         "tail_mention": "Italian",
+        "head_type": "GROUP",
+        "tail_type": "LOC",
         "method": "rule_based_v2"
       }
     },
@@ -140285,6 +140523,8 @@
         "confidence": "high",
         "head_mention": "APT40",
         "tail_mention": "Taiwanese government",
+        "head_type": "GROUP",
+        "tail_type": "ORG",
         "method": "rule_based_v2"
       }
     },
@@ -140303,6 +140543,8 @@
         "confidence": "medium",
         "head_mention": "Winnti",
         "tail_mention": "supply chains",
+        "head_type": "GROUP",
+        "tail_type": "SECTOR",
         "method": "rule_based_v2"
       }
     },
@@ -140321,6 +140563,8 @@
         "confidence": "high",
         "head_mention": "TA505",
         "tail_mention": "FlawedGrace",
+        "head_type": "GROUP",
+        "tail_type": "MALWARE",
         "method": "rule_based_v2"
       }
     },
@@ -140339,6 +140583,8 @@
         "confidence": "high",
         "head_mention": "MirrorBlast",
         "tail_mention": "Rebol",
+        "head_type": "MALWARE",
+        "tail_type": "TOOL",
         "method": "rule_based_v2"
       }
     },
@@ -140357,6 +140603,8 @@
         "confidence": "medium",
         "head_mention": "ReflectiveGnome",
         "tail_mention": "FlawedGrace",
+        "head_type": "MALWARE",
+        "tail_type": "MALWARE",
         "method": "rule_based_v2"
       }
     },
@@ -140375,6 +140623,8 @@
         "confidence": "medium",
         "head_mention": "TA505",
         "tail_mention": "FlawedGrace",
+        "head_type": "GROUP",
+        "tail_type": "MALWARE",
         "method": "rule_based_v2"
       }
     },
@@ -140393,6 +140643,8 @@
         "confidence": "high",
         "head_mention": "MirrorBlast",
         "tail_mention": "Rebol",
+        "head_type": "MALWARE",
+        "tail_type": "TOOL",
         "method": "rule_based_v2"
       }
     },
@@ -140411,6 +140663,8 @@
         "confidence": "medium",
         "head_mention": "MirrorBlast",
         "tail_mention": "ReflectiveGnome",
+        "head_type": "MALWARE",
+        "tail_type": "MALWARE",
         "method": "rule_based_v2"
       }
     },
@@ -140429,6 +140683,8 @@
         "confidence": "medium",
         "head_mention": "ReflectiveGnome",
         "tail_mention": "FlawedGrace",
+        "head_type": "MALWARE",
+        "tail_type": "MALWARE",
         "method": "rule_based_v2"
       }
     },
@@ -140447,6 +140703,8 @@
         "confidence": "high",
         "head_mention": "MirrorBlast",
         "tail_mention": "Rebol",
+        "head_type": "MALWARE",
+        "tail_type": "TOOL",
         "method": "rule_based_v2"
       }
     },
@@ -140465,6 +140723,8 @@
         "confidence": "high",
         "head_mention": "MirrorBlast",
         "tail_mention": "ReflectiveGnome",
+        "head_type": "MALWARE",
+        "tail_type": "MALWARE",
         "method": "rule_based_v2"
       }
     },
@@ -140483,6 +140743,8 @@
         "confidence": "high",
         "head_mention": "TA551",
         "tail_mention": "SLIVER",
+        "head_type": "GROUP",
+        "tail_type": "TOOL",
         "method": "rule_based_v2"
       }
     },
@@ -140501,6 +140763,8 @@
         "confidence": "high",
         "head_mention": "TA551",
         "tail_mention": "Red Team & adversary simulation Framework",
+        "head_type": "GROUP",
+        "tail_type": "TOOL",
         "method": "rule_based_v2"
       }
     },
@@ -140519,6 +140783,8 @@
         "confidence": "medium",
         "head_mention": "TA551",
         "tail_mention": "Ursnif",
+        "head_type": "GROUP",
+        "tail_type": "MALWARE",
         "method": "rule_based_v2"
       }
     },
@@ -140537,6 +140803,8 @@
         "confidence": "medium",
         "head_mention": "TA551",
         "tail_mention": "IcedID",
+        "head_type": "GROUP",
+        "tail_type": "MALWARE",
         "method": "rule_based_v2"
       }
     },
@@ -140555,6 +140823,8 @@
         "confidence": "medium",
         "head_mention": "TA551",
         "tail_mention": "Qbot",
+        "head_type": "GROUP",
+        "tail_type": "MALWARE",
         "method": "rule_based_v2"
       }
     },
@@ -140573,6 +140843,8 @@
         "confidence": "medium",
         "head_mention": "TA551",
         "tail_mention": "Emotet",
+        "head_type": "GROUP",
+        "tail_type": "MALWARE",
         "method": "rule_based_v2"
       }
     },
@@ -140591,6 +140863,8 @@
         "confidence": "high",
         "head_mention": "TA551",
         "tail_mention": "SLIVER",
+        "head_type": "GROUP",
+        "tail_type": "TOOL",
         "method": "rule_based_v2"
       }
     },
@@ -140609,6 +140883,8 @@
         "confidence": "low",
         "head_mention": "TA551",
         "tail_mention": "Cobalt Strike",
+        "head_type": "GROUP",
+        "tail_type": "MALWARE",
         "method": "rule_based_v2"
       }
     },
@@ -140627,6 +140903,8 @@
         "confidence": "medium",
         "head_mention": "TinyNuke",
         "tail_mention": "French",
+        "head_type": "MALWARE",
+        "tail_type": "LOC",
         "method": "rule_based_v2"
       }
     },
@@ -140645,6 +140923,8 @@
         "confidence": "medium",
         "head_mention": "TinyNuke",
         "tail_mention": "French",
+        "head_type": "MALWARE",
+        "tail_type": "LOC",
         "method": "rule_based_v2"
       }
     },
@@ -140663,6 +140943,8 @@
         "confidence": "high",
         "head_mention": "TinyNuke",
         "tail_mention": "French",
+        "head_type": "MALWARE",
+        "tail_type": "LOC",
         "method": "rule_based_v2"
       }
     },
@@ -140681,6 +140963,8 @@
         "confidence": "medium",
         "head_mention": "TinyNuke",
         "tail_mention": "French",
+        "head_type": "MALWARE",
+        "tail_type": "LOC",
         "method": "rule_based_v2"
       }
     },
@@ -140699,6 +140983,8 @@
         "confidence": "medium",
         "head_mention": "Zeus",
         "tail_mention": "French",
+        "head_type": "MALWARE",
+        "tail_type": "LOC",
         "method": "rule_based_v2"
       }
     },
@@ -140717,6 +141003,8 @@
         "confidence": "medium",
         "head_mention": "TinyNuke",
         "tail_mention": "French",
+        "head_type": "MALWARE",
+        "tail_type": "LOC",
         "method": "rule_based_v2"
       }
     },
@@ -140735,6 +141023,8 @@
         "confidence": "high",
         "head_mention": "Emotet",
         "tail_mention": "push malspam",
+        "head_type": "MALWARE",
+        "tail_type": "TECHNIQUE",
         "method": "rule_based_v2"
       }
     },
@@ -140753,6 +141043,8 @@
         "confidence": "high",
         "head_mention": "Mount Locker",
         "tail_mention": "Santa Clara Valley Transportation Authority",
+        "head_type": "MALWARE",
+        "tail_type": "ORG",
         "method": "rule_based_v2"
       }
     },
@@ -140771,6 +141063,8 @@
         "confidence": "medium",
         "head_mention": "Emotet",
         "tail_mention": "banking",
+        "head_type": "MALWARE",
+        "tail_type": "SECTOR",
         "method": "rule_based_v2"
       }
     },
@@ -140789,6 +141083,8 @@
         "confidence": "medium",
         "head_mention": "APT29",
         "tail_mention": "private-sector organizations",
+        "head_type": "GROUP",
+        "tail_type": "SECTOR",
         "method": "rule_based_v2"
       }
     },
@@ -140807,6 +141103,8 @@
         "confidence": "high",
         "head_mention": "APT28",
         "tail_mention": "government",
+        "head_type": "GROUP",
+        "tail_type": "SECTOR",
         "method": "rule_based_v2"
       }
     },
@@ -140825,6 +141123,8 @@
         "confidence": "medium",
         "head_mention": "APT28",
         "tail_mention": "military",
+        "head_type": "GROUP",
+        "tail_type": "SECTOR",
         "method": "rule_based_v2"
       }
     },
@@ -140843,6 +141143,8 @@
         "confidence": "high",
         "head_mention": "APT28",
         "tail_mention": "Zebrocy",
+        "head_type": "GROUP",
+        "tail_type": "MALWARE",
         "method": "rule_based_v2"
       }
     },
@@ -140861,6 +141163,8 @@
         "confidence": "high",
         "head_mention": "Turla",
         "tail_mention": "government",
+        "head_type": "GROUP",
+        "tail_type": "SECTOR",
         "method": "rule_based_v2"
       }
     },
@@ -140879,6 +141183,8 @@
         "confidence": "medium",
         "head_mention": "Turla",
         "tail_mention": "military",
+        "head_type": "GROUP",
+        "tail_type": "SECTOR",
         "method": "rule_based_v2"
       }
     },
@@ -140897,6 +141203,8 @@
         "confidence": "medium",
         "head_mention": "Turla",
         "tail_mention": "technology",
+        "head_type": "GROUP",
+        "tail_type": "SECTOR",
         "method": "rule_based_v2"
       }
     },
@@ -140915,6 +141223,8 @@
         "confidence": "medium",
         "head_mention": "Turla",
         "tail_mention": "energy sectors",
+        "head_type": "GROUP",
+        "tail_type": "SECTOR",
         "method": "rule_based_v2"
       }
     },
@@ -140933,6 +141243,8 @@
         "confidence": "high",
         "head_mention": "Turla",
         "tail_mention": "foreign embassies",
+        "head_type": "GROUP",
+        "tail_type": "SECTOR",
         "method": "rule_based_v2"
       }
     },
@@ -140951,6 +141263,8 @@
         "confidence": "high",
         "head_mention": "Berserk Bear",
         "tail_mention": "US",
+        "head_type": "GROUP",
+        "tail_type": "LOC",
         "method": "rule_based_v2"
       }
     },
@@ -140969,6 +141283,8 @@
         "confidence": "medium",
         "head_mention": "Berserk Bear",
         "tail_mention": "Germany",
+        "head_type": "GROUP",
+        "tail_type": "LOC",
         "method": "rule_based_v2"
       }
     },
@@ -140987,6 +141303,8 @@
         "confidence": "medium",
         "head_mention": "Berserk Bear",
         "tail_mention": "energy",
+        "head_type": "GROUP",
+        "tail_type": "SECTOR",
         "method": "rule_based_v2"
       }
     },
@@ -141005,6 +141323,8 @@
         "confidence": "medium",
         "head_mention": "Berserk Bear",
         "tail_mention": "utilities",
+        "head_type": "GROUP",
+        "tail_type": "SECTOR",
         "method": "rule_based_v2"
       }
     },
@@ -141023,6 +141343,8 @@
         "confidence": "medium",
         "head_mention": "Berserk Bear",
         "tail_mention": "telecommunications sectors",
+        "head_type": "GROUP",
+        "tail_type": "SECTOR",
         "method": "rule_based_v2"
       }
     },
@@ -141041,6 +141363,8 @@
         "confidence": "high",
         "head_mention": "E.K.P",
         "tail_mention": "Origin Logger",
+        "head_type": "GROUP",
+        "tail_type": "MALWARE",
         "method": "rule_based_v2"
       }
     },
@@ -141059,6 +141383,8 @@
         "confidence": "high",
         "head_mention": "ShinyHunters",
         "tail_mention": "GitHub",
+        "head_type": "GROUP",
+        "tail_type": "ORG",
         "method": "rule_based_v2"
       }
     },
@@ -141077,6 +141403,8 @@
         "confidence": "medium",
         "head_mention": "APT-C - 36",
         "tail_mention": "LimeRAT",
+        "head_type": "GROUP",
+        "tail_type": "MALWARE",
         "method": "rule_based_v2"
       }
     },
@@ -141095,6 +141423,8 @@
         "confidence": "medium",
         "head_mention": "Blind Eagle",
         "tail_mention": "LimeRAT",
+        "head_type": "GROUP",
+        "tail_type": "MALWARE",
         "method": "rule_based_v2"
       }
     },
@@ -141113,6 +141443,8 @@
         "confidence": "medium",
         "head_mention": "CloudFall",
         "tail_mention": "International Military Conferences",
+        "head_type": "GROUP",
+        "tail_type": "SECTOR",
         "method": "rule_based_v2"
       }
     },
@@ -141131,6 +141463,8 @@
         "confidence": "medium",
         "head_mention": "CloudFall",
         "tail_mention": "Central Asia",
+        "head_type": "GROUP",
+        "tail_type": "LOC",
         "method": "rule_based_v2"
       }
     },
@@ -141149,6 +141483,8 @@
         "confidence": "high",
         "head_mention": "CloudAtlas APT",
         "tail_mention": "Central Asia",
+        "head_type": "GROUP",
+        "tail_type": "LOC",
         "method": "rule_based_v2"
       }
     },
@@ -141167,6 +141503,8 @@
         "confidence": "medium",
         "head_mention": "CloudAtlas APT",
         "tail_mention": "Eastern Europe",
+        "head_type": "GROUP",
+        "tail_type": "LOC",
         "method": "rule_based_v2"
       }
     },
@@ -141185,6 +141523,8 @@
         "confidence": "medium",
         "head_mention": "Vidar",
         "tail_mention": "Babuk",
+        "head_type": "MALWARE",
+        "tail_type": "MALWARE",
         "method": "rule_based_v2"
       }
     },
@@ -141203,6 +141543,8 @@
         "confidence": "high",
         "head_mention": "TA575",
         "tail_mention": "Dridex",
+        "head_type": "GROUP",
+        "tail_type": "MALWARE",
         "method": "rule_based_v2"
       }
     },
@@ -141221,6 +141563,8 @@
         "confidence": "high",
         "head_mention": "TA575",
         "tail_mention": "Dridex",
+        "head_type": "GROUP",
+        "tail_type": "MALWARE",
         "method": "rule_based_v2"
       }
     },
@@ -141239,6 +141583,8 @@
         "confidence": "medium",
         "head_mention": "TA575",
         "tail_mention": "Dridex",
+        "head_type": "GROUP",
+        "tail_type": "MALWARE",
         "method": "rule_based_v2"
       }
     },
@@ -141257,6 +141603,8 @@
         "confidence": "medium",
         "head_mention": "TA575",
         "tail_mention": "Dridex",
+        "head_type": "GROUP",
+        "tail_type": "MALWARE",
         "method": "rule_based_v2"
       }
     },
@@ -141275,6 +141623,8 @@
         "confidence": "medium",
         "head_mention": "TA575",
         "tail_mention": "Excel and Word attachments",
+        "head_type": "GROUP",
+        "tail_type": "TECHNIQUE",
         "method": "rule_based_v2"
       }
     },
@@ -141293,6 +141643,8 @@
         "confidence": "high",
         "head_mention": "Squirrelwaffle",
         "tail_mention": "Cobalt Strike",
+        "head_type": "MALWARE",
+        "tail_type": "MALWARE",
         "method": "rule_based_v2"
       }
     },
@@ -141311,6 +141663,8 @@
         "confidence": "high",
         "head_mention": "Squirrelwaffle",
         "tail_mention": "Cobalt Strike",
+        "head_type": "MALWARE",
+        "tail_type": "MALWARE",
         "method": "rule_based_v2"
       }
     },
@@ -141329,6 +141683,8 @@
         "confidence": "medium",
         "head_mention": "Squirrelwaffle",
         "tail_mention": "Cobalt Strike",
+        "head_type": "MALWARE",
+        "tail_type": "MALWARE",
         "method": "rule_based_v2"
       }
     },
@@ -141347,6 +141703,8 @@
         "confidence": "high",
         "head_mention": "Squirrelwaffle",
         "tail_mention": "Cobalt Strike",
+        "head_type": "MALWARE",
+        "tail_type": "MALWARE",
         "method": "rule_based_v2"
       }
     },
@@ -141365,6 +141723,8 @@
         "confidence": "high",
         "head_mention": "Squirrelwaffle",
         "tail_mention": "Cobalt Strike",
+        "head_type": "MALWARE",
+        "tail_type": "MALWARE",
         "method": "rule_based_v2"
       }
     },
@@ -141383,6 +141743,8 @@
         "confidence": "medium",
         "head_mention": "NotPetya",
         "tail_mention": "Maersk",
+        "head_type": "MALWARE",
+        "tail_type": "ORG",
         "method": "rule_based_v2"
       }
     },
@@ -141401,6 +141763,8 @@
         "confidence": "low",
         "head_mention": "Transparent Tribe",
         "tail_mention": "Indian government",
+        "head_type": "GROUP",
+        "tail_type": "ORG",
         "method": "rule_based_v2"
       }
     },
@@ -141419,6 +141783,8 @@
         "confidence": "high",
         "head_mention": "TA406",
         "tail_mention": "credential harvesting",
+        "head_type": "GROUP",
+        "tail_type": "TACTIC",
         "method": "rule_based_v2"
       }
     },
@@ -141437,6 +141803,8 @@
         "confidence": "high",
         "head_mention": "TA406",
         "tail_mention": "credential collection",
+        "head_type": "GROUP",
+        "tail_type": "TACTIC",
         "method": "rule_based_v2"
       }
     }

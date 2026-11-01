@@ -155,5 +155,92 @@
       "WRONG_OBJECT": 5,
       "WRONG_RELATION_TYPE": 6
     }
+  },
+  "round2_human_review": {
+    "status": "human labels by a project member on the same 66 rows as round 2; stricter than the assistant's provisional labels",
+    "overall": {
+      "n": 66,
+      "TRUE": 38,
+      "FALSE": 19,
+      "UNCERTAIN": 9,
+      "true_rate": 0.576,
+      "precision_excluding_uncertain": 0.667
+    },
+    "by_relation": {
+      "USES": {
+        "n": 21,
+        "TRUE": 11,
+        "FALSE": 8,
+        "UNCERTAIN": 2,
+        "true_rate": 0.524,
+        "precision_excluding_uncertain": 0.579
+      },
+      "USES_TECHNIQUE": {
+        "n": 14,
+        "TRUE": 11,
+        "FALSE": 2,
+        "UNCERTAIN": 1,
+        "true_rate": 0.786,
+        "precision_excluding_uncertain": 0.846
+      },
+      "EXPLOITS": {
+        "n": 1,
+        "TRUE": 0,
+        "FALSE": 1,
+        "UNCERTAIN": 0,
+        "true_rate": 0.0,
+        "precision_excluding_uncertain": 0.0
+      },
+      "TARGETS": {
+        "n": 30,
+        "TRUE": 16,
+        "FALSE": 8,
+        "UNCERTAIN": 6,
+        "true_rate": 0.533,
+        "precision_excluding_uncertain": 0.667
+      }
+    },
+    "by_head_type_USES": {
+      "GROUP": {
+        "n": 10,
+        "TRUE": 8,
+        "FALSE": 0,
+        "UNCERTAIN": 2,
+        "true_rate": 0.8,
+        "precision_excluding_uncertain": 1.0
+      },
+      "MALWARE": {
+        "n": 11,
+        "TRUE": 3,
+        "FALSE": 8,
+        "UNCERTAIN": 0,
+        "true_rate": 0.273,
+        "precision_excluding_uncertain": 0.273
+      }
+    },
+    "by_head_type_TARGETS": {
+      "GROUP": {
+        "n": 16,
+        "TRUE": 12,
+        "FALSE": 4,
+        "UNCERTAIN": 0,
+        "true_rate": 0.75,
+        "precision_excluding_uncertain": 0.75
+      },
+      "MALWARE": {
+        "n": 14,
+        "TRUE": 4,
+        "FALSE": 4,
+        "UNCERTAIN": 6,
+        "true_rate": 0.286,
+        "precision_excluding_uncertain": 0.5
+      }
+    },
+    "agreement_with_assistant": {
+      "three_way": "51/66 = 0.773",
+      "true_vs_not_true": "58/66 = 0.879",
+      "kappa_three_way": 0.563,
+      "kappa_true_vs_not": 0.742
+    }
   }
 }

@@ -308,6 +308,7 @@ def main():
                          "evidence_text": seg["clean_text"], "trigger": trig,
                          "direction": direction, "confidence": conf,
                          "head_mention": h["text"], "tail_mention": t["text"],
+                         "head_type": h["type"], "tail_type": t["type"],   # NER types of the two mentions
                          "method": "rule_based_v2"}
                 records.append({"head": hid, "relation": rel, "tail": tid, **props})
                 edges.append({"source": hid, "target": tid, "relation": rel, "properties": props})
