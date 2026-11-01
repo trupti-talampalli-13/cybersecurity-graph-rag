@@ -21,12 +21,26 @@ import train_ner as tn  # noqa: E402  (reuses encoding, prediction and scoring c
 ROOT = Path(__file__).resolve().parent.parent
 WEIGHTS = ROOT / "models" / "ner" / "ner_model.pth"
 LABELS = ROOT / "models" / "ner" / "labels.json"
-TOKENIZER = ROOT / "models" / "distilroberta-base"  # same BPE vocabulary as roberta-base
+# roberta-base tokenizer: a local copy if present, otherwise downloaded from the Hugging Face Hub
+LOCAL_TOKENIZER = ROOT / "models" / "distilroberta-base"   # same BPE vocabulary as roberta-base
+TOKENIZER = LOCAL_TOKENIZER if LOCAL_TOKENIZER.exists() else "roberta-base"
+
+
+def require_weights():
+    """Stop with an actionable message when the trained model files are missing."""
+    missing = [p for p in (WEIGHTS, LABELS) if not p.exists()]
+    if missing:
+        raise SystemExit(
+            "Missing model files: " + ", ".join(str(p.relative_to(ROOT)) for p in missing) + ".\n"
+            "The trained weights (about 500 MB) are not stored in Git. Get ner_model.pth and labels.json from the "
+            "project owner, or train them with src/train_ner.py (see 'Trained NER Model' in the README), and put "
+            "both in models/ner/.")
 SPLITS = ["train", "dev", "test"]
 
 
 def main():
     tn.DEVICE = torch.device("cpu")
+    require_weights()
     labels = json.loads(LABELS.read_text(encoding="utf-8"))
     label2id = {l: i for i, l in enumerate(labels)}
     id2label = {i: l for l, i in label2id.items()}

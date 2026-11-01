@@ -185,6 +185,11 @@ def main():
     print(f"Without date: {sum(not r['publication_date'] for r in reports.values())}")
     for k, v in stats.items():
         print(f"{k}: {v}")
+    no_title = sum(r["title"] is None for r in reports.values())
+    if no_title:
+        print(f"WARNING: {no_title} reports have no title. The report text files were not found or could not be "
+              f"opened under {CORPUS.resolve()}/text (check the corpus location; on Windows, paths longer than "
+              f"260 characters also fail).")
 
 
 if __name__ == "__main__":

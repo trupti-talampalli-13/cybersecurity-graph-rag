@@ -22,6 +22,7 @@ import torch
 from transformers import AutoTokenizer, RobertaConfig, RobertaForTokenClassification
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
+import predict_ner  # noqa: E402  (weights check and tokenizer location)
 import train_ner as tn  # noqa: E402
 from extract_relations import find_relations  # noqa: E402
 from preprocess_reports import CVE_RE, char_offsets  # noqa: E402
@@ -69,10 +70,11 @@ def main():
     records = [r for d in chosen for r in sorted(by_doc[d], key=lambda r: r["segment"])]
     print(f"unseen reports in pool {len(docs)}; sampled {len(chosen)}; sentences {len(records)}", flush=True)
 
+    predict_ner.require_weights()
     labels = json.loads((ROOT / "models" / "ner" / "labels.json").read_text(encoding="utf-8"))
     label2id = {l: i for i, l in enumerate(labels)}
     id2label = {i: l for l, i in label2id.items()}
-    tokenizer = AutoTokenizer.from_pretrained(ROOT / "models" / "distilroberta-base", add_prefix_space=True)
+    tokenizer = AutoTokenizer.from_pretrained(predict_ner.TOKENIZER, add_prefix_space=True)
     cfg = RobertaConfig(num_labels=len(labels), id2label=id2label, label2id=label2id, vocab_size=50265,
                         max_position_embeddings=514, type_vocab_size=1, pad_token_id=1, bos_token_id=0,
                         eos_token_id=2, layer_norm_eps=1e-5)

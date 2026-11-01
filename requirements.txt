@@ -1,0 +1,14 @@
+# Python 3.10 was used for development.
+#
+# The data pipeline (preprocess -> entities -> linking -> relations -> trusted graph) and the unit tests
+# need only the Python standard library. Install the packages below only for the optional steps.
+
+# Visualizations (src/visualize_graph.py)
+networkx>=3.4
+matplotlib>=3.10
+
+# NER training and prediction (src/train_ner.py, src/predict_ner.py, src/unseen_relation_check.py)
+numpy>=2.2
+torch>=2.6
+transformers>=5.0
+scikit-learn>=1.7   # only used by the older AZERG baselines (src/baseline_*.py)

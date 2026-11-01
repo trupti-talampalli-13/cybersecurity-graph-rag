@@ -100,14 +100,25 @@ def plot_relation_counts(G):
     plt.close(fig)
 
 
+def induced(G, keep):
+    """Subgraph on `keep` with nodes and edges in G's original order (NetworkX iterates a subgraph view in
+    set order, which varies from run to run and changes the layout)."""
+    keep = set(keep)
+    sub = G.__class__()
+    sub.add_nodes_from((n, G.nodes[n]) for n in G if n in keep)
+    sub.add_edges_from((u, v, d) for u, v, d in G.edges(data=True) if u in keep and v in keep)
+    return sub
+
+
 def packed_layout(G, per_row_width=26.0):
     """Lay out each connected component on its own and shelf-pack them left to right."""
-    comps = sorted(nx.weakly_connected_components(G), key=len, reverse=True)
+    # ties in size are broken by node id so the layout does not depend on Python's hash randomization
+    comps = sorted(nx.weakly_connected_components(G), key=lambda c: (-len(c), min(c)))
     pos, x, y, row_h = {}, 0.0, 0.0, 0.0
     for comp in comps:
-        H = G.subgraph(comp).to_undirected()
+        H = induced(G, comp).to_undirected()
         size = 1.6 if len(comp) <= 2 else 1.5 + (1.9 if len(comp) > 20 else 1.0) * len(comp) ** 0.5
-        local = nx.spring_layout(nx.Graph(H), seed=7, k=1.8 / max(len(comp), 1) ** 0.5, iterations=300)             if len(comp) > 2 else {n: (i * 0.8 - 0.4, 0) for i, n in enumerate(comp)}
+        local = nx.spring_layout(nx.Graph(H), seed=7, k=1.8 / max(len(comp), 1) ** 0.5, iterations=300)             if len(comp) > 2 else {n: (i * 0.8 - 0.4, 0) for i, n in enumerate(sorted(comp))}
         if x + size > per_row_width:
             x, y, row_h = 0.0, y - row_h - 0.4, 0.0
         for n, (px, py) in local.items():
@@ -185,7 +196,7 @@ def main():
     draw(G, OUT / "graph_overview.png", "CTI knowledge graph: each cluster is a set of entities linked by extracted relations",
          label_top=140, figsize=(22, 14), packed=True)
     for hub in hub_nodes(G):
-        sub = G.subgraph({hub} | set(G.predecessors(hub)) | set(G.successors(hub))).copy()
+        sub = induced(G, {hub} | set(G.predecessors(hub)) | set(G.successors(hub)))
         draw(sub, OUT / f"neighborhood_{slug(G.nodes[hub]['label'])}.png",
              f"Relations around {G.nodes[hub]['label']} ({sub.number_of_edges()} edges)",
              label_top=40, figsize=(11, 8))
