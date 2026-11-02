@@ -1,0 +1,137 @@
+{
+  "sentences_scored": 30,
+  "sentences_unfilled": [],
+  "gold_relations": 20,
+  "found_by_extractor": 2,
+  "recall": 0.1,
+  "extractor_relations_on_these_sentences": 2,
+  "of_which_in_gold": 2,
+  "precision_vs_gold": 1.0,
+  "recall_by_relation": {
+    "USES_TECHNIQUE": {
+      "gold": 10,
+      "found": 0
+    },
+    "TARGETS": {
+      "gold": 6,
+      "found": 1
+    },
+    "USES": {
+      "gold": 4,
+      "found": 1
+    }
+  },
+  "missed": [
+    [
+      "REC-01",
+      "USES_TECHNIQUE",
+      "ta453",
+      "credential harvesting"
+    ],
+    [
+      "REC-02",
+      "TARGETS",
+      "leviathan",
+      "engineering"
+    ],
+    [
+      "REC-02",
+      "TARGETS",
+      "leviathan",
+      "logistic"
+    ],
+    [
+      "REC-02",
+      "TARGETS",
+      "leviathan",
+      "naval defense industry"
+    ],
+    [
+      "REC-02",
+      "TARGETS",
+      "leviathan",
+      "naval technology"
+    ],
+    [
+      "REC-04",
+      "USES_TECHNIQUE",
+      "ta505",
+      "distributing large volumes of malicious emails"
+    ],
+    [
+      "REC-06",
+      "USES",
+      "ares",
+      "darkcrypter"
+    ],
+    [
+      "REC-06",
+      "USES",
+      "osiris",
+      "darkcrypter"
+    ],
+    [
+      "REC-15",
+      "USES_TECHNIQUE",
+      "notpetya",
+      "supply chain attack"
+    ],
+    [
+      "REC-21",
+      "TARGETS",
+      "revil",
+      "downstream organizations"
+    ],
+    [
+      "REC-22",
+      "USES_TECHNIQUE",
+      "leviathan",
+      "collects passwords"
+    ],
+    [
+      "REC-23",
+      "USES_TECHNIQUE",
+      "beacon",
+      "credential dumping ,"
+    ],
+    [
+      "REC-23",
+      "USES_TECHNIQUE",
+      "beacon",
+      "elevate privileges"
+    ],
+    [
+      "REC-23",
+      "USES_TECHNIQUE",
+      "beacon",
+      "inject these functions into existing running host processes to attempt to avoid detection ."
+    ],
+    [
+      "REC-23",
+      "USES_TECHNIQUE",
+      "beacon",
+      "load and execute additional tools"
+    ],
+    [
+      "REC-23",
+      "USES_TECHNIQUE",
+      "beacon",
+      "network discovery"
+    ],
+    [
+      "REC-27",
+      "USES_TECHNIQUE",
+      "ta543",
+      "emails continue to contain links"
+    ],
+    [
+      "REC-30",
+      "USES",
+      "russia \u2019 s foreign intelligence service",
+      "cobalt strike"
+    ]
+  ],
+  "extracted_not_in_gold": [],
+  "unparsed_cells": [],
+  "note": "single reviewer; relation match on type, head text and tail text; gold-tagged entities"
+}

@@ -197,5 +197,53 @@ class FailuresFoundOnUnseenReports(unittest.TestCase):
         self.assertEqual(relations(text, ("TA453", "GROUP"), ("oncology", "SECTOR")), set())
 
 
+class UsesFixesFromHumanReview(unittest.TestCase):
+    """Cases from the human review of 66 unseen relations (data/unseen_check_audit_human_round2.csv)."""
+
+    def test_same_operators_do_not_use_each_other(self):
+        text = "Accounts used by the LastConn malware, the account used to deploy NimbleMamba, show that both " \
+               "are deployed by the same operators."
+        self.assertEqual(relations(text, ("LastConn", "MALWARE"), ("NimbleMamba", "MALWARE")), set())
+
+    def test_replacement_is_not_use(self):
+        text = "NimbleMamba is a replacement for the group's previously used LastConn implant."
+        self.assertEqual(relations(text, ("NimbleMamba", "MALWARE"), ("LastConn", "MALWARE")), set())
+
+    def test_noun_use_of_trigger_word(self):
+        text = "Most of them were Zbot drops, Ransomware, Caphaw, Keylogger and more."
+        self.assertEqual(relations(text, ("Zbot", "MALWARE"), ("Caphaw", "MALWARE")), set())
+
+    def test_coordinated_clause_is_not_a_list_item(self):
+        text = "We have seen RIG dropping Qakbot as well as Neutrino dropping CryptXXX."
+        found = relations(text, ("RIG", "MALWARE"), ("Qakbot", "MALWARE"), ("Neutrino", "MALWARE"),
+                          ("CryptXXX", "MALWARE"))
+        self.assertIn(("USES", "RIG", "Qakbot"), found)
+        self.assertNotIn(("USES", "RIG", "Neutrino"), found)
+
+    def test_as_well_as_joining_two_objects_of_one_verb_keeps_both(self):
+        found = relations("NimbleMamba uses the Dropbox API for both command and control as well as exfiltration.",
+                          ("NimbleMamba", "MALWARE"), ("command and control", "TACTIC"), ("exfiltration", "TACTIC"))
+        self.assertEqual({r[2] for r in found}, {"command and control", "exfiltration"})
+
+    def test_both_objects_of_one_verb_in_a_list_are_kept(self):
+        found = relations("TA505 campaigns use SDBot, Get2 and Dridex.", ("TA505", "GROUP"), ("SDBot", "TOOL"),
+                          ("Get2", "MALWARE"), ("Dridex", "MALWARE"))
+        self.assertEqual({r[2] for r in found}, {"SDBot", "Get2", "Dridex"})
+
+    def test_unlike_marks_a_comparison(self):
+        text = "Unlike njRAT it uses POST requests to exfiltrate data."
+        self.assertEqual(relations(text, ("njRAT", "MALWARE"), ("exfiltrate", "TACTIC")), set())
+
+    def test_relative_clause_belongs_to_the_intervening_entity(self):
+        text = "TA429 used phishing macros that were later seen being used by LookBack."
+        found = relations(text, ("TA429", "GROUP"), ("phishing macros", "TECHNIQUE"), ("LookBack", "MALWARE"))
+        self.assertNotIn(("USES", "TA429", "LookBack"), found)
+
+    def test_relative_clause_that_refers_to_the_head_is_kept(self):
+        text = "We followed Squirrelwaffle that is being used to deliver Cobalt Strike."
+        self.assertIn(("USES", "Squirrelwaffle", "Cobalt Strike"),
+                      relations(text, ("Squirrelwaffle", "MALWARE"), ("Cobalt Strike", "MALWARE")))
+
+
 if __name__ == "__main__":
     unittest.main()

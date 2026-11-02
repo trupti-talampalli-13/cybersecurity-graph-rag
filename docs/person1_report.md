@@ -101,6 +101,7 @@ extractor), the fourth a human reviewer.
 | 2. Current extractor | 184 relations, same reports | 167 true, 1 false, 16 uncertain; **optimistic**: the rules were written from review 1 |
 | 3. Unseen reports, round 1 | 60 `train_ext` reports tagged by the model; 71 relations sampled | 59% true; used to write the final rules |
 | 4. Unseen reports, round 2 | 60 different reports; 66 relations | provisional 70% true; **human 58% true** (38 true, 19 false, 9 uncertain; 67% excluding uncertain) |
+| 5. Unseen reports, round 3 | 60 further reports, none used before; 26 relations, hybrid review (project member with three AI reviewers) | 50% true (version A) or 65% true (version B); `USES` 8 or 11 of 15 |
 
 The human review (round 2) is the headline figure. It was stricter than the provisional labels: the two agree on 77%
 of rows (88% for true versus not-true; Cohen's kappa 0.56 over three labels and 0.74 for true versus not-true). By type:
@@ -113,8 +114,19 @@ points).
 looked accurate, so the weakness comes from noisy entities in model-tagged text.
 
 Remaining error types (human review): wrong subject 14, entity error 9 (tagger fragments such as "Kit" or "Evil", a router
-vendor typed as a group), wrong object 3, wrong relation type 2. Recall (true relations the extractor misses) has not
-been measured.
+vendor typed as a group), wrong object 3, wrong relation type 2.
+
+**Recall.** A recall check on 30 random sentences from the gold-tagged reports (labelled by three AI reviewers, in two
+versions that differ only on a packer-related rule) found that the sentences state 17 to 20 relations and the extractor
+finds 2, i.e. recall of about 10-12% (plausible range about 1-35% with so few relations; both extracted relations were
+correct). The misses are mostly sentences where the action is inside the technique entity ("Leviathan collects
+passwords") so no trigger word joins the two, plus victim lists after a passive clause, an organization as subject, and
+"has the capability to". The extractor is conservative: its main weakness is missing relations, not stating wrong ones.
+
+**Round 3.** On 60 fresh reports the extractor found only 26 relations (the model tags fewer actors there); the hybrid review
+(a project member with three AI reviewers) rated 13 (version A) or 17 (version B) of them true. `USES` was 8 or 11 of 15 against 52% in round 2, so the
+`USES` rules added after round 2 show no clear gain on this small sample. This round 3 review is a hybrid
+of human and AI judgment, not an independent human annotation.
 
 ## 8. The knowledge graph
 
@@ -145,7 +157,8 @@ graphs for the best-connected actors and malware (Winnti Group, Leviathan, Cobal
   and the other labels are provisional single-reviewer judgments.
 - Relations exist for only 49 of 120 reports; `EXPLOITS` has 3 instances, so it is too thin to rely on.
 - The weakest NER types (tool 0.15, technique 0.49, threat actor 0.53) are the ones the graph depends on most.
-- Malware-headed relations from model-tagged text are unreliable; recall was not measured.
+- Malware-headed relations from model-tagged text are unreliable; recall is low (about 10-12% on a 30-sentence check
+  labelled by AI reviewers), so the 184 relations are a small, conservative subset of what the reports state.
 - Some linked nodes carry the wrong type in the source linking data; sectors are almost never linked.
 - Each relation is one sentence of one vendor report. Reports can disagree, so always show the evidence and date.
 

@@ -29,7 +29,7 @@ from preprocess_reports import CVE_RE, char_offsets  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
 CORPUS = ROOT.parent / "anno-ctr-lrec-coling-2024" / "AnnoCTR" / "ner_json"
-SEED, SEED_ROUND2, N_DOCS = 7, 11, 60
+SEED, SEED_ROUND2, SEED_ROUND3, N_DOCS = 7, 11, 23, 60
 ROUND = int(sys.argv[1]) if len(sys.argv) > 1 else 1   # 2 = fresh sample of reports not used in round 1
 SUFFIX = "" if ROUND == 1 else f"_round{ROUND}"
 SAMPLE_PER_RELATION = {"EXPLOITS": 10, "USES_TECHNIQUE": 15, "USES": 25, "TARGETS": 30}
@@ -65,8 +65,12 @@ def main():
 
     docs = sorted(by_doc)
     chosen = choose(docs, SEED)
-    if ROUND == 2:    # a fresh sample: different reports from round 1, so rules tuned on round 1 are tested unseen
-        chosen = choose([d for d in docs if d not in set(chosen)], SEED_ROUND2)
+    if ROUND >= 2:    # a fresh sample: different reports from round 1, so rules tuned on round 1 are tested unseen
+        used = set(chosen)
+        chosen = choose([d for d in docs if d not in used], SEED_ROUND2)
+    if ROUND == 3:    # and again: reports not used in rounds 1 or 2
+        used |= set(chosen)
+        chosen = choose([d for d in docs if d not in used], SEED_ROUND3)
     records = [r for d in chosen for r in sorted(by_doc[d], key=lambda r: r["segment"])]
     print(f"unseen reports in pool {len(docs)}; sampled {len(chosen)}; sentences {len(records)}", flush=True)
 

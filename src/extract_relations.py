@@ -63,8 +63,17 @@ STRONG_TARGET = re.compile(r"target\w*|aim\w*|against|focus\w* on|go(?:es|ing)? 
 BLOCK_BETWEEN = re.compile(
     r"\bsame\b[^.,;]{0,40}\b(?:as|that|manner)\b|\b(?:similar|overlap\w*|compar\w*|alike)\b|\bin line with\b"
     r"|\b(?:since|because|due to|based on)\b|\bother\b[^.]*\bsuch as\b|\bthat\s+(?:could|would|may|might|can)\b"
-    r"|\b(?:reminiscent|resembl\w+|background in|specializ\w+ in)\b|\b(?:connected|tied|linked|related) to\b",
+    r"|\b(?:reminiscent|resembl\w+|background in|specializ\w+ in)\b|\b(?:connected|tied|linked|related) to\b"
+    r"|\b(?:replacement|replaces?|replaced|successor)\b",
     re.I)
+# "TA429 used phishing macros that were later seen being used by LookBack": the clause belongs to "macros"
+RELATIVE_BE = re.compile(r"\b(?:that|which)\s+(?:were|are|was|is|have been|had been)\b", re.I)
+# Comparison or contrast around the pair ("unlike njRAT it uses ...", "for comparison, ... macro used to install X")
+COMPARISON = re.compile(r"\b(?:for comparison|in contrast|compared (?:to|with)|unlike)\b", re.I)
+# Two malware families attributed to the same operators are not users of each other
+SAME_OPERATOR_AFTER = re.compile(r"^[^.]{0,90}\bsame\s+(?:operators?|actors?|group|threat actor)\b", re.I)
+# A trigger followed by punctuation is a noun, not a verb with an object ("Spyeye/Zbot drops, Ransomware, ...")
+TRIGGER_THEN_PUNCT = re.compile(r"\s*[,;.)]")
 # Negated or disputed claims in the words around the pair ("we've never seen TA505 use Emotet")
 NEGATION = re.compile(r"\b(?:never|not|cannot|neither|nor|incorrectly|wrongly|falsely|disputed|unexplained)\b|n't\b",
                       re.I)
@@ -134,9 +143,24 @@ def candidate_ok(rel, h, t, trig, direction, text, between, ents):
         return False           # an entity cannot target itself; "APT"/"group" alone is not an actor name
     lo = min(h["char_start"], t["char_start"])
     hi = max(h["char_end"], t["char_end"])
-    if IMPERSONATION.search(text[max(0, lo - 80):hi]) or NEGATION.search(text[max(0, lo - 60):hi]):
+    if IMPERSONATION.search(text[max(0, lo - 80):hi]) or NEGATION.search(text[max(0, lo - 60):hi]) \
+            or COMPARISON.search(text[max(0, lo - 80):hi]):
         return False
+    rel_clause = RELATIVE_BE.search(between)
+    if rel_clause:
+        start = (h["char_end"] if direction == "active" else t["char_end"])
+        if any(e is not h and e is not t and e["type"] not in ("DATE", "CON", "CLICommand/CodeSnippet")
+               and start <= e["char_start"] and e["char_end"] <= start + rel_clause.start() for e in ents):
+            return False       # the relative clause attaches to another entity between the head and "that"
+    if rel == "USES" and h["type"] in ("MALWARE", "TOOL") and SAME_OPERATOR_AFTER.match(text[t["char_end"]:]):
+        return False           # "LastConn and NimbleMamba are deployed by the same operators"
     if direction == "active":
+        if TRIGGER_THEN_PUNCT.match(between[trig.end():]):
+            return False
+        if "as well as" in between and ACTIVE_RE[rel].search(text[t["char_end"]:t["char_end"] + 30]) and any(
+                e is not h and e is not t and e["type"] == t["type"] and h["char_end"] <= e["char_start"]
+                and e["char_end"] <= t["char_start"] for e in ents):
+            return False       # "RIG dropping Qakbot as well as Neutrino dropping X": the tail starts a new clause
         if PRONOUN_SUBJECT.search(between[:trig.start()]):
             return False
         if rel in ("USES", "USES_TECHNIQUE", "EXPLOITS") and h["type"] in ("MALWARE", "TOOL") \

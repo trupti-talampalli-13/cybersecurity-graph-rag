@@ -98,6 +98,24 @@ Rules were then added for these failures (negated or disputed claims, organizati
 
 **Visualizations.** `figures/` holds entity and relation count charts, an overview graph, neighborhood graphs for the best-connected actors, and `graph_interactive.html` (hover an edge for its evidence; loads vis-network from a CDN).
 
+**Recall check and round 3 (AI-reviewed and hybrid).** Two further sheets were filled by three AI
+models (Claude Sonnet 5.5, Claude Opus and a third model) working independently and then cross-checking; the files are in
+`data/llm_review/`, in two versions: A applies seven extra tie-break rules the models agreed (`A_ADDENDUM_RULES.md`),
+B follows the written instructions only. The notes shipped with the files say the labels were produced by the models, not by human annotators; the project
+member describes round 3 as a hybrid review (human and AI), and the recall check is treated as
+AI-labelled. Neither is an independent human annotation, and neither is independent of the extractor's author
+(one reviewer is the same model family). *Recall check* (`data/recall_check_sheet.csv`, 30 random sentences from the gold-tagged
+reports; `python src/score_recall_check.py <sheet>`): the sentences state 17 relations (A) or 20 (B) and the extractor finds
+2 of them, i.e. recall of about 10-12%, with both of its relations correct. The 30-sentence sample is small (the true
+recall could lie between roughly 1% and 35%), but the gap is clear. Most missed relations have the action inside the
+technique entity itself ("Leviathan collects passwords", "TA505 has returned to distributing malicious emails"), so no trigger
+word joins the two entities; others need a victim list after "attacked by X", an organization as the subject, or "has the
+capability to". *Round 3* (60 fresh reports used in neither earlier round; 26 relations,
+`data/unseen_check_audit_template_round3.csv`): 13 of 26 true under A and 17 of 26 under B; `USES` 8 of 15 (A) or 11 of 15 (B),
+`TARGETS` 4 of 4, `EXPLOITS` 0 or 1 of 3. The two versions differ on six rows, mainly whether a packer ("Agent Tesla using the
+CyaX packer") counts as the malware "using" something. `USES` was 52% true in round 2 under the earlier rules, so the new `USES`
+rules show no clear gain on 15 relations. Recall, not precision, is the extractor's main weakness.
+
 ## Trusted Graph (layers and trust levels)
 
 `python src/build_trusted_graph.py` writes `data/cti_knowledge_graph_trusted.json`, a layered copy of the graph in which the original graph and `relations.jsonl` stay unchanged. Every edge has a layer (mention, candidate link, relation) and every automatic relation has a `trust_level`: `trusted` (112 relations: threat-actor-headed `USES`/`TARGETS`, or `USES_TECHNIQUE`, with high or medium confidence), `candidate` (61: malware- or tool-headed `USES`/`TARGETS`, `EXPLOITS`, type mismatches, duplicates) and `low` (11: hedged or borrowed subject). `human_verified` is always false. The trusted relations alone are in `data/relations_trusted.jsonl`. The graph is validated on every build (endpoints, provenance fields, ISO dates, confidence and trust values), and the policy is tested in `tests/test_trusted_graph.py`. The policy follows the human review described below; on these gold-tagged reports the candidate relations looked about as accurate as the trusted ones in the provisional audit, so it is conservative. Field definitions and a loading example are in `docs/trusted_graph_schema.md`.
