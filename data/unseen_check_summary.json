@@ -1,0 +1,246 @@
+{
+  "round1_v2_rules_tuned_on_this": {
+    "status": "PROVISIONAL: single reviewer (assistant), not human-verified. Sample of relations the v2 extractor found on 60 unseen reports tagged by the trained NER model (end-to-end).",
+    "overall": {
+      "n": 71,
+      "TRUE": 42,
+      "FALSE": 25,
+      "UNCERTAIN": 4,
+      "true_rate": 0.592,
+      "precision_excluding_uncertain": 0.627
+    },
+    "by_relation": {
+      "USES": {
+        "n": 25,
+        "TRUE": 11,
+        "FALSE": 13,
+        "UNCERTAIN": 1,
+        "true_rate": 0.44,
+        "precision_excluding_uncertain": 0.458
+      },
+      "USES_TECHNIQUE": {
+        "n": 11,
+        "TRUE": 9,
+        "FALSE": 1,
+        "UNCERTAIN": 1,
+        "true_rate": 0.818,
+        "precision_excluding_uncertain": 0.9
+      },
+      "EXPLOITS": {
+        "n": 5,
+        "TRUE": 3,
+        "FALSE": 1,
+        "UNCERTAIN": 1,
+        "true_rate": 0.6,
+        "precision_excluding_uncertain": 0.75
+      },
+      "TARGETS": {
+        "n": 30,
+        "TRUE": 19,
+        "FALSE": 10,
+        "UNCERTAIN": 1,
+        "true_rate": 0.633,
+        "precision_excluding_uncertain": 0.655
+      }
+    },
+    "by_confidence": {
+      "high": {
+        "n": 24,
+        "TRUE": 18,
+        "FALSE": 6,
+        "UNCERTAIN": 0,
+        "true_rate": 0.75,
+        "precision_excluding_uncertain": 0.75
+      },
+      "medium": {
+        "n": 43,
+        "TRUE": 23,
+        "FALSE": 16,
+        "UNCERTAIN": 4,
+        "true_rate": 0.535,
+        "precision_excluding_uncertain": 0.59
+      },
+      "low": {
+        "n": 4,
+        "TRUE": 1,
+        "FALSE": 3,
+        "UNCERTAIN": 0,
+        "true_rate": 0.25,
+        "precision_excluding_uncertain": 0.25
+      }
+    },
+    "error_categories": {
+      "WRONG_SUBJECT": 3,
+      "ENTITY_ERROR": 11,
+      "OTHER": 3,
+      "WRONG_RELATION_TYPE": 3,
+      "WRONG_DIRECTION": 2,
+      "NOT_ASSERTED": 4,
+      "WRONG_OBJECT": 3
+    }
+  },
+  "round2_fresh_sample_v3_rules": {
+    "status": "PROVISIONAL: single reviewer (assistant), not human-verified. Fresh sample: 60 unseen reports NOT used in round 1 or when the v3 rules were written; tagged by the trained NER model; 78 relations found, 66 sampled (all but a few duplicates of the same type cap).",
+    "overall": {
+      "n": 66,
+      "TRUE": 46,
+      "FALSE": 16,
+      "UNCERTAIN": 4,
+      "true_rate": 0.697,
+      "precision_excluding_uncertain": 0.742
+    },
+    "by_relation": {
+      "USES": {
+        "n": 21,
+        "TRUE": 11,
+        "FALSE": 10,
+        "UNCERTAIN": 0,
+        "true_rate": 0.524,
+        "precision_excluding_uncertain": 0.524
+      },
+      "USES_TECHNIQUE": {
+        "n": 14,
+        "TRUE": 11,
+        "FALSE": 1,
+        "UNCERTAIN": 2,
+        "true_rate": 0.786,
+        "precision_excluding_uncertain": 0.917
+      },
+      "EXPLOITS": {
+        "n": 1,
+        "TRUE": 0,
+        "FALSE": 1,
+        "UNCERTAIN": 0,
+        "true_rate": 0.0,
+        "precision_excluding_uncertain": 0.0
+      },
+      "TARGETS": {
+        "n": 30,
+        "TRUE": 24,
+        "FALSE": 4,
+        "UNCERTAIN": 2,
+        "true_rate": 0.8,
+        "precision_excluding_uncertain": 0.857
+      }
+    },
+    "by_confidence": {
+      "high": {
+        "n": 22,
+        "TRUE": 16,
+        "FALSE": 3,
+        "UNCERTAIN": 3,
+        "true_rate": 0.727,
+        "precision_excluding_uncertain": 0.842
+      },
+      "medium": {
+        "n": 43,
+        "TRUE": 30,
+        "FALSE": 12,
+        "UNCERTAIN": 1,
+        "true_rate": 0.698,
+        "precision_excluding_uncertain": 0.714
+      },
+      "low": {
+        "n": 1,
+        "TRUE": 0,
+        "FALSE": 1,
+        "UNCERTAIN": 0,
+        "true_rate": 0.0,
+        "precision_excluding_uncertain": 0.0
+      }
+    },
+    "error_categories": {
+      "ENTITY_ERROR": 8,
+      "WRONG_SUBJECT": 1,
+      "WRONG_OBJECT": 5,
+      "WRONG_RELATION_TYPE": 6
+    }
+  },
+  "round2_human_review": {
+    "status": "human labels by a project member on the same 66 rows as round 2; stricter than the assistant's provisional labels",
+    "overall": {
+      "n": 66,
+      "TRUE": 38,
+      "FALSE": 19,
+      "UNCERTAIN": 9,
+      "true_rate": 0.576,
+      "precision_excluding_uncertain": 0.667
+    },
+    "by_relation": {
+      "USES": {
+        "n": 21,
+        "TRUE": 11,
+        "FALSE": 8,
+        "UNCERTAIN": 2,
+        "true_rate": 0.524,
+        "precision_excluding_uncertain": 0.579
+      },
+      "USES_TECHNIQUE": {
+        "n": 14,
+        "TRUE": 11,
+        "FALSE": 2,
+        "UNCERTAIN": 1,
+        "true_rate": 0.786,
+        "precision_excluding_uncertain": 0.846
+      },
+      "EXPLOITS": {
+        "n": 1,
+        "TRUE": 0,
+        "FALSE": 1,
+        "UNCERTAIN": 0,
+        "true_rate": 0.0,
+        "precision_excluding_uncertain": 0.0
+      },
+      "TARGETS": {
+        "n": 30,
+        "TRUE": 16,
+        "FALSE": 8,
+        "UNCERTAIN": 6,
+        "true_rate": 0.533,
+        "precision_excluding_uncertain": 0.667
+      }
+    },
+    "by_head_type_USES": {
+      "GROUP": {
+        "n": 10,
+        "TRUE": 8,
+        "FALSE": 0,
+        "UNCERTAIN": 2,
+        "true_rate": 0.8,
+        "precision_excluding_uncertain": 1.0
+      },
+      "MALWARE": {
+        "n": 11,
+        "TRUE": 3,
+        "FALSE": 8,
+        "UNCERTAIN": 0,
+        "true_rate": 0.273,
+        "precision_excluding_uncertain": 0.273
+      }
+    },
+    "by_head_type_TARGETS": {
+      "GROUP": {
+        "n": 16,
+        "TRUE": 12,
+        "FALSE": 4,
+        "UNCERTAIN": 0,
+        "true_rate": 0.75,
+        "precision_excluding_uncertain": 0.75
+      },
+      "MALWARE": {
+        "n": 14,
+        "TRUE": 4,
+        "FALSE": 4,
+        "UNCERTAIN": 6,
+        "true_rate": 0.286,
+        "precision_excluding_uncertain": 0.5
+      }
+    },
+    "agreement_with_assistant": {
+      "three_way": "51/66 = 0.773",
+      "true_vs_not_true": "58/66 = 0.879",
+      "kappa_three_way": 0.563,
+      "kappa_true_vs_not": 0.742
+    }
+  }
+}
