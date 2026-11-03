@@ -96,6 +96,20 @@ MALWARE_CLASS_AFTER = re.compile(r"^\s+(?:trojans?|malware|ransomware|botnet|bac
                                  re.I)
 LINK_TARGET = re.compile(r"\]\([^)]*\)")   # markdown link target/title: not prose
 
+# A negation cue just before the trigger makes the sentence a NEGATIVE assertion ("never used", "did not use",
+# "we've never seen X use Y"); cues further away are ambiguous and the candidate is dropped instead.
+NEGATION_CUE = re.compile(r"\b(?:never|not|no longer|cannot)\b|n't\b", re.I)
+NEGATION_LOOKBACK = 25   # characters before the earlier mention in which a cue still counts
+
+# Best-effort scope (campaign and dates named in the sentence); not a full campaign model
+CAMPAIGN_NAMED = re.compile(r"\bcampaigns?\s+(?:named|dubbed|called|known as)\s+[\"'“]?"
+                            r"([A-Z][\w\-]*(?:\s+[A-Z][\w\-]*){0,2})")
+CAMPAIGN_PREFIX = re.compile(r"\b((?:[A-Z][\w\-]*\s+){1,3})campaigns?\b")
+CAMPAIGN_WORD = re.compile(r"\bcampaigns?\b", re.I)
+GENERIC_CAMPAIGN_WORDS = {"the", "this", "that", "these", "those", "a", "an", "another", "new", "recent", "email",
+                          "phishing", "malspam", "spam", "malicious", "same", "current", "ongoing", "similar",
+                          "first", "second", "latest", "previous", "following", "in", "of", "and", "or", "to"}
+
 
 def norm(text):
     text = re.sub(r"\s+", " ", text.strip().lower())
@@ -135,17 +149,44 @@ def mask_links(text):
     return "".join(chars), spans
 
 
-def candidate_ok(rel, h, t, trig, direction, text, between, ents):
-    """Reject a (head, trigger, tail) candidate that the sentence does not really assert."""
+def is_negated(h, t, trig, direction, text):
+    """True when a negation cue sits just before the trigger (between the earlier mention and the trigger)."""
+    trigger_at = (h["char_end"] if direction == "active" else t["char_end"]) + trig.start()
+    start = max(0, min(h["char_start"], t["char_start"]) - NEGATION_LOOKBACK)
+    return bool(NEGATION_CUE.search(text[start:trigger_at]))
+
+
+def extract_scope(seg):
+    """Best-effort scope of the sentence: a named campaign (if any) and the dates it mentions."""
+    sentence = seg["clean_text"]
+    campaign = None
+    m = CAMPAIGN_NAMED.search(sentence)
+    if m:
+        campaign = m.group(1).strip()
+    else:
+        for m in CAMPAIGN_PREFIX.finditer(sentence):
+            words = [w for w in m.group(1).split() if w.lower() not in GENERIC_CAMPAIGN_WORDS]
+            if words:
+                campaign = " ".join(words)
+                break
+    dates = [re.sub(r"\s+([,.])", r"\1", e["text"]) for e in seg["entities"] if e["type"] == "DATE"]
+    return {"campaign": campaign, "campaign_mentioned": bool(CAMPAIGN_WORD.search(sentence)),
+            "dates": dates, "method": "regex_best_effort"}
+
+
+def candidate_ok(rel, h, t, trig, direction, text, between, ents, allow_negation=False):
+    """Reject a (head, trigger, tail) candidate that the sentence does not really assert.
+    With allow_negation, a negated candidate is kept (the caller records it with negative polarity)."""
     if BLOCK_BETWEEN.search(between):
         return False
     if norm(h["text"]) == norm(t["text"]) or norm(h["text"]) in GENERIC_HEADS:
         return False           # an entity cannot target itself; "APT"/"group" alone is not an actor name
     lo = min(h["char_start"], t["char_start"])
     hi = max(h["char_end"], t["char_end"])
-    if IMPERSONATION.search(text[max(0, lo - 80):hi]) or NEGATION.search(text[max(0, lo - 60):hi]) \
-            or COMPARISON.search(text[max(0, lo - 80):hi]):
+    if IMPERSONATION.search(text[max(0, lo - 80):hi]) or COMPARISON.search(text[max(0, lo - 80):hi]):
         return False
+    if not allow_negation and NEGATION.search(text[max(0, lo - 60):hi]):
+        return False           # negated or disputed wording that is not a clean "never/not + trigger"
     rel_clause = RELATIVE_BE.search(between)
     if rel_clause:
         start = (h["char_end"] if direction == "active" else t["char_end"])
@@ -194,6 +235,16 @@ def candidate_ok(rel, h, t, trig, direction, text, between, ents):
 
 
 def find_relations(seg, resolution):
+    """Positive relations only: (relation, head, tail, trigger, direction, confidence) tuples."""
+    return [item[:6] for item in _find(seg, include_negative=False)]
+
+
+def find_assertions(seg, resolution):
+    """Positive and negative assertions: the same tuples plus polarity and certainty at the end."""
+    return _find(seg, include_negative=True)
+
+
+def _find(seg, include_negative):
     text, spans = mask_links(seg["text"])
     ents = [e for e in seg["entities"] if e["char_start"] is not None
             and not any(a <= e["char_start"] and e["char_end"] <= b for a, b in spans)]
@@ -222,21 +273,27 @@ def find_relations(seg, resolution):
                     continue
                 if rel == "TARGETS" and t["type"] == "LOC" and not STRONG_TARGET.match(trig.group(0)):
                     continue
-                if not candidate_ok(rel, h, t, trig, direction, text, between, ents):
+                negated = is_negated(h, t, trig, direction, text)
+                if negated and not include_negative:
+                    continue
+                if not candidate_ok(rel, h, t, trig, direction, text, between, ents, allow_negation=negated):
                     continue
                 lo, hi = min(h["char_start"], t["char_start"]), max(h["char_end"], t["char_end"])
                 inner = [e for e in ents if e not in (h, t)
                          and min(h["char_end"], t["char_end"]) <= e["char_start"]
                          and e["char_end"] <= max(h["char_start"], t["char_start"])
                          and (e["type"] in head_types or e["type"] in tail_types)]
-                if HEDGE.search(text[max(0, lo - 60):hi]):
+                hedged = bool(HEDGE.search(text[max(0, lo - 60):hi]))
+                if hedged:
                     conf = "low"       # hedged ("likely", "potentially"...): kept but not trusted
                 else:
                     conf = "high" if not inner and len(between) <= 40 else "medium"
-                out.append((rel, h, t, trig.group(0).lower(), direction, conf))
+                out.append((rel, h, t, trig.group(0).lower(), direction, conf,
+                            "negative" if negated else "positive", "hedged" if hedged else "asserted"))
     # "TA415 used Cobalt Strike in a campaign against X": the group, not its tool, is the subject
-    uses = {(id(h), id(t)) for rel, h, t, *_ in out if rel == "USES" and h["type"] == "GROUP"}
-    group_targets = {(id(h), id(t)) for rel, h, t, *_ in out if rel == "TARGETS" and h["type"] == "GROUP"}
+    positive = [item for item in out if item[6] == "positive"]
+    uses = {(id(h), id(t)) for rel, h, t, *_ in positive if rel == "USES" and h["type"] == "GROUP"}
+    group_targets = {(id(h), id(t)) for rel, h, t, *_ in positive if rel == "TARGETS" and h["type"] == "GROUP"}
     used_by_group = {used_id for _, used_id in uses}
     keep = []
     for item in out:
@@ -313,17 +370,18 @@ def main():
         for line in f:
             seg = json.loads(line)
             doc, sid = seg["report_id"], seg["segment_id"]
-            found = find_relations(seg, resolution)
+            found = find_assertions(seg, resolution)
             hist = recent.setdefault(doc, [])
             prev = [e for sid0, es in hist if 0 < sid - sid0 <= 2 for e in es]
-            found += cross_segment_exploits(seg, prev)
+            found += [item + ("positive", "asserted") for item in cross_segment_exploits(seg, prev)]
             hist.append((sid, [e for e in seg["entities"] if e["type"] in CARRIERS]))
-            for rel, h, t, trig, direction, conf in found:
+            scope = extract_scope(seg) if found else None
+            for rel, h, t, trig, direction, conf, polarity, certainty in found:
                 hid, hn = resolve(doc, sid, h, resolution)
                 tid, tn = resolve(doc, sid, t, resolution)
-                if hid == tid or (hid, rel, tid, doc, sid) in seen:
+                if hid == tid or (hid, rel, tid, doc, sid, polarity) in seen:
                     continue
-                seen.add((hid, rel, tid, doc, sid))
+                seen.add((hid, rel, tid, doc, sid, polarity))
                 for nid, info in ((hid, hn), (tid, tn)):
                     if nid not in nodes:
                         nodes[nid] = {"id": nid, "node_type": "ENTITY", **info, "entity_class": None}
@@ -333,10 +391,15 @@ def main():
                          "direction": direction, "confidence": conf,
                          "head_mention": h["text"], "tail_mention": t["text"],
                          "head_type": h["type"], "tail_type": t["type"],   # NER types of the two mentions
-                         "method": "rule_based_v2"}
+                         "polarity": polarity,       # "negative": the sentence says the relation does NOT hold
+                         "certainty": certainty,     # "hedged": likely/potentially/allegedly...
+                         "scope": scope,             # best-effort campaign and dates named in the sentence
+                         "verification_status": "unverified",
+                         "method": "rule_based_v3"}
                 records.append({"head": hid, "relation": rel, "tail": tid, **props})
-                edges.append({"source": hid, "target": tid, "relation": rel, "properties": props})
-                stats[(rel, conf)] += 1
+                if polarity == "positive":   # negative assertions stay out of the plain graph so no one reads them as edges
+                    edges.append({"source": hid, "target": tid, "relation": rel, "properties": props})
+                stats[(rel, conf, polarity)] += 1
 
     remap = merge_aliases(nodes, edges, records)
     print(f"Merged {len(remap)} alias nodes into their canonical entities")
@@ -354,9 +417,10 @@ def main():
     with open(DATA / "cti_knowledge_graph.json", "w", encoding="utf-8") as f:
         json.dump(graph, f, ensure_ascii=False, indent=2)
 
-    print(f"Relations extracted: {len(records)}")
-    for (rel, conf), n in sorted(stats.items()):
-        print(f"  {rel:15s} {conf:7s} {n}")
+    positives = sum(r["polarity"] == "positive" for r in records)
+    print(f"Relations extracted: {positives} positive, {len(records) - positives} negative")
+    for (rel, conf, polarity), n in sorted(stats.items()):
+        print(f"  {rel:15s} {conf:7s} {polarity:8s} {n}")
     print(f"Nodes: {len(nodes)}  Edges: {len(edges)}")
 
 

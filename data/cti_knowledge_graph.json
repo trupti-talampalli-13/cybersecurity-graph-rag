@@ -138145,7 +138145,16 @@
         "tail_mention": "Trickbot",
         "head_type": "MALWARE",
         "tail_type": "MALWARE",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": false,
+          "dates": [],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -138165,7 +138174,18 @@
         "tail_mention": "Emotet",
         "head_type": "GROUP",
         "tail_type": "MALWARE",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": false,
+          "dates": [
+            "January 2020"
+          ],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -138185,7 +138205,16 @@
         "tail_mention": "SOAP",
         "head_type": "MALWARE",
         "tail_type": "TECHNIQUE",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": false,
+          "dates": [],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -138205,7 +138234,16 @@
         "tail_mention": "C & C",
         "head_type": "MALWARE",
         "tail_type": "TACTIC",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": false,
+          "dates": [],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -138225,7 +138263,16 @@
         "tail_mention": "Cobalt Strike",
         "head_type": "GROUP",
         "tail_type": "MALWARE",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": false,
+          "dates": [],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -138245,7 +138292,18 @@
         "tail_mention": "BazaLoader",
         "head_type": "GROUP",
         "tail_type": "MALWARE",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": false,
+          "dates": [
+            "April 2020"
+          ],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -138265,7 +138323,16 @@
         "tail_mention": "Cobalt Strike",
         "head_type": "MALWARE",
         "tail_type": "MALWARE",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": false,
+          "dates": [],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -138285,7 +138352,18 @@
         "tail_mention": "Cobalt Strike",
         "head_type": "GROUP",
         "tail_type": "MALWARE",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": false,
+          "dates": [
+            "February 2021"
+          ],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -138305,7 +138383,18 @@
         "tail_mention": "Cobalt Strike",
         "head_type": "GROUP",
         "tail_type": "MALWARE",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": true,
+          "dates": [
+            "mid - 2020"
+          ],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -138325,7 +138414,16 @@
         "tail_mention": "Cobalt Strike",
         "head_type": "GROUP",
         "tail_type": "MALWARE",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": true,
+          "dates": [],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -138345,7 +138443,16 @@
         "tail_mention": "airlines sector",
         "head_type": "GROUP",
         "tail_type": "SECTOR",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": true,
+          "dates": [],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -138365,7 +138472,16 @@
         "tail_mention": "C2 communication",
         "head_type": "MALWARE",
         "tail_type": "TACTIC",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": false,
+          "dates": [],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -138385,7 +138501,18 @@
         "tail_mention": "Trickbot",
         "head_type": "MALWARE",
         "tail_type": "MALWARE",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": false,
+          "dates": [
+            "Oct. 19, 2020"
+          ],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -138405,7 +138532,16 @@
         "tail_mention": "BazarLoader",
         "head_type": "MALWARE",
         "tail_type": "MALWARE",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": false,
+          "dates": [],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -138425,7 +138561,16 @@
         "tail_mention": "South Korean video game company",
         "head_type": "GROUP",
         "tail_type": "SECTOR",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "hedged",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": true,
+          "dates": [],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -138445,7 +138590,22 @@
         "tail_mention": "Henkel",
         "head_type": "GROUP",
         "tail_type": "ORG",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": false,
+          "dates": [
+            "last year",
+            "2014",
+            "2015",
+            "2018",
+            "2019"
+          ],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -138465,7 +138625,22 @@
         "tail_mention": "BASF",
         "head_type": "GROUP",
         "tail_type": "ORG",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": false,
+          "dates": [
+            "last year",
+            "2014",
+            "2015",
+            "2018",
+            "2019"
+          ],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -138485,7 +138660,22 @@
         "tail_mention": "Bayer",
         "head_type": "GROUP",
         "tail_type": "ORG",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": false,
+          "dates": [
+            "last year",
+            "2014",
+            "2015",
+            "2018",
+            "2019"
+          ],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -138505,7 +138695,22 @@
         "tail_mention": "Roche",
         "head_type": "GROUP",
         "tail_type": "ORG",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": false,
+          "dates": [
+            "last year",
+            "2014",
+            "2015",
+            "2018",
+            "2019"
+          ],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -138525,7 +138730,18 @@
         "tail_mention": "German chemical company",
         "head_type": "GROUP",
         "tail_type": "SECTOR",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": false,
+          "dates": [
+            "2015"
+          ],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -138545,7 +138761,16 @@
         "tail_mention": "C2",
         "head_type": "GROUP",
         "tail_type": "TACTIC",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": false,
+          "dates": [],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -138565,7 +138790,16 @@
         "tail_mention": "iodine",
         "head_type": "GROUP",
         "tail_type": "TOOL",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": false,
+          "dates": [],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -138585,7 +138819,16 @@
         "tail_mention": "German chemical company",
         "head_type": "GROUP",
         "tail_type": "SECTOR",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": false,
+          "dates": [],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -138605,7 +138848,16 @@
         "tail_mention": "Gravity Co . , Ltd .",
         "head_type": "GROUP",
         "tail_type": "ORG",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "hedged",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": false,
+          "dates": [],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -138625,7 +138877,16 @@
         "tail_mention": "South Korean video game company",
         "head_type": "GROUP",
         "tail_type": "SECTOR",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "hedged",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": false,
+          "dates": [],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -138645,7 +138906,16 @@
         "tail_mention": "video game industry",
         "head_type": "GROUP",
         "tail_type": "SECTOR",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": "Winnti Group",
+          "campaign_mentioned": true,
+          "dates": [],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -138665,7 +138935,16 @@
         "tail_mention": "German chemical company",
         "head_type": "GROUP",
         "tail_type": "SECTOR",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": false,
+          "dates": [],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -138685,7 +138964,16 @@
         "tail_mention": "University of London ’ s SOAS",
         "head_type": "GROUP",
         "tail_type": "ORG",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": false,
+          "dates": [],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -138705,7 +138993,16 @@
         "tail_mention": "Cobalt Strike",
         "head_type": "MALWARE",
         "tail_type": "MALWARE",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": "RustyBuer",
+          "campaign_mentioned": true,
+          "dates": [],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -138725,7 +139022,16 @@
         "tail_mention": "Cobalt Strike",
         "head_type": "MALWARE",
         "tail_type": "MALWARE",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": "Buer",
+          "campaign_mentioned": true,
+          "dates": [],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -138745,7 +139051,16 @@
         "tail_mention": "Trickbot",
         "head_type": "MALWARE",
         "tail_type": "MALWARE",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": false,
+          "dates": [],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -138765,7 +139080,16 @@
         "tail_mention": "Trickbot",
         "head_type": "MALWARE",
         "tail_type": "MALWARE",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": false,
+          "dates": [],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -138785,7 +139109,16 @@
         "tail_mention": "Trickbot",
         "head_type": "MALWARE",
         "tail_type": "MALWARE",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": false,
+          "dates": [],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -138805,7 +139138,16 @@
         "tail_mention": "RIG exploit kit",
         "head_type": "MALWARE",
         "tail_type": "MALWARE",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": "Dridex",
+          "campaign_mentioned": true,
+          "dates": [],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -138825,7 +139167,18 @@
         "tail_mention": "US   and EU banks",
         "head_type": "MALWARE",
         "tail_type": "SECTOR",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": "ZLoader",
+          "campaign_mentioned": true,
+          "dates": [
+            "2021"
+          ],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -138845,7 +139198,18 @@
         "tail_mention": "financial institutions",
         "head_type": "MALWARE",
         "tail_type": "SECTOR",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": "ZLoader",
+          "campaign_mentioned": true,
+          "dates": [
+            "2021"
+          ],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -138865,7 +139229,16 @@
         "tail_mention": "U.S .",
         "head_type": "MALWARE",
         "tail_type": "LOC",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "hedged",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": false,
+          "dates": [],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -138885,7 +139258,18 @@
         "tail_mention": "JSSLoader",
         "head_type": "GROUP",
         "tail_type": "MALWARE",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": "TA543",
+          "campaign_mentioned": true,
+          "dates": [
+            "2019"
+          ],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -138905,7 +139289,16 @@
         "tail_mention": "Griffon",
         "head_type": "MALWARE",
         "tail_type": "MALWARE",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": false,
+          "dates": [],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -138925,7 +139318,16 @@
         "tail_mention": "JSSLoader",
         "head_type": "GROUP",
         "tail_type": "MALWARE",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": false,
+          "dates": [],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -138945,7 +139347,16 @@
         "tail_mention": "JSSLoader",
         "head_type": "GROUP",
         "tail_type": "MALWARE",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": false,
+          "dates": [],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -138965,7 +139376,18 @@
         "tail_mention": "JSSLoader",
         "head_type": "GROUP",
         "tail_type": "MALWARE",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": false,
+          "dates": [
+            "June 8, 2021"
+          ],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -138985,7 +139407,16 @@
         "tail_mention": "brute-force attack .",
         "head_type": "GROUP",
         "tail_type": "TECHNIQUE",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": false,
+          "dates": [],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -139005,7 +139436,16 @@
         "tail_mention": "EtterSilent",
         "head_type": "MALWARE",
         "tail_type": "TOOL",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": false,
+          "dates": [],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -139025,7 +139465,16 @@
         "tail_mention": "EtterSilent",
         "head_type": "MALWARE",
         "tail_type": "TOOL",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": false,
+          "dates": [],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -139045,7 +139494,16 @@
         "tail_mention": "EtterSilent",
         "head_type": "MALWARE",
         "tail_type": "TOOL",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": false,
+          "dates": [],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -139065,7 +139523,16 @@
         "tail_mention": "EtterSilent",
         "head_type": "MALWARE",
         "tail_type": "TOOL",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": true,
+          "dates": [],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -139085,7 +139552,16 @@
         "tail_mention": "BlackSoul",
         "head_type": "GROUP",
         "tail_type": "MALWARE",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": false,
+          "dates": [],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -139105,7 +139581,16 @@
         "tail_mention": "BlackWater",
         "head_type": "GROUP",
         "tail_type": "MALWARE",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": "ReconHellcat",
+          "campaign_mentioned": true,
+          "dates": [],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -139125,7 +139610,16 @@
         "tail_mention": "C2",
         "head_type": "MALWARE",
         "tail_type": "TACTIC",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": false,
+          "dates": [],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -139145,7 +139639,16 @@
         "tail_mention": "Decoding a C2 URL",
         "head_type": "MALWARE",
         "tail_type": "TECHNIQUE",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": false,
+          "dates": [],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -139165,7 +139668,16 @@
         "tail_mention": "government-related body",
         "head_type": "MALWARE",
         "tail_type": "SECTOR",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "hedged",
+        "scope": {
+          "campaign": "BlackSoul",
+          "campaign_mentioned": true,
+          "dates": [],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -139185,7 +139697,16 @@
         "tail_mention": "defense",
         "head_type": "GROUP",
         "tail_type": "SECTOR",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": "ReconHellcat",
+          "campaign_mentioned": true,
+          "dates": [],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -139205,7 +139726,16 @@
         "tail_mention": "diplomatic government bodies",
         "head_type": "GROUP",
         "tail_type": "SECTOR",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": "ReconHellcat",
+          "campaign_mentioned": true,
+          "dates": [],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -139225,7 +139755,16 @@
         "tail_mention": "CVE-2017–11882",
         "head_type": "TOOL",
         "tail_type": "CVE",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": false,
+          "dates": [],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -139245,7 +139784,16 @@
         "tail_mention": "CVE-2018–0802",
         "head_type": "TOOL",
         "tail_type": "CVE",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": false,
+          "dates": [],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -139265,7 +139813,16 @@
         "tail_mention": "CobInt",
         "head_type": "GROUP",
         "tail_type": "MALWARE",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": true,
+          "dates": [],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -139285,7 +139842,16 @@
         "tail_mention": "Cobalt Strike",
         "head_type": "GROUP",
         "tail_type": "MALWARE",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": true,
+          "dates": [],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -139305,7 +139871,16 @@
         "tail_mention": "Middle East",
         "head_type": "MALWARE",
         "tail_type": "LOC",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": "Njrat",
+          "campaign_mentioned": true,
+          "dates": [],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -139325,7 +139900,16 @@
         "tail_mention": "energy",
         "head_type": "GROUP",
         "tail_type": "SECTOR",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": false,
+          "dates": [],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -139345,7 +139929,16 @@
         "tail_mention": "financial",
         "head_type": "GROUP",
         "tail_type": "SECTOR",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": false,
+          "dates": [],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -139365,7 +139958,16 @@
         "tail_mention": "insurance",
         "head_type": "GROUP",
         "tail_type": "SECTOR",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": false,
+          "dates": [],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -139385,7 +139987,18 @@
         "tail_mention": "ZxShell",
         "head_type": "GROUP",
         "tail_type": "MALWARE",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": false,
+          "dates": [
+            "2019 - 09 - 21"
+          ],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -139405,7 +140018,18 @@
         "tail_mention": "RootKit",
         "head_type": "GROUP",
         "tail_type": "TECHNIQUE",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": false,
+          "dates": [
+            "2019 - 09 - 21"
+          ],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -139425,7 +140049,16 @@
         "tail_mention": "Defense",
         "head_type": "GROUP",
         "tail_type": "SECTOR",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": false,
+          "dates": [],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -139445,7 +140078,16 @@
         "tail_mention": "exfiltrate sensitive information .",
         "head_type": "MALWARE",
         "tail_type": "TACTIC",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": false,
+          "dates": [],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -139465,7 +140107,16 @@
         "tail_mention": "defense",
         "head_type": "GROUP",
         "tail_type": "SECTOR",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": false,
+          "dates": [],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -139485,7 +140136,16 @@
         "tail_mention": "reconnaissance",
         "head_type": "MALWARE",
         "tail_type": "TACTIC",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": false,
+          "dates": [],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -139505,7 +140165,16 @@
         "tail_mention": "defense",
         "head_type": "GROUP",
         "tail_type": "SECTOR",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": false,
+          "dates": [],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -139525,7 +140194,16 @@
         "tail_mention": "defense",
         "head_type": "GROUP",
         "tail_type": "SECTOR",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": true,
+          "dates": [],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -139545,7 +140223,16 @@
         "tail_mention": "defense industrial base",
         "head_type": "MALWARE",
         "tail_type": "SECTOR",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": false,
+          "dates": [],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -139565,7 +140252,16 @@
         "tail_mention": "download and execute",
         "head_type": "MALWARE",
         "tail_type": "TACTIC",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": false,
+          "dates": [],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -139585,7 +140281,16 @@
         "tail_mention": "Cambodia",
         "head_type": "GROUP",
         "tail_type": "LOC",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": false,
+          "dates": [],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -139605,7 +140310,16 @@
         "tail_mention": "Belgium",
         "head_type": "GROUP",
         "tail_type": "LOC",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": false,
+          "dates": [],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -139625,7 +140339,16 @@
         "tail_mention": "Germany",
         "head_type": "GROUP",
         "tail_type": "LOC",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": false,
+          "dates": [],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -139645,7 +140368,16 @@
         "tail_mention": "Hong Kong",
         "head_type": "GROUP",
         "tail_type": "LOC",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": false,
+          "dates": [],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -139665,7 +140397,16 @@
         "tail_mention": "Saudi Arabia",
         "head_type": "GROUP",
         "tail_type": "LOC",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": false,
+          "dates": [],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -139685,7 +140426,16 @@
         "tail_mention": "Germany",
         "head_type": "GROUP",
         "tail_type": "LOC",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": false,
+          "dates": [],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -139705,7 +140455,16 @@
         "tail_mention": "Norway",
         "head_type": "GROUP",
         "tail_type": "LOC",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": false,
+          "dates": [],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -139725,7 +140484,16 @@
         "tail_mention": "UK",
         "head_type": "GROUP",
         "tail_type": "LOC",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": false,
+          "dates": [],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -139745,7 +140513,16 @@
         "tail_mention": "SouthEast",
         "head_type": "GROUP",
         "tail_type": "LOC",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": false,
+          "dates": [],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -139765,7 +140542,16 @@
         "tail_mention": "web shells",
         "head_type": "GROUP",
         "tail_type": "TECHNIQUE",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": false,
+          "dates": [],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -139785,7 +140571,16 @@
         "tail_mention": "web shells",
         "head_type": "GROUP",
         "tail_type": "TECHNIQUE",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": false,
+          "dates": [],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -139805,7 +140600,16 @@
         "tail_mention": "Zebrocy",
         "head_type": "GROUP",
         "tail_type": "MALWARE",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": true,
+          "dates": [],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -139825,7 +140629,16 @@
         "tail_mention": "Zebrocy",
         "head_type": "GROUP",
         "tail_type": "MALWARE",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": false,
+          "dates": [],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -139845,7 +140658,18 @@
         "tail_mention": "BlackWater",
         "head_type": "MALWARE",
         "tail_type": "MALWARE",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": false,
+          "dates": [
+            "5 August"
+          ],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -139865,7 +140689,16 @@
         "tail_mention": "gaming sector",
         "head_type": "GROUP",
         "tail_type": "SECTOR",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": false,
+          "dates": [],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -139885,7 +140718,16 @@
         "tail_mention": "Thailand",
         "head_type": "GROUP",
         "tail_type": "LOC",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": false,
+          "dates": [],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -139905,7 +140747,16 @@
         "tail_mention": "financial",
         "head_type": "MALWARE",
         "tail_type": "SECTOR",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": false,
+          "dates": [],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -139925,7 +140776,16 @@
         "tail_mention": "Racoon Stealer",
         "head_type": "MALWARE",
         "tail_type": "MALWARE",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": false,
+          "dates": [],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -139945,7 +140805,16 @@
         "tail_mention": "RedLine",
         "head_type": "MALWARE",
         "tail_type": "MALWARE",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": false,
+          "dates": [],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -139965,7 +140834,16 @@
         "tail_mention": "Bulgaria",
         "head_type": "GROUP",
         "tail_type": "LOC",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": false,
+          "dates": [],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -139985,7 +140863,16 @@
         "tail_mention": "Azerbaijan",
         "head_type": "GROUP",
         "tail_type": "LOC",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": false,
+          "dates": [],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -140005,7 +140892,18 @@
         "tail_mention": "Düsseldorf University Clinic",
         "head_type": "MALWARE",
         "tail_type": "ORG",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": false,
+          "dates": [
+            "September 2020"
+          ],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -140025,7 +140923,18 @@
         "tail_mention": "CVE-2019-2725",
         "head_type": "MALWARE",
         "tail_type": "CVE",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": false,
+          "dates": [
+            "April 17, 2019"
+          ],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -140045,7 +140954,16 @@
         "tail_mention": "Ryuk",
         "head_type": "MALWARE",
         "tail_type": "MALWARE",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": false,
+          "dates": [],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -140065,7 +140983,18 @@
         "tail_mention": "healthcare sector",
         "head_type": "MALWARE",
         "tail_type": "SECTOR",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": false,
+          "dates": [
+            "this year"
+          ],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -140085,7 +141014,16 @@
         "tail_mention": "Shipping / Logistics",
         "head_type": "GROUP",
         "tail_type": "SECTOR",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": false,
+          "dates": [],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -140105,7 +141043,16 @@
         "tail_mention": "Manufacturing",
         "head_type": "GROUP",
         "tail_type": "SECTOR",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": false,
+          "dates": [],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -140125,7 +141072,16 @@
         "tail_mention": "Business Services",
         "head_type": "GROUP",
         "tail_type": "SECTOR",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": false,
+          "dates": [],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -140145,7 +141101,16 @@
         "tail_mention": "Pharmaceutical",
         "head_type": "GROUP",
         "tail_type": "SECTOR",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": false,
+          "dates": [],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -140165,7 +141130,16 @@
         "tail_mention": "Energy entities",
         "head_type": "GROUP",
         "tail_type": "SECTOR",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": false,
+          "dates": [],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -140185,7 +141159,16 @@
         "tail_mention": "Remcos",
         "head_type": "GROUP",
         "tail_type": "MALWARE",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": false,
+          "dates": [],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -140205,7 +141188,16 @@
         "tail_mention": "Shipping",
         "head_type": "MALWARE",
         "tail_type": "SECTOR",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": "Remcos RAT",
+          "campaign_mentioned": true,
+          "dates": [],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -140225,7 +141217,16 @@
         "tail_mention": "Logistics",
         "head_type": "MALWARE",
         "tail_type": "SECTOR",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": "Remcos RAT",
+          "campaign_mentioned": true,
+          "dates": [],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -140245,7 +141246,16 @@
         "tail_mention": "Manufacturing",
         "head_type": "MALWARE",
         "tail_type": "SECTOR",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": "Remcos RAT",
+          "campaign_mentioned": true,
+          "dates": [],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -140265,7 +141275,16 @@
         "tail_mention": "Turkey",
         "head_type": "GROUP",
         "tail_type": "LOC",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": true,
+          "dates": [],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -140285,7 +141304,18 @@
         "tail_mention": "Turkish",
         "head_type": "GROUP",
         "tail_type": "LOC",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "hedged",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": true,
+          "dates": [
+            "January of 2020"
+          ],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -140305,7 +141335,18 @@
         "tail_mention": "telecommunications",
         "head_type": "GROUP",
         "tail_type": "SECTOR",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "hedged",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": true,
+          "dates": [
+            "January of 2020"
+          ],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -140325,7 +141366,18 @@
         "tail_mention": "finance",
         "head_type": "GROUP",
         "tail_type": "SECTOR",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "hedged",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": true,
+          "dates": [
+            "January of 2020"
+          ],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -140345,7 +141397,16 @@
         "tail_mention": "Turkey",
         "head_type": "GROUP",
         "tail_type": "LOC",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": "APT10",
+          "campaign_mentioned": true,
+          "dates": [],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -140365,7 +141426,16 @@
         "tail_mention": "Turkish",
         "head_type": "GROUP",
         "tail_type": "LOC",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": true,
+          "dates": [],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -140385,7 +141455,16 @@
         "tail_mention": "Italian",
         "head_type": "GROUP",
         "tail_type": "LOC",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": false,
+          "dates": [],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -140405,7 +141484,16 @@
         "tail_mention": "Ursnif",
         "head_type": "GROUP",
         "tail_type": "MALWARE",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": false,
+          "dates": [],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -140425,7 +141513,18 @@
         "tail_mention": "Italian",
         "head_type": "GROUP",
         "tail_type": "LOC",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "hedged",
+        "scope": {
+          "campaign": "TA544 Ursnif",
+          "campaign_mentioned": true,
+          "dates": [
+            "2021"
+          ],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -140445,7 +141544,18 @@
         "tail_mention": "Italian",
         "head_type": "MALWARE",
         "tail_type": "LOC",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": "TA544 Ursnif",
+          "campaign_mentioned": true,
+          "dates": [
+            "2021"
+          ],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -140465,7 +141575,16 @@
         "tail_mention": "Italy",
         "head_type": "GROUP",
         "tail_type": "LOC",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": false,
+          "dates": [],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -140485,7 +141604,16 @@
         "tail_mention": "Italian",
         "head_type": "MALWARE",
         "tail_type": "LOC",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": true,
+          "dates": [],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -140505,7 +141633,16 @@
         "tail_mention": "Italian",
         "head_type": "GROUP",
         "tail_type": "LOC",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": true,
+          "dates": [],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -140525,7 +141662,18 @@
         "tail_mention": "Taiwanese government",
         "head_type": "GROUP",
         "tail_type": "ORG",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": false,
+          "dates": [
+            "2020"
+          ],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -140545,7 +141693,16 @@
         "tail_mention": "supply chains",
         "head_type": "GROUP",
         "tail_type": "SECTOR",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": false,
+          "dates": [],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -140565,7 +141722,16 @@
         "tail_mention": "FlawedGrace",
         "head_type": "GROUP",
         "tail_type": "MALWARE",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": false,
+          "dates": [],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -140585,7 +141751,16 @@
         "tail_mention": "Rebol",
         "head_type": "MALWARE",
         "tail_type": "TOOL",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": false,
+          "dates": [],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -140605,7 +141780,16 @@
         "tail_mention": "FlawedGrace",
         "head_type": "MALWARE",
         "tail_type": "MALWARE",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": false,
+          "dates": [],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -140625,7 +141809,16 @@
         "tail_mention": "FlawedGrace",
         "head_type": "GROUP",
         "tail_type": "MALWARE",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": false,
+          "dates": [],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -140645,7 +141838,16 @@
         "tail_mention": "Rebol",
         "head_type": "MALWARE",
         "tail_type": "TOOL",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": false,
+          "dates": [],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -140665,7 +141867,16 @@
         "tail_mention": "ReflectiveGnome",
         "head_type": "MALWARE",
         "tail_type": "MALWARE",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": false,
+          "dates": [],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -140685,7 +141896,16 @@
         "tail_mention": "FlawedGrace",
         "head_type": "MALWARE",
         "tail_type": "MALWARE",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": false,
+          "dates": [],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -140705,7 +141925,16 @@
         "tail_mention": "Rebol",
         "head_type": "MALWARE",
         "tail_type": "TOOL",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": false,
+          "dates": [],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -140725,7 +141954,16 @@
         "tail_mention": "ReflectiveGnome",
         "head_type": "MALWARE",
         "tail_type": "MALWARE",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": false,
+          "dates": [],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -140745,7 +141983,16 @@
         "tail_mention": "SLIVER",
         "head_type": "GROUP",
         "tail_type": "TOOL",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": false,
+          "dates": [],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -140765,7 +142012,16 @@
         "tail_mention": "Red Team & adversary simulation Framework",
         "head_type": "GROUP",
         "tail_type": "TOOL",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": true,
+          "dates": [],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -140785,7 +142041,16 @@
         "tail_mention": "Ursnif",
         "head_type": "GROUP",
         "tail_type": "MALWARE",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": false,
+          "dates": [],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -140805,7 +142070,16 @@
         "tail_mention": "IcedID",
         "head_type": "GROUP",
         "tail_type": "MALWARE",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": false,
+          "dates": [],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -140825,7 +142099,16 @@
         "tail_mention": "Qbot",
         "head_type": "GROUP",
         "tail_type": "MALWARE",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": false,
+          "dates": [],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -140845,7 +142128,16 @@
         "tail_mention": "Emotet",
         "head_type": "GROUP",
         "tail_type": "MALWARE",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": false,
+          "dates": [],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -140865,7 +142157,16 @@
         "tail_mention": "SLIVER",
         "head_type": "GROUP",
         "tail_type": "TOOL",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": false,
+          "dates": [],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -140885,7 +142186,16 @@
         "tail_mention": "Cobalt Strike",
         "head_type": "GROUP",
         "tail_type": "MALWARE",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "hedged",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": true,
+          "dates": [],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -140905,7 +142215,16 @@
         "tail_mention": "French",
         "head_type": "MALWARE",
         "tail_type": "LOC",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": false,
+          "dates": [],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -140925,7 +142244,18 @@
         "tail_mention": "French",
         "head_type": "MALWARE",
         "tail_type": "LOC",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": false,
+          "dates": [
+            "2017"
+          ],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -140945,7 +142275,18 @@
         "tail_mention": "French",
         "head_type": "MALWARE",
         "tail_type": "LOC",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": "TinyNuke",
+          "campaign_mentioned": true,
+          "dates": [
+            "2018"
+          ],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -140965,7 +142306,18 @@
         "tail_mention": "French",
         "head_type": "MALWARE",
         "tail_type": "LOC",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": true,
+          "dates": [
+            "2017"
+          ],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -140985,7 +142337,18 @@
         "tail_mention": "French",
         "head_type": "MALWARE",
         "tail_type": "LOC",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": true,
+          "dates": [
+            "2017"
+          ],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -141005,7 +142368,19 @@
         "tail_mention": "French",
         "head_type": "MALWARE",
         "tail_type": "LOC",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": true,
+          "dates": [
+            "2021",
+            "2018"
+          ],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -141025,7 +142400,16 @@
         "tail_mention": "push malspam",
         "head_type": "MALWARE",
         "tail_type": "TECHNIQUE",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": false,
+          "dates": [],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -141045,7 +142429,18 @@
         "tail_mention": "Santa Clara Valley Transportation Authority",
         "head_type": "MALWARE",
         "tail_type": "ORG",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": false,
+          "dates": [
+            "In April 2021"
+          ],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -141065,7 +142460,18 @@
         "tail_mention": "banking",
         "head_type": "MALWARE",
         "tail_type": "SECTOR",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": false,
+          "dates": [
+            "2014"
+          ],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -141085,7 +142491,16 @@
         "tail_mention": "private-sector organizations",
         "head_type": "GROUP",
         "tail_type": "SECTOR",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": true,
+          "dates": [],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -141105,7 +142520,18 @@
         "tail_mention": "government",
         "head_type": "GROUP",
         "tail_type": "SECTOR",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": false,
+          "dates": [
+            "2007"
+          ],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -141125,7 +142551,18 @@
         "tail_mention": "military",
         "head_type": "GROUP",
         "tail_type": "SECTOR",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": false,
+          "dates": [
+            "2007"
+          ],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -141145,7 +142582,16 @@
         "tail_mention": "Zebrocy",
         "head_type": "GROUP",
         "tail_type": "MALWARE",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": true,
+          "dates": [],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -141165,7 +142611,18 @@
         "tail_mention": "government",
         "head_type": "GROUP",
         "tail_type": "SECTOR",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": false,
+          "dates": [
+            "2004"
+          ],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -141185,7 +142642,18 @@
         "tail_mention": "military",
         "head_type": "GROUP",
         "tail_type": "SECTOR",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": false,
+          "dates": [
+            "2004"
+          ],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -141205,7 +142673,18 @@
         "tail_mention": "technology",
         "head_type": "GROUP",
         "tail_type": "SECTOR",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": false,
+          "dates": [
+            "2004"
+          ],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -141225,7 +142704,18 @@
         "tail_mention": "energy sectors",
         "head_type": "GROUP",
         "tail_type": "SECTOR",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": false,
+          "dates": [
+            "2004"
+          ],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -141245,7 +142735,16 @@
         "tail_mention": "foreign embassies",
         "head_type": "GROUP",
         "tail_type": "SECTOR",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": true,
+          "dates": [],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -141265,7 +142764,16 @@
         "tail_mention": "US",
         "head_type": "GROUP",
         "tail_type": "LOC",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": false,
+          "dates": [],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -141285,7 +142793,16 @@
         "tail_mention": "Germany",
         "head_type": "GROUP",
         "tail_type": "LOC",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": false,
+          "dates": [],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -141305,7 +142822,16 @@
         "tail_mention": "energy",
         "head_type": "GROUP",
         "tail_type": "SECTOR",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": false,
+          "dates": [],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -141325,7 +142851,16 @@
         "tail_mention": "utilities",
         "head_type": "GROUP",
         "tail_type": "SECTOR",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": false,
+          "dates": [],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -141345,7 +142880,16 @@
         "tail_mention": "telecommunications sectors",
         "head_type": "GROUP",
         "tail_type": "SECTOR",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": false,
+          "dates": [],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -141365,7 +142909,16 @@
         "tail_mention": "Origin Logger",
         "head_type": "GROUP",
         "tail_type": "MALWARE",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": false,
+          "dates": [],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -141385,7 +142938,16 @@
         "tail_mention": "GitHub",
         "head_type": "GROUP",
         "tail_type": "ORG",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": false,
+          "dates": [],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -141405,7 +142967,16 @@
         "tail_mention": "LimeRAT",
         "head_type": "GROUP",
         "tail_type": "MALWARE",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": false,
+          "dates": [],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -141425,7 +142996,16 @@
         "tail_mention": "LimeRAT",
         "head_type": "GROUP",
         "tail_type": "MALWARE",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": false,
+          "dates": [],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -141445,7 +143025,16 @@
         "tail_mention": "International Military Conferences",
         "head_type": "GROUP",
         "tail_type": "SECTOR",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": false,
+          "dates": [],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -141465,7 +143054,16 @@
         "tail_mention": "Central Asia",
         "head_type": "GROUP",
         "tail_type": "LOC",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": false,
+          "dates": [],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -141485,7 +143083,16 @@
         "tail_mention": "Central Asia",
         "head_type": "GROUP",
         "tail_type": "LOC",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": false,
+          "dates": [],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -141505,7 +143112,16 @@
         "tail_mention": "Eastern Europe",
         "head_type": "GROUP",
         "tail_type": "LOC",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": false,
+          "dates": [],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -141525,7 +143141,18 @@
         "tail_mention": "Babuk",
         "head_type": "MALWARE",
         "tail_type": "MALWARE",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": false,
+          "dates": [
+            "In late June"
+          ],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -141545,7 +143172,16 @@
         "tail_mention": "Dridex",
         "head_type": "GROUP",
         "tail_type": "MALWARE",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": false,
+          "dates": [],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -141565,7 +143201,16 @@
         "tail_mention": "Dridex",
         "head_type": "GROUP",
         "tail_type": "MALWARE",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": false,
+          "dates": [],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -141585,7 +143230,16 @@
         "tail_mention": "Dridex",
         "head_type": "GROUP",
         "tail_type": "MALWARE",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": false,
+          "dates": [],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -141605,7 +143259,18 @@
         "tail_mention": "Dridex",
         "head_type": "GROUP",
         "tail_type": "MALWARE",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": false,
+          "dates": [
+            "December 2021"
+          ],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -141625,7 +143290,18 @@
         "tail_mention": "Excel and Word attachments",
         "head_type": "GROUP",
         "tail_type": "TECHNIQUE",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": false,
+          "dates": [
+            "December 2021"
+          ],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -141645,7 +143321,16 @@
         "tail_mention": "Cobalt Strike",
         "head_type": "MALWARE",
         "tail_type": "MALWARE",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": false,
+          "dates": [],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -141665,7 +143350,16 @@
         "tail_mention": "Cobalt Strike",
         "head_type": "MALWARE",
         "tail_type": "MALWARE",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": false,
+          "dates": [],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -141685,7 +143379,16 @@
         "tail_mention": "Cobalt Strike",
         "head_type": "MALWARE",
         "tail_type": "MALWARE",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": false,
+          "dates": [],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -141705,7 +143408,16 @@
         "tail_mention": "Cobalt Strike",
         "head_type": "MALWARE",
         "tail_type": "MALWARE",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": false,
+          "dates": [],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -141725,7 +143437,16 @@
         "tail_mention": "Cobalt Strike",
         "head_type": "MALWARE",
         "tail_type": "MALWARE",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": false,
+          "dates": [],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -141745,7 +143466,18 @@
         "tail_mention": "Maersk",
         "head_type": "MALWARE",
         "tail_type": "ORG",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": false,
+          "dates": [
+            "2017"
+          ],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -141765,7 +143497,16 @@
         "tail_mention": "Indian government",
         "head_type": "GROUP",
         "tail_type": "ORG",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "hedged",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": true,
+          "dates": [],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -141785,7 +143526,16 @@
         "tail_mention": "credential harvesting",
         "head_type": "GROUP",
         "tail_type": "TACTIC",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": true,
+          "dates": [],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     },
     {
@@ -141805,7 +143555,16 @@
         "tail_mention": "credential collection",
         "head_type": "GROUP",
         "tail_type": "TACTIC",
-        "method": "rule_based_v2"
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": false,
+          "dates": [],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
       }
     }
   ]
