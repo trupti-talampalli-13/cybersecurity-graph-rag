@@ -8,7 +8,8 @@ import unittest
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "src"))
-from build_trusted_graph import assertion_row, assign_trust, check_claims, group_claims, validate  # noqa: E402
+from build_trusted_graph import (assertion_row, assign_trust, check_claims, claim_text,  # noqa: E402
+                                 group_claims, validate)
 
 SCHEMA = {
     "USES": {"head": ["GROUP", "MALWARE"], "tail": ["MALWARE", "TOOL"]},
@@ -152,7 +153,8 @@ def make_assertion(i, subject="A", predicate="USES", obj="B", polarity="positive
                    doc="report1", vendor="Proofpoint", campaign=None):
     return {"assertion_id": f"A{i:05d}", "claim_key": f"{subject}|{predicate}|{obj}",
             "subject": subject, "subject_id": subject, "predicate": predicate, "object": obj, "object_id": obj,
-            "polarity": polarity, "publication_date": date, "source_document": doc, "source_vendor": vendor,
+            "polarity": polarity, "publication_date": date, "event_start": None, "event_end": None,
+            "source_document": doc, "source_vendor": vendor,
             "certainty": "asserted", "trust_level": "trusted",
             "scope": {"campaign": campaign, "campaign_mentioned": False, "dates": [], "method": "regex_best_effort"}}
 
@@ -216,6 +218,54 @@ class ClaimGrouping(unittest.TestCase):
         claims = group_claims(items)
         claims[0]["assertions"][0]["assertion_id"], claims[1]["assertions"][0]["assertion_id"] =             claims[1]["assertions"][0]["assertion_id"], claims[0]["assertions"][0]["assertion_id"]
         self.assertTrue(any("wrong claim" in p for p in check_claims(items, claims)))
+
+
+class ClaimTextAndEventTime(unittest.TestCase):
+    def test_implicit_trigger_relation_needs_verification(self):
+        level, reasons = assign_trust("USES_TECHNIQUE", {**props("GROUP", "TECHNIQUE"), "trigger": "<implicit>"},
+                                      {"entity_type": "GROUP"}, {"entity_type": "TECHNIQUE"}, SCHEMA)
+        self.assertEqual((level, reasons), ("candidate", ["implicit_trigger"]))
+
+    def test_claim_text_for_each_predicate(self):
+        self.assertEqual(claim_text("TA505", "USES", "Dridex"), "TA505 uses Dridex.")
+        self.assertEqual(claim_text("TA505", "USES_TECHNIQUE", "phishing"), "TA505 uses the technique phishing.")
+        self.assertEqual(claim_text("REvil", "EXPLOITS", "CVE-2019-2725"), "REvil exploits CVE-2019-2725.")
+        self.assertEqual(claim_text("Turla", "TARGETS", "energy"), "Turla targets energy.")
+
+    def test_claim_text_is_negated_for_a_negative_assertion(self):
+        self.assertEqual(claim_text("TA505", "USES", "Emotet", "negative"), "TA505 does not use Emotet.")
+        self.assertEqual(claim_text("Turla", "TARGETS", "energy", "negative"), "Turla does not target energy.")
+        self.assertEqual(claim_text("A", "USES_TECHNIQUE", "x", "negative"), "A does not use the technique x.")
+        self.assertEqual(claim_text("A", "EXPLOITS", "CVE-1", "negative"), "A does not exploit CVE-1.")
+
+    def test_assertion_row_has_canonical_and_surface_claim_text(self):
+        g = small_graph()
+        g["edges"][0]["properties"]["head_mention"] = "TA-505"
+        nodes = {n["id"]: n for n in g["nodes"]}
+        row = assertion_row("A00001", g["edges"][0], nodes)
+        self.assertEqual(row["claim_text"], "TA505 uses Dridex.")
+        self.assertEqual(row["claim_text_surface"], "TA-505 uses Dridex.")
+
+    def test_claims_carry_the_positive_claim_text(self):
+        claims = group_claims([make_assertion(1, polarity="negative")])
+        self.assertEqual(claims[0]["claim_text"], "A uses B.")
+
+    def test_assertion_row_without_event_time_has_none(self):
+        g = small_graph()
+        row = assertion_row("A00001", g["edges"][0], {n["id"]: n for n in g["nodes"]})
+        self.assertEqual((row["event_start"], row["event_end"]), (None, None))
+
+    def test_assertion_row_exposes_the_event_span(self):
+        g = small_graph()
+        g["edges"][0]["properties"]["scope"]["event_time"] = {"start": "2020-09-01", "end": "2020-09-30", "n_dates": 1}
+        row = assertion_row("A00001", g["edges"][0], {n["id"]: n for n in g["nodes"]})
+        self.assertEqual((row["event_start"], row["event_end"]), ("2020-09-01", "2020-09-30"))
+
+    def test_a_reversed_or_malformed_event_time_is_reported(self):
+        for event in ({"start": "2021-01-01", "end": "2020-01-01"}, {"start": "2020", "end": "2021"}):
+            g = small_graph()
+            g["edges"][0]["properties"]["scope"]["event_time"] = event
+            self.assertTrue(any("event_time" in p for p in validate(g)), event)
 
 
 if __name__ == "__main__":

@@ -10,6 +10,8 @@ Writes: data/relations.jsonl            one record per extracted relation instan
 
 Run from the cti_graph_rag directory:  python src/extract_relations.py
 """
+import calendar
+import datetime
 import json
 import re
 from collections import Counter
@@ -148,12 +150,129 @@ def mask_links(text):
             chars[i] = " "
     return "".join(chars), spans
 
+# A technique/tactic entity that is itself a verb phrase ("collects passwords", "distributing malicious emails")
+# needs no separate trigger word: "<actor> [auxiliary words] <verb phrase>" already states the relation.
+IMPLICIT_FILLER = re.compile(
+    r"^\s*(?:(?:also|then|now|often|usually|typically|frequently|generally|primarily|mainly|already|still|even|"
+    r"further|again|never|not|no|longer|cannot|does|do|did|doesn't|didn't|don't|can't|won't|"
+    r"has|have|had|can|could|will|would|may|might|is|are|was|were|been|able|capable|ability|"
+    r"capability|capabilities|the|returned|started|begun|began|begin|continues?|continued|to|of|and)\s+)*$", re.I)
+VERB_PHRASE_STARTS = {
+    "collect", "collects", "collecting", "steal", "steals", "stealing", "dump", "dumps", "dumping", "harvest",
+    "harvests", "harvesting", "execute", "executes", "executing", "inject", "injects", "injecting", "elevate",
+    "elevates", "elevating", "load", "loads", "loading", "download", "downloads", "downloading", "exfiltrate",
+    "exfiltrates", "exfiltrating", "encrypt", "encrypts", "encrypting", "delete", "deletes", "deleting", "disable",
+    "disables", "disabling", "enumerate", "enumerates", "enumerating", "establish", "establishes", "establishing",
+    "perform", "performs", "performing", "gain", "gains", "gaining", "install", "installs", "installing", "drop",
+    "drops", "dropping", "connect", "connects", "connecting", "communicate", "communicates", "communicating",
+    "create", "creates", "creating", "modify", "modifies", "modifying", "bypass", "bypasses", "bypassing",
+    "escalate", "escalates", "escalating", "spread", "spreads", "spreading", "scan", "scans", "scanning",
+    "capture", "captures", "capturing", "record", "records", "recording", "upload", "uploads", "uploading",
+    "launch", "launches", "launching", "obtain", "obtains", "obtaining", "retrieve", "retrieves", "retrieving",
+    "send", "sends", "sending", "distribute", "distributes", "distributing", "hide", "hides", "hiding",
+    "move", "moves", "moving", "run", "runs", "running", "delivers", "delivering", "deliver", "log", "logs",
+    "logging", "kill", "kills", "killing", "terminate", "terminates", "terminating", "wipe", "wipes", "wiping",
+}
+
+
+class _ImplicitTrigger:
+    """Stands in for a trigger match when the technique entity itself is the verb phrase."""
+
+    def __init__(self, between):
+        self._n = len(between)
+
+    def start(self):
+        return self._n
+
+    def end(self):
+        return self._n
+
+    def group(self, _=0):
+        return "<implicit>"
+
+
+def implicit_ok(h, t, between, ents):
+    """Actor/malware/tool directly followed by a verb-phrase technique, with only auxiliary words between."""
+    words = t["text"].split()
+    if len(words) < 2 or words[0].lower() not in VERB_PHRASE_STARTS:
+        return False               # a bare verb ("executes") says little; require a verb phrase with an object
+    if len(between) > 40 or not IMPLICIT_FILLER.match(between):
+        return False
+    return not any(e is not h and e is not t and h["char_end"] <= e["char_start"] and e["char_end"] <= t["char_start"]
+                   for e in ents)
+
 
 def is_negated(h, t, trig, direction, text):
     """True when a negation cue sits just before the trigger (between the earlier mention and the trigger)."""
     trigger_at = (h["char_end"] if direction == "active" else t["char_end"]) + trig.start()
     start = max(0, min(h["char_start"], t["char_start"]) - NEGATION_LOOKBACK)
     return bool(NEGATION_CUE.search(text[start:trigger_at]))
+
+_MONTHS = {name.lower(): i for i, name in enumerate(calendar.month_name) if name}
+_MONTHS.update({name.lower(): i for i, name in enumerate(calendar.month_abbr) if name})
+_MONTHS["sept"] = 9
+SINCE_BEFORE = re.compile(r"\bsince\s+(?:at least\s+|about\s+|around\s+|early\s+|late\s+|mid[- ]?)?$", re.I)
+_DATE_PREFIX = re.compile(r"^(?:in|on|since|during|by|from|until|around|about|the|of|early|late|mid|middle)(?:[ -]+|$)")
+
+
+def _iso(year, month, day):
+    try:
+        return datetime.date(year, month, day).isoformat()
+    except ValueError:
+        return None
+
+
+def parse_date_mention(text, publication_date=None):
+    """Parse one DATE mention into an absolute range, or return None when it cannot be pinned down.
+
+    Handles full dates in several formats ("Oct. 19, 2020", "11 March 2021", "8 / 18 / 2021", "2019 - 09 - 21"),
+    month and year ("September 2020"), a year ("In 2017", "mid - 2020"), and "this year" / "last year"
+    relative to the report's publication date. A month without a year ("In late June") is not guessed."""
+    t = text.replace("\xa0", " ").lower()
+    t = re.sub(r"(\d)(?:st|nd|rd|th)\b", r"\1", t)
+    t = re.sub(r"\s*([-/])\s*", r"\1", t)
+    t = re.sub(r"[.,]", " ", t)
+    t = re.sub(r"\s+", " ", t).strip()
+    while True:                      # drop leading words such as "in", "since", "early", "mid-"
+        stripped = _DATE_PREFIX.sub("", t)
+        if stripped == t:
+            break
+        t = stripped
+    start = end = precision = None
+    if (m := re.fullmatch(r"(\d{4})-(\d{1,2})-(\d{1,2})", t)):
+        start = end = _iso(int(m[1]), int(m[2]), int(m[3])); precision = "day"
+    elif (m := re.fullmatch(r"(\d{4})-([a-z]+)-(\d{1,2})", t)) and m[2] in _MONTHS:
+        start = end = _iso(int(m[1]), _MONTHS[m[2]], int(m[3])); precision = "day"
+    elif (m := re.fullmatch(r"(\d{1,2})/(\d{1,2})/(\d{4})", t)):
+        first, second = int(m[1]), int(m[2])
+        month, day = (second, first) if first > 12 else (first, second)   # M/D/Y unless the first number cannot be a month
+        start = end = _iso(int(m[3]), month, day); precision = "day"
+    elif (m := re.fullmatch(r"([a-z]+) (\d{1,2}) (\d{4})", t)) and m[1] in _MONTHS:
+        start = end = _iso(int(m[3]), _MONTHS[m[1]], int(m[2])); precision = "day"
+    elif (m := re.fullmatch(r"(\d{1,2}) ([a-z]+) (\d{4})", t)) and m[2] in _MONTHS:
+        start = end = _iso(int(m[3]), _MONTHS[m[2]], int(m[1])); precision = "day"
+    elif (m := re.fullmatch(r"([a-z]+) (\d{4})", t)) and m[1] in _MONTHS:
+        year, month = int(m[2]), _MONTHS[m[1]]
+        start, end = _iso(year, month, 1), _iso(year, month, calendar.monthrange(year, month)[1]); precision = "month"
+    elif (m := re.fullmatch(r"(\d{4})", t)):
+        year = int(m[1])
+        start, end = _iso(year, 1, 1), _iso(year, 12, 31); precision = "year"
+    elif t in ("this year", "last year") and publication_date and re.match(r"\d{4}", publication_date):
+        year = int(publication_date[:4]) - (1 if t == "last year" else 0)
+        start, end = _iso(year, 1, 1), _iso(year, 12, 31); precision = "year"
+        return {"text": text, "start": start, "end": end, "precision": precision, "kind": "relative"}
+    if not start or not end or not (1990 <= int(start[:4]) <= 2035):
+        return None
+    return {"text": text, "start": start, "end": end, "precision": precision, "kind": "explicit"}
+
+
+def event_time(date_mentions):
+    """Earliest start and latest end over the dates a sentence names, or None. It is the span of the dates
+    mentioned, which may include dates that are not when the activity happened."""
+    if not date_mentions:
+        return None
+    return {"start": min(d["start"] for d in date_mentions), "end": max(d["end"] for d in date_mentions),
+            "n_dates": len(date_mentions)}
 
 
 def extract_scope(seg):
@@ -169,8 +288,20 @@ def extract_scope(seg):
             if words:
                 campaign = " ".join(words)
                 break
-    dates = [re.sub(r"\s+([,.])", r"\1", e["text"]) for e in seg["entities"] if e["type"] == "DATE"]
+    date_entities = [e for e in seg["entities"] if e["type"] == "DATE"]
+    dates = [re.sub(r"\s+([,.])", r"\1", e["text"]) for e in date_entities]
+    publication_date = seg.get("publication_date")
+    parsed = []
+    for d, e in zip(dates, date_entities):
+        m = parse_date_mention(d, publication_date)
+        if m and publication_date and SINCE_BEFORE.search(seg.get("text", "")[:e.get("char_start") or 0]):
+            m["open_ended"] = True               # "active since 2004": ongoing, not an event in 2004
+            m["end"] = max(m["end"], publication_date)
+        parsed.append((d, m))
+    mentions = [m for _, m in parsed if m]
     return {"campaign": campaign, "campaign_mentioned": bool(CAMPAIGN_WORD.search(sentence)),
+            "date_mentions": mentions, "unresolved_dates": [d for d, m in parsed if not m],
+            "event_time": event_time(mentions),
             "dates": dates, "method": "regex_best_effort"}
 
 
@@ -267,9 +398,12 @@ def _find(seg, include_negative):
                     trig = PASSIVE_RE[rel].search(between)
                 else:
                     continue
+                implicit = False
+                if not trig and rel == "USES_TECHNIQUE" and direction == "active" and implicit_ok(h, t, between, ents):
+                    trig, implicit = _ImplicitTrigger(between), True
                 if not trig or len(between) > (MAX_PASSIVE_GAP if direction == "passive" else MAX_GAP[rel]):
                     continue
-                if len(t["text"].split()) > MAX_TAIL_WORDS.get(rel, 99):
+                if len(t["text"].split()) > (8 if implicit else MAX_TAIL_WORDS.get(rel, 99)):
                     continue
                 if rel == "TARGETS" and t["type"] == "LOC" and not STRONG_TARGET.match(trig.group(0)):
                     continue
@@ -287,7 +421,7 @@ def _find(seg, include_negative):
                 if hedged:
                     conf = "low"       # hedged ("likely", "potentially"...): kept but not trusted
                 else:
-                    conf = "high" if not inner and len(between) <= 40 else "medium"
+                    conf = "high" if not inner and len(between) <= 40 and not implicit else "medium"
                 out.append((rel, h, t, trig.group(0).lower(), direction, conf,
                             "negative" if negated else "positive", "hedged" if hedged else "asserted"))
     # "TA415 used Cobalt Strike in a campaign against X": the group, not its tool, is the subject

@@ -10,8 +10,8 @@ steps to reproduce them are in the README.
 | Corpus | 120 AnnoCTR threat reports (Intel 471, Proofpoint, Zscaler, Lab52, QuoIntelligence), 2016 to 2022 |
 | Text | 12,178 sentence-level segments, each keeping its report ID, vendor, publication date and position |
 | Entities | 10,689 mentions of 12 types, normalized (2,842 forms) and linked (8,109 linked) |
-| Relations | 184 automatic relations (`USES`, `USES_TECHNIQUE`, `EXPLOITS`, `TARGETS`), each with its evidence sentence |
-| Graph | 3,812 nodes and 10,960 edges; a layered version labels each relation `trusted`, `candidate` or `low` |
+| Relations | 188 automatic relations (`USES`, `USES_TECHNIQUE`, `EXPLOITS`, `TARGETS`), each with its evidence sentence |
+| Graph | 3,812 nodes and 10,964 edges; a layered version labels each relation `trusted`, `candidate` or `low` |
 | NER model | RoBERTa-base fine-tuned on AnnoCTR: test entity F1 0.689 |
 | Relation accuracy | about 58% correct on unseen text (human review, 66 relations); 75-80% when the subject is a threat actor |
 
@@ -68,8 +68,8 @@ real one. Hedged relations ("likely", "potentially") are kept at `low` confidenc
 (28 of the first 35 fail on the original extractor). Every relation stores its evidence sentence, trigger, direction, report,
 vendor, date, the two mentions and their types, and a confidence.
 
-Result: 184 relation instances (137 distinct triples) from 49 of the 120 reports: `TARGETS` 94, `USES` 70,
-`USES_TECHNIQUE` 17, `EXPLOITS` 3. `EXPLOITS` is rare because sentences naming a CVE usually do not name the actor.
+Result: 188 relation instances (141 distinct triples) from 50 of the 120 reports: `TARGETS` 94, `USES` 70,
+`USES_TECHNIQUE` 21, `EXPLOITS` 3. `EXPLOITS` is rare because sentences naming a CVE usually do not name the actor.
 
 ## 6. NER evaluation
 
@@ -86,8 +86,8 @@ threat actor 0.53, technique 0.49, code snippet 0.33, tool 0.15. The cybersecuri
 also the rarest in training. Two other runs did not beat the first: training on train and dev together (test F1 0.675)
 and the cybersecurity-pretrained SecureBERT (0.673); each is a single run, so the 1.6-point difference is within noise.
 
-Effect on the graph: running the relation rules on model-tagged text (dev and test) reproduces 58% of the relations found
-from gold tags with 64% precision against them (88 reference relations), mainly because 36% of threat actors in the
+Effect on the graph: running the relation rules on model-tagged text (dev and test) reproduces 57% of the relations found
+from gold tags with 64% precision against them (89 reference relations), mainly because 36% of threat actors in the
 test set are missed. For the 120 reports the gold-tag graph is therefore the more accurate one.
 
 ## 7. Relation quality and error analysis
@@ -123,6 +123,13 @@ correct). The misses are mostly sentences where the action is inside the techniq
 passwords") so no trigger word joins the two, plus victim lists after a passive clause, an organization as subject, and
 "has the capability to". The extractor is conservative: its main weakness is missing relations, not stating wrong ones.
 
+A rule was then added for the most visible pattern, an actor, malware or tool directly followed by a technique that is
+itself a verb phrase ("Leviathan collects passwords", "has returned to distributing malicious emails"), with only
+auxiliary words between. Such relations carry the trigger `<implicit>` and start as `candidate`. On the same 30 sentences
+recall rises from 12% to 29% (version A) and from 10% to 25% (version B), but the rule was built from those sentences,
+and across all 120 reports it adds only 4 relations (184 to 188), so the real gain is small and the other misses are of
+different kinds. It has not been tested on unseen reports.
+
 **Round 3.** On 60 fresh reports the extractor found only 26 relations (the model tags fewer actors there); the hybrid review
 (a project member with three AI reviewers) rated 13 (version A) or 17 (version B) of them true. `USES` was 8 or 11 of 15 against 52% in round 2, so the
 `USES` rules added after round 2 show no clear gain on this small sample. This round 3 review is a hybrid
@@ -130,14 +137,14 @@ of human and AI judgment, not an independent human annotation.
 
 ## 8. The knowledge graph
 
-`data/cti_knowledge_graph_trusted.json` has 3,812 nodes (120 documents, 780 entities, 2,912 unresolved mentions) and 10,960
+`data/cti_knowledge_graph_trusted.json` has 3,812 nodes (120 documents, 780 entities, 2,912 unresolved mentions) and 10,964
 edges, in three layers: mention to document (10,348 edges, each with vendor and date), candidate links for ambiguous
-mentions (428), and relations (184). Every relation carries a `trust_level`:
+mentions (428), and relations (188). Every relation carries a `trust_level`:
 
 | Level | Relations | Rule |
 |---|---|---|
 | `trusted` | 112 | threat-actor-headed `USES`/`TARGETS`, or `USES_TECHNIQUE`, high or medium confidence, types match the schema |
-| `candidate` | 61 | malware- or tool-headed `USES`/`TARGETS`, `EXPLOITS`, a type mismatch or a duplicate |
+| `candidate` | 65 | malware- or tool-headed `USES`/`TARGETS`, `EXPLOITS`, a type mismatch, a duplicate, or a relation with no trigger word (an actor followed directly by a verb-phrase technique) |
 | `low` | 11 | hedged wording or a subject borrowed from a nearby sentence |
 
 `human_verified` is always false, and the build validates endpoints, provenance fields, dates and confidence values.
@@ -149,14 +156,41 @@ mentions), evidence sentence, source document, **certainty** (asserted or hedged
 **verification status** (`unverified` until the semantic verifier sets it). Negative assertions are kept in their own
 graph layer, never as plain relation edges, and are always `candidate`. `data/assertions.jsonl` lists every assertion in
 these fields. Two caveats matter for the next stage. First, the 120 gold-tagged reports contain **no** negative
-assertions, and only 3 of the 137 distinct claims appear in more than one report (none contradicting another), so this
+assertions, and only 3 of the 141 distinct claims appear in more than one report (none contradicting another), so this
 corpus cannot test contradiction resolution without added or constructed conflicting statements; the negation path is
 covered by unit tests and an end-to-end check with an injected record, not by real corpus examples. Second, scope comes
-from one sentence only (19 of 184 assertions name a campaign, 43 name a date), so a missing scope does not mean
-"same scope". `data/claims.jsonl` groups the assertions by claim (subject, predicate, object), recording for each claim
-how many reports and vendors repeat it, the span of report dates and whether both polarities occur: 137 claims, 3 in
+from one sentence only (19 of 188 assertions name a campaign, 43 name a date), so a missing scope does not mean
+"same scope". Dates named in the sentence are parsed into absolute ranges where possible (full dates, month and year, year,
+"this year"/"last year" against the report date; a month with no year is left unresolved, and a date after "since" is
+open-ended): 84% of the corpus's 1,127 date mentions parse, and 38 of the 188 assertions get an `event_start`/`event_end`
+span (`publication_date` is the fallback). That span is the dates the sentence mentions, not necessarily when the activity
+happened. Each assertion also has a plain-sentence `claim_text` (canonical names) and `claim_text_surface` (the report's
+wording) for claim-level verification. `data/claims.jsonl` groups the assertions by claim (subject, predicate, object), recording for each claim
+how many reports and vendors repeat it, the span of report dates and whether both polarities occur: 141 claims, 3 in
 more than one report, none with both polarities. It only collects evidence; deciding whether two assertions support,
 contradict or update each other is left to the next stage.
+
+**Decision criteria and a test set for contradiction resolution.** `src/resolve_assertions.py` writes the plan's categories
+down as a small rule-based classifier over the structure of two assertions (claim, polarity, certainty, dates, campaign). It
+is a transparent baseline for the next stage, not a finished resolver, and it does not read the evidence sentences.
+
+| Label | Rule |
+|---|---|
+| supports | same claim, same polarity, compatible scope |
+| contradicts | opposite polarity, same claim, compatible scope, periods overlap or are within 90 days |
+| temporal update | opposite polarity, same claim, periods at least 365 days apart |
+| scope variant | same claim, two different named campaigns |
+| complements | same subject and predicate, both positive, different objects |
+| insufficient evidence | opposite polarity but a hedged denial, or periods 90 to 365 days apart |
+| unrelated | different subject or predicate |
+
+An assertion's period is its event span when it has one, otherwise its publication date. Because the corpus has no real
+conflicts, `data/constructed_conflicts.jsonl` holds 123 labelled pairs built from real assertions by controlled changes (an
+opposite-polarity statement, a later date, a different campaign, a hedge); 33 use only real assertions (the repeated claims,
+different objects of one subject, unrelated pairs) and 90 include a constructed assertion, which is marked. The labels come
+from the same criteria the classifier applies, so the set checks that a resolver applies the criteria consistently; it does not
+show that the criteria are right, or how often conflicts occur in real reports. Judging that needs independent human labels on
+real report pairs.
 The policy follows the human review; on these gold-tagged reports the candidate relations looked about as accurate as the
 trusted ones, so it is conservative here. The original graph and relation file are unchanged. Field definitions and a
 loading example are in `docs/trusted_graph_schema.md`.
@@ -171,10 +205,10 @@ graphs for the best-connected actors and malware (Winnti Group, Leviathan, Cobal
 
 - Relations are automatic and not human-verified; unseen-text accuracy is about 58% by a human review of 66 relations,
   and the other labels are provisional single-reviewer judgments.
-- Relations exist for only 49 of 120 reports; `EXPLOITS` has 3 instances, so it is too thin to rely on.
+- Relations exist for only 50 of 120 reports; `EXPLOITS` has 3 instances, so it is too thin to rely on.
 - The weakest NER types (tool 0.15, technique 0.49, threat actor 0.53) are the ones the graph depends on most.
 - Malware-headed relations from model-tagged text are unreliable; recall is low (about 10-12% on a 30-sentence check
-  labelled by AI reviewers), so the 184 relations are a small, conservative subset of what the reports state.
+  labelled by AI reviewers), so the 188 relations are a small, conservative subset of what the reports state.
 - Some linked nodes carry the wrong type in the source linking data; sectors are almost never linked.
 - Each relation is one sentence of one vendor report. Reports can disagree, so always show the evidence and date.
 - Polarity, certainty and scope come from simple patterns and have not been evaluated against labelled examples:
@@ -183,7 +217,7 @@ graphs for the best-connected actors and malware (Winnti Group, Leviathan, Cobal
 ## 11. Reproducibility
 
 Steps 1 to 8 use only the Python standard library and take about a minute. A clean copy of the repository reproduced nine
-output files, the NER predictions and all figures byte for byte, and all 88 tests pass. The model weights (about 500 MB)
+output files, the NER predictions and all figures byte for byte, and all 137 tests pass. The model weights (about 500 MB)
 are not stored in Git and must be obtained separately or retrained with `src/train_ner.py`. See the README for the
 commands, `requirements.txt` for the optional packages, and `data/*audit*.csv` with
 `docs/extracted_relations_audit_instructions.md` for the review sheets.

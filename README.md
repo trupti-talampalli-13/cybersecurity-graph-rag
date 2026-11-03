@@ -84,6 +84,7 @@ The steps are deterministic: running them again gives identical files.
 |---|---|
 | `data/assertions.jsonl` | One record per assertion: subject, predicate, object, polarity, publication date, scope, evidence sentence, source document, certainty, confidence, trust level, verification status. Use this for retrieval. |
 | `data/claims.jsonl` | The assertions grouped by claim (subject, predicate, object): repeats, reports, vendors, dates and whether both polarities occur. The input for comparing assertions. |
+| `data/constructed_conflicts.jsonl` | 123 labelled assertion pairs for testing contradiction resolution: supports, contradicts, temporal update, scope variant, complements, insufficient evidence, unrelated. 90 include a constructed assertion (marked); 33 use real ones only. Built by `src/build_constructed_conflicts.py` to the written criteria in `src/resolve_assertions.py`, so it checks consistency with those criteria, not that they are right. |
 | `data/cti_knowledge_graph_trusted.json` | The graph in layers (mentions, candidate links, relations, negative assertions); relations carry a `trust_level`. |
 | `data/relations_trusted.jsonl` | Only the relations marked `trusted`. |
 | `data/cti_knowledge_graph.json`, `data/relations.jsonl` | The unlayered originals. |
@@ -99,11 +100,11 @@ Trust levels: `trusted` is a threat-actor-headed `USES` or `TARGETS`, or any `US
 |---|---|
 | Corpus | 120 reports, 12,178 segments |
 | Entities | 10,689 mentions, 12 types; 8,109 (76%) linked |
-| Relations | 184: `TARGETS` 94, `USES` 70, `USES_TECHNIQUE` 17, `EXPLOITS` 3 |
-| Trust levels | 112 trusted, 61 candidate, 11 low |
+| Relations | 188: `TARGETS` 94, `USES` 70, `USES_TECHNIQUE` 21, `EXPLOITS` 3 |
+| Trust levels | 112 trusted, 65 candidate, 11 low |
 | NER (RoBERTa-base) | entity F1 0.689 on test, 0.639 on dev |
 | Relation accuracy on unseen reports | about 58% correct (human review of 66 relations) |
-| Recall | about 10-12% on a 30-sentence check labelled by AI reviewers |
+| Recall | about 10-12% on a 30-sentence check labelled by AI reviewers; 25-29% on the same sentences after the verb-phrase rule (the rule was built from those sentences, and it adds only 4 relations corpus-wide) |
 
 Method, error analysis, the NER model comparison and every audit are in [`docs/person1_report.md`](docs/person1_report.md).
 
@@ -111,8 +112,8 @@ Method, error analysis, the NER model comparison and every audit are in [`docs/p
 
 - Relations are automatic and none has been confirmed by a person.
 - Relations with a threat-actor subject were right 75-80% of the time on unseen reports; malware-subject `USES`/`TARGETS` far less often.
-- Recall is low: the extractor needs a trigger word between two entities and misses relations written as an action phrase ("Leviathan collects passwords").
-- The 120 reports contain no negative claims, and only 3 of 137 distinct claims occur in more than one report. They cannot test contradiction resolution without added or constructed conflicting statements.
+- Recall is low: the extractor needs a trigger word between two entities. An actor directly followed by a verb-phrase technique ("Leviathan collects passwords") is now handled, but only 4 relations in the corpus have that form; the other misses are of different kinds.
+- The 120 reports contain no negative claims, and only 3 of 141 distinct claims occur in more than one report. They cannot test contradiction resolution without added or constructed conflicting statements.
 - Polarity, certainty and scope come from simple patterns and have not been evaluated.
 
 ### NER model
