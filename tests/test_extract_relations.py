@@ -9,7 +9,8 @@ import unittest
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "src"))
-from extract_relations import extract_scope, find_assertions, find_relations  # noqa: E402
+from extract_relations import (event_time, extract_scope, find_assertions, find_relations,  # noqa: E402
+                               parse_date_mention)
 
 
 def segment(text, *mentions):
@@ -306,6 +307,136 @@ class AssertionContext(unittest.TestCase):
     def test_date_spacing_is_cleaned(self):
         seg = {"clean_text": "On May 18 , 2021 TA505 ...", "entities": [{"text": "May 18 , 2021", "type": "DATE"}]}
         self.assertEqual(extract_scope(seg)["dates"], ["May 18, 2021"])
+
+
+class DateParsing(unittest.TestCase):
+    """Dates named in a sentence, turned into absolute ranges (event_time) where they can be pinned down."""
+
+    PUB = "2021-06-10"
+
+    def parse(self, text):
+        return parse_date_mention(text, self.PUB)
+
+    def span(self, text):
+        r = self.parse(text)
+        return (r["start"], r["end"], r["precision"]) if r else None
+
+    def test_full_dates_in_several_formats(self):
+        for text, day in (("Oct. 19, 2020", "2020-10-19"), ("September 29th, 2020", "2020-09-29"),
+                          ("11 March 2021", "2021-03-11"), ("8 / 18 / 2021", "2021-08-18"),
+                          ("2019 - 09 - 21", "2019-09-21"), ("2008 - May - 31", "2008-05-31")):
+            self.assertEqual(self.span(text), (day, day, "day"), text)
+
+    def test_day_first_numeric_date_when_the_first_number_cannot_be_a_month(self):
+        self.assertEqual(self.span("13/05/2021"), ("2021-05-13", "2021-05-13", "day"))
+
+    def test_month_and_year_covers_the_month(self):
+        self.assertEqual(self.span("In April 2021"), ("2021-04-01", "2021-04-30", "month"))
+        self.assertEqual(self.span("June \xa0 2021"), ("2021-06-01", "2021-06-30", "month"))
+
+    def test_leap_year_february(self):
+        self.assertEqual(self.span("February 2020"), ("2020-02-01", "2020-02-29", "month"))
+
+    def test_year_covers_the_year_and_modifiers_do_not_narrow_it(self):
+        self.assertEqual(self.span("2017"), ("2017-01-01", "2017-12-31", "year"))
+        self.assertEqual(self.span("mid - 2020"), ("2020-01-01", "2020-12-31", "year"))
+
+    def test_this_year_and_last_year_use_the_publication_date(self):
+        self.assertEqual(self.span("this year"), ("2021-01-01", "2021-12-31", "year"))
+        self.assertEqual(self.span("last year"), ("2020-01-01", "2020-12-31", "year"))
+        self.assertEqual(self.parse("last year")["kind"], "relative")
+
+    def test_relative_dates_without_a_publication_date_are_not_guessed(self):
+        self.assertIsNone(parse_date_mention("last year", None))
+
+    def test_month_without_a_year_is_not_guessed(self):
+        self.assertIsNone(self.parse("In late June"))
+        self.assertIsNone(self.parse("5 August"))
+
+    def test_impossible_or_implausible_dates_are_rejected(self):
+        for text in ("Feb 30, 2021", "1850", "recently", "today"):
+            self.assertIsNone(self.parse(text), text)
+
+    def test_event_time_is_the_span_of_the_dates_named(self):
+        mentions = [self.parse("April 17, 2019"), self.parse("September 2020")]
+        self.assertEqual(event_time(mentions), {"start": "2019-04-17", "end": "2020-09-30", "n_dates": 2})
+        self.assertIsNone(event_time([]))
+
+    def test_scope_collects_parsed_and_unresolved_dates(self):
+        seg = {"clean_text": "In March 2020 and in late June TA413 ran a campaign.", "publication_date": self.PUB,
+               "text": "In March 2020 and in late June TA413 ran a campaign.",
+               "entities": [{"text": "March 2020", "type": "DATE", "char_start": 3},
+                            {"text": "late June", "type": "DATE", "char_start": 20}]}
+        scope = extract_scope(seg)
+        self.assertEqual(scope["event_time"], {"start": "2020-03-01", "end": "2020-03-31", "n_dates": 1})
+        self.assertEqual(scope["unresolved_dates"], ["late June"])
+        self.assertEqual(scope["dates"], ["March 2020", "late June"])
+
+    def test_since_makes_the_date_open_ended_up_to_the_report_date(self):
+        text = "Active since at least 2007, APT28 primarily targets government organizations."
+        seg = {"clean_text": text, "text": text, "publication_date": "2021-04-28",
+               "entities": [{"text": "2007", "type": "DATE", "char_start": text.index("2007")}]}
+        scope = extract_scope(seg)
+        self.assertEqual(scope["event_time"]["start"], "2007-01-01")
+        self.assertEqual(scope["event_time"]["end"], "2021-04-28")
+        self.assertTrue(scope["date_mentions"][0]["open_ended"])
+
+    def test_a_plain_year_is_not_open_ended(self):
+        text = "In 2017 TA544 began a campaign."
+        seg = {"clean_text": text, "text": text, "publication_date": "2021-04-28",
+               "entities": [{"text": "2017", "type": "DATE", "char_start": 3}]}
+        self.assertEqual(extract_scope(seg)["event_time"]["end"], "2017-12-31")
+
+
+def triggers(text, *mentions):
+    return {(rel, h["text"], t["text"]): trig for rel, h, t, trig, *_ in find_relations(segment(text, *mentions), {})}
+
+
+class ImplicitTrigger(unittest.TestCase):
+    """A technique entity that is itself a verb phrase needs no separate trigger word."""
+
+    def test_actor_directly_followed_by_a_verb_phrase(self):
+        found = triggers("Leviathan collects passwords to access other computers.", ("Leviathan", "GROUP"),
+                         ("collects passwords", "TACTIC"))
+        self.assertEqual(found, {("USES_TECHNIQUE", "Leviathan", "collects passwords"): "<implicit>"})
+
+    def test_auxiliary_words_between_are_allowed(self):
+        found = triggers("The prominent TA505 has returned to distributing large volumes of malicious emails.",
+                         ("TA505", "GROUP"), ("distributing large volumes of malicious emails", "TECHNIQUE"))
+        self.assertEqual(len(found), 1)
+
+    def test_capability_wording(self):
+        found = triggers("Cobalt Strike Beacon also has the capability to elevate privileges.",
+                         ("Beacon", "MALWARE"), ("elevate privileges", "TACTIC"))
+        self.assertEqual(len(found), 1)
+
+    def test_a_bare_verb_is_not_enough(self):
+        self.assertEqual(triggers("Once the address is located, Ares executes the module.", ("Ares", "MALWARE"),
+                                  ("executes", "TECHNIQUE")), {})
+
+    def test_a_noun_phrase_technique_without_a_trigger_is_not_a_relation(self):
+        self.assertEqual(triggers("Leviathan credential dumping is common.", ("Leviathan", "GROUP"),
+                                  ("credential dumping", "TACTIC")), {})
+
+    def test_another_entity_between_blocks_it(self):
+        text = "Beacon can elevate privileges and load and execute additional tools."
+        found = triggers(text, ("Beacon", "MALWARE"), ("elevate privileges", "TACTIC"),
+                         ("load and execute additional tools", "TECHNIQUE"))
+        self.assertNotIn(("USES_TECHNIQUE", "Beacon", "load and execute additional tools"), found)
+
+    def test_punctuation_between_blocks_it(self):
+        self.assertEqual(triggers("Leviathan, collects passwords.", ("Leviathan", "GROUP"),
+                                  ("collects passwords", "TACTIC")), {})
+
+    def test_a_negated_implicit_relation_is_a_negative_assertion(self):
+        found = assertions("Leviathan never collects passwords.", ("Leviathan", "GROUP"),
+                           ("collects passwords", "TACTIC"))
+        self.assertEqual({(r[0], r[3]) for r in found}, {("USES_TECHNIQUE", "negative")})
+
+    def test_an_explicit_trigger_is_still_used_when_there_is_one(self):
+        found = triggers("Leviathan uses collects passwords.", ("Leviathan", "GROUP"),
+                         ("collects passwords", "TACTIC"))
+        self.assertEqual(set(found.values()), {"uses"})
 
 
 if __name__ == "__main__":

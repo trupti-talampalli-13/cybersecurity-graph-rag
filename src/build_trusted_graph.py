@@ -47,6 +47,19 @@ REQUIRED_RELATION_PROPS = ("document", "segment", "source", "publication_date", 
                            "direction", "confidence", "head_mention", "tail_mention", "head_type", "tail_type",
                            "polarity", "certainty", "scope", "verification_status")
 DATE_RE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
+# Plain-language form of an assertion, for claim-level verification (e.g. as the hypothesis of an NLI check)
+CLAIM_TEMPLATES = {
+    "USES": ("{s} uses {o}.", "{s} does not use {o}."),
+    "USES_TECHNIQUE": ("{s} uses the technique {o}.", "{s} does not use the technique {o}."),
+    "EXPLOITS": ("{s} exploits {o}.", "{s} does not exploit {o}."),
+    "TARGETS": ("{s} targets {o}.", "{s} does not target {o}."),
+}
+
+
+def claim_text(subject, predicate, obj, polarity="positive"):
+    """One plain sentence stating the claim, negated for a negative assertion."""
+    positive, negative = CLAIM_TEMPLATES[predicate]
+    return (negative if polarity == "negative" else positive).format(s=subject, o=obj)
 
 
 def assign_trust(relation, props, head_node, tail_node, schema):
@@ -61,6 +74,8 @@ def assign_trust(relation, props, head_node, tail_node, schema):
         return "candidate", ["negative_polarity"] + reasons     # negated claims are never trusted by default
     if props["confidence"] == "low":
         return "low", ["low_confidence"] + reasons
+    if props.get("trigger") == "<implicit>":
+        reasons.append("implicit_trigger")      # the technique is itself a verb phrase; no trigger word was found
     if relation == "EXPLOITS":
         reasons.append("exploits_rarely_extracted")
     elif relation in ("USES", "TARGETS") and props["head_type"] != "GROUP":
@@ -104,6 +119,10 @@ def validate(graph):
                 problems.append(f"bad verification status {p.get('verification_status')!r}")
             if not isinstance(p.get("scope"), dict) or not {"campaign", "dates"} <= set(p["scope"]):
                 problems.append("scope must be an object with 'campaign' and 'dates'")
+            event = p["scope"].get("event_time") if isinstance(p.get("scope"), dict) else None
+            if event and not (DATE_RE.match(str(event.get("start"))) and DATE_RE.match(str(event.get("end")))
+                              and event["start"] <= event["end"]):
+                problems.append(f"bad event_time {event!r}")
             if p.get("human_verified") is not False:
                 problems.append("human_verified must be false")
     return problems
@@ -115,11 +134,17 @@ def assertion_row(assertion_id, edge, nodes):
     return {
         "assertion_id": assertion_id,
         "claim_key": f"{s['id']}|{edge['relation']}|{o['id']}",   # same subject, predicate and object
+        "claim_text": claim_text(s.get("name"), edge["relation"], o.get("name"), p["polarity"]),
+        # same claim in the report's own wording (the mentions), usually closer to the evidence sentence
+        "claim_text_surface": claim_text(p["head_mention"], edge["relation"], p["tail_mention"], p["polarity"]),
         "subject": s.get("name"), "subject_id": s["id"], "subject_type": s.get("entity_type"),
         "predicate": edge["relation"],
         "object": o.get("name"), "object_id": o["id"], "object_type": o.get("entity_type"),
         "polarity": p["polarity"],
         "publication_date": p["publication_date"],
+        # span of the dates the sentence names (None when none can be pinned down); fall back to publication_date
+        "event_start": (p["scope"].get("event_time") or {}).get("start"),
+        "event_end": (p["scope"].get("event_time") or {}).get("end"),
         "scope": p["scope"],
         "evidence_sentence": p["evidence_text"],
         "source_document": p["document"], "source_vendor": p["source"], "segment_id": p["segment"],
@@ -151,6 +176,7 @@ def group_claims(assertions):
         vendors = sorted({a["source_vendor"] for a in items})
         claims.append({
             "claim_key": key,
+            "claim_text": claim_text(first["subject"], first["predicate"], first["object"], "positive"),
             "subject": first["subject"], "subject_id": first["subject_id"],
             "predicate": first["predicate"],
             "object": first["object"], "object_id": first["object_id"],
@@ -163,7 +189,9 @@ def group_claims(assertions):
             "n_vendors": len(vendors), "vendors": vendors,
             "first_publication_date": dates[0], "last_publication_date": dates[-1],
             "assertions": [{"assertion_id": a["assertion_id"], "polarity": a["polarity"],
-                            "publication_date": a["publication_date"], "source_document": a["source_document"],
+                            "publication_date": a["publication_date"],
+                            "event_start": a["event_start"], "event_end": a["event_end"],
+                            "source_document": a["source_document"],
                             "source_vendor": a["source_vendor"], "certainty": a["certainty"],
                             "trust_level": a["trust_level"], "campaign": a["scope"]["campaign"]}
                            for a in items],

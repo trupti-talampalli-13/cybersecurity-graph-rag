@@ -138150,6 +138150,9 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": false,
+          "date_mentions": [],
+          "unresolved_dates": [],
+          "event_time": null,
           "dates": [],
           "method": "regex_best_effort"
         },
@@ -138179,6 +138182,21 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": false,
+          "date_mentions": [
+            {
+              "text": "January 2020",
+              "start": "2020-01-01",
+              "end": "2020-01-31",
+              "precision": "month",
+              "kind": "explicit"
+            }
+          ],
+          "unresolved_dates": [],
+          "event_time": {
+            "start": "2020-01-01",
+            "end": "2020-01-31",
+            "n_dates": 1
+          },
           "dates": [
             "January 2020"
           ],
@@ -138210,6 +138228,9 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": false,
+          "date_mentions": [],
+          "unresolved_dates": [],
+          "event_time": null,
           "dates": [],
           "method": "regex_best_effort"
         },
@@ -138239,6 +138260,9 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": false,
+          "date_mentions": [],
+          "unresolved_dates": [],
+          "event_time": null,
           "dates": [],
           "method": "regex_best_effort"
         },
@@ -138268,6 +138292,9 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": false,
+          "date_mentions": [],
+          "unresolved_dates": [],
+          "event_time": null,
           "dates": [],
           "method": "regex_best_effort"
         },
@@ -138297,6 +138324,21 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": false,
+          "date_mentions": [
+            {
+              "text": "April 2020",
+              "start": "2020-04-01",
+              "end": "2020-04-30",
+              "precision": "month",
+              "kind": "explicit"
+            }
+          ],
+          "unresolved_dates": [],
+          "event_time": {
+            "start": "2020-04-01",
+            "end": "2020-04-30",
+            "n_dates": 1
+          },
           "dates": [
             "April 2020"
           ],
@@ -138328,6 +138370,9 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": false,
+          "date_mentions": [],
+          "unresolved_dates": [],
+          "event_time": null,
           "dates": [],
           "method": "regex_best_effort"
         },
@@ -138357,6 +138402,21 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": false,
+          "date_mentions": [
+            {
+              "text": "February 2021",
+              "start": "2021-02-01",
+              "end": "2021-02-28",
+              "precision": "month",
+              "kind": "explicit"
+            }
+          ],
+          "unresolved_dates": [],
+          "event_time": {
+            "start": "2021-02-01",
+            "end": "2021-02-28",
+            "n_dates": 1
+          },
           "dates": [
             "February 2021"
           ],
@@ -138388,6 +138448,21 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": true,
+          "date_mentions": [
+            {
+              "text": "mid - 2020",
+              "start": "2020-01-01",
+              "end": "2020-12-31",
+              "precision": "year",
+              "kind": "explicit"
+            }
+          ],
+          "unresolved_dates": [],
+          "event_time": {
+            "start": "2020-01-01",
+            "end": "2020-12-31",
+            "n_dates": 1
+          },
           "dates": [
             "mid - 2020"
           ],
@@ -138419,6 +138494,9 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": true,
+          "date_mentions": [],
+          "unresolved_dates": [],
+          "event_time": null,
           "dates": [],
           "method": "regex_best_effort"
         },
@@ -138448,6 +138526,9 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": true,
+          "date_mentions": [],
+          "unresolved_dates": [],
+          "event_time": null,
           "dates": [],
           "method": "regex_best_effort"
         },
@@ -138477,6 +138558,41 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": false,
+          "date_mentions": [],
+          "unresolved_dates": [],
+          "event_time": null,
+          "dates": [],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
+      }
+    },
+    {
+      "source": "ENT_1049",
+      "target": "ENT_586",
+      "relation": "USES_TECHNIQUE",
+      "properties": {
+        "document": "proofpoint_2021-06-29_cobalt-strike-favorite-tool-apt",
+        "segment": 90,
+        "source": "Proofpoint",
+        "publication_date": "2021-06-29",
+        "evidence_text": "In addition to network discovery and credential dumping, Cobalt Strike Beacon also has the capability to elevate privileges, load and execute additional tools, and to inject these functions into existing running host processes to attempt to avoid detection.",
+        "trigger": "<implicit>",
+        "direction": "active",
+        "confidence": "medium",
+        "head_mention": "Beacon",
+        "tail_mention": "elevate privileges",
+        "head_type": "MALWARE",
+        "tail_type": "TACTIC",
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": false,
+          "date_mentions": [],
+          "unresolved_dates": [],
+          "event_time": null,
           "dates": [],
           "method": "regex_best_effort"
         },
@@ -138506,6 +138622,21 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": false,
+          "date_mentions": [
+            {
+              "text": "Oct. 19, 2020",
+              "start": "2020-10-19",
+              "end": "2020-10-19",
+              "precision": "day",
+              "kind": "explicit"
+            }
+          ],
+          "unresolved_dates": [],
+          "event_time": {
+            "start": "2020-10-19",
+            "end": "2020-10-19",
+            "n_dates": 1
+          },
           "dates": [
             "Oct. 19, 2020"
           ],
@@ -138537,6 +138668,9 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": false,
+          "date_mentions": [],
+          "unresolved_dates": [],
+          "event_time": null,
           "dates": [],
           "method": "regex_best_effort"
         },
@@ -138566,6 +138700,9 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": true,
+          "date_mentions": [],
+          "unresolved_dates": [],
+          "event_time": null,
           "dates": [],
           "method": "regex_best_effort"
         },
@@ -138595,6 +138732,49 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": false,
+          "date_mentions": [
+            {
+              "text": "last year",
+              "start": "2019-01-01",
+              "end": "2019-12-31",
+              "precision": "year",
+              "kind": "relative"
+            },
+            {
+              "text": "2014",
+              "start": "2014-01-01",
+              "end": "2014-12-31",
+              "precision": "year",
+              "kind": "explicit"
+            },
+            {
+              "text": "2015",
+              "start": "2015-01-01",
+              "end": "2015-12-31",
+              "precision": "year",
+              "kind": "explicit"
+            },
+            {
+              "text": "2018",
+              "start": "2018-01-01",
+              "end": "2018-12-31",
+              "precision": "year",
+              "kind": "explicit"
+            },
+            {
+              "text": "2019",
+              "start": "2019-01-01",
+              "end": "2019-12-31",
+              "precision": "year",
+              "kind": "explicit"
+            }
+          ],
+          "unresolved_dates": [],
+          "event_time": {
+            "start": "2014-01-01",
+            "end": "2019-12-31",
+            "n_dates": 5
+          },
           "dates": [
             "last year",
             "2014",
@@ -138630,6 +138810,49 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": false,
+          "date_mentions": [
+            {
+              "text": "last year",
+              "start": "2019-01-01",
+              "end": "2019-12-31",
+              "precision": "year",
+              "kind": "relative"
+            },
+            {
+              "text": "2014",
+              "start": "2014-01-01",
+              "end": "2014-12-31",
+              "precision": "year",
+              "kind": "explicit"
+            },
+            {
+              "text": "2015",
+              "start": "2015-01-01",
+              "end": "2015-12-31",
+              "precision": "year",
+              "kind": "explicit"
+            },
+            {
+              "text": "2018",
+              "start": "2018-01-01",
+              "end": "2018-12-31",
+              "precision": "year",
+              "kind": "explicit"
+            },
+            {
+              "text": "2019",
+              "start": "2019-01-01",
+              "end": "2019-12-31",
+              "precision": "year",
+              "kind": "explicit"
+            }
+          ],
+          "unresolved_dates": [],
+          "event_time": {
+            "start": "2014-01-01",
+            "end": "2019-12-31",
+            "n_dates": 5
+          },
           "dates": [
             "last year",
             "2014",
@@ -138665,6 +138888,49 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": false,
+          "date_mentions": [
+            {
+              "text": "last year",
+              "start": "2019-01-01",
+              "end": "2019-12-31",
+              "precision": "year",
+              "kind": "relative"
+            },
+            {
+              "text": "2014",
+              "start": "2014-01-01",
+              "end": "2014-12-31",
+              "precision": "year",
+              "kind": "explicit"
+            },
+            {
+              "text": "2015",
+              "start": "2015-01-01",
+              "end": "2015-12-31",
+              "precision": "year",
+              "kind": "explicit"
+            },
+            {
+              "text": "2018",
+              "start": "2018-01-01",
+              "end": "2018-12-31",
+              "precision": "year",
+              "kind": "explicit"
+            },
+            {
+              "text": "2019",
+              "start": "2019-01-01",
+              "end": "2019-12-31",
+              "precision": "year",
+              "kind": "explicit"
+            }
+          ],
+          "unresolved_dates": [],
+          "event_time": {
+            "start": "2014-01-01",
+            "end": "2019-12-31",
+            "n_dates": 5
+          },
           "dates": [
             "last year",
             "2014",
@@ -138700,6 +138966,49 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": false,
+          "date_mentions": [
+            {
+              "text": "last year",
+              "start": "2019-01-01",
+              "end": "2019-12-31",
+              "precision": "year",
+              "kind": "relative"
+            },
+            {
+              "text": "2014",
+              "start": "2014-01-01",
+              "end": "2014-12-31",
+              "precision": "year",
+              "kind": "explicit"
+            },
+            {
+              "text": "2015",
+              "start": "2015-01-01",
+              "end": "2015-12-31",
+              "precision": "year",
+              "kind": "explicit"
+            },
+            {
+              "text": "2018",
+              "start": "2018-01-01",
+              "end": "2018-12-31",
+              "precision": "year",
+              "kind": "explicit"
+            },
+            {
+              "text": "2019",
+              "start": "2019-01-01",
+              "end": "2019-12-31",
+              "precision": "year",
+              "kind": "explicit"
+            }
+          ],
+          "unresolved_dates": [],
+          "event_time": {
+            "start": "2014-01-01",
+            "end": "2019-12-31",
+            "n_dates": 5
+          },
           "dates": [
             "last year",
             "2014",
@@ -138735,6 +139044,22 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": false,
+          "date_mentions": [
+            {
+              "text": "2015",
+              "start": "2015-01-01",
+              "end": "2020-04-20",
+              "precision": "year",
+              "kind": "explicit",
+              "open_ended": true
+            }
+          ],
+          "unresolved_dates": [],
+          "event_time": {
+            "start": "2015-01-01",
+            "end": "2020-04-20",
+            "n_dates": 1
+          },
           "dates": [
             "2015"
           ],
@@ -138766,6 +139091,9 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": false,
+          "date_mentions": [],
+          "unresolved_dates": [],
+          "event_time": null,
           "dates": [],
           "method": "regex_best_effort"
         },
@@ -138795,6 +139123,9 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": false,
+          "date_mentions": [],
+          "unresolved_dates": [],
+          "event_time": null,
           "dates": [],
           "method": "regex_best_effort"
         },
@@ -138824,6 +139155,9 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": false,
+          "date_mentions": [],
+          "unresolved_dates": [],
+          "event_time": null,
           "dates": [],
           "method": "regex_best_effort"
         },
@@ -138853,6 +139187,9 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": false,
+          "date_mentions": [],
+          "unresolved_dates": [],
+          "event_time": null,
           "dates": [],
           "method": "regex_best_effort"
         },
@@ -138882,6 +139219,9 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": false,
+          "date_mentions": [],
+          "unresolved_dates": [],
+          "event_time": null,
           "dates": [],
           "method": "regex_best_effort"
         },
@@ -138911,6 +139251,9 @@
         "scope": {
           "campaign": "Winnti Group",
           "campaign_mentioned": true,
+          "date_mentions": [],
+          "unresolved_dates": [],
+          "event_time": null,
           "dates": [],
           "method": "regex_best_effort"
         },
@@ -138940,6 +139283,9 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": false,
+          "date_mentions": [],
+          "unresolved_dates": [],
+          "event_time": null,
           "dates": [],
           "method": "regex_best_effort"
         },
@@ -138969,6 +139315,9 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": false,
+          "date_mentions": [],
+          "unresolved_dates": [],
+          "event_time": null,
           "dates": [],
           "method": "regex_best_effort"
         },
@@ -138998,6 +139347,9 @@
         "scope": {
           "campaign": "RustyBuer",
           "campaign_mentioned": true,
+          "date_mentions": [],
+          "unresolved_dates": [],
+          "event_time": null,
           "dates": [],
           "method": "regex_best_effort"
         },
@@ -139027,6 +139379,9 @@
         "scope": {
           "campaign": "Buer",
           "campaign_mentioned": true,
+          "date_mentions": [],
+          "unresolved_dates": [],
+          "event_time": null,
           "dates": [],
           "method": "regex_best_effort"
         },
@@ -139056,6 +139411,9 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": false,
+          "date_mentions": [],
+          "unresolved_dates": [],
+          "event_time": null,
           "dates": [],
           "method": "regex_best_effort"
         },
@@ -139085,6 +139443,9 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": false,
+          "date_mentions": [],
+          "unresolved_dates": [],
+          "event_time": null,
           "dates": [],
           "method": "regex_best_effort"
         },
@@ -139114,6 +139475,9 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": false,
+          "date_mentions": [],
+          "unresolved_dates": [],
+          "event_time": null,
           "dates": [],
           "method": "regex_best_effort"
         },
@@ -139143,6 +139507,9 @@
         "scope": {
           "campaign": "Dridex",
           "campaign_mentioned": true,
+          "date_mentions": [],
+          "unresolved_dates": [],
+          "event_time": null,
           "dates": [],
           "method": "regex_best_effort"
         },
@@ -139172,6 +139539,21 @@
         "scope": {
           "campaign": "ZLoader",
           "campaign_mentioned": true,
+          "date_mentions": [
+            {
+              "text": "2021",
+              "start": "2021-01-01",
+              "end": "2021-12-31",
+              "precision": "year",
+              "kind": "explicit"
+            }
+          ],
+          "unresolved_dates": [],
+          "event_time": {
+            "start": "2021-01-01",
+            "end": "2021-12-31",
+            "n_dates": 1
+          },
           "dates": [
             "2021"
           ],
@@ -139203,9 +139585,56 @@
         "scope": {
           "campaign": "ZLoader",
           "campaign_mentioned": true,
+          "date_mentions": [
+            {
+              "text": "2021",
+              "start": "2021-01-01",
+              "end": "2021-12-31",
+              "precision": "year",
+              "kind": "explicit"
+            }
+          ],
+          "unresolved_dates": [],
+          "event_time": {
+            "start": "2021-01-01",
+            "end": "2021-12-31",
+            "n_dates": 1
+          },
           "dates": [
             "2021"
           ],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
+      }
+    },
+    {
+      "source": "ENT_1303",
+      "target": "ENT_585",
+      "relation": "USES_TECHNIQUE",
+      "properties": {
+        "document": "zscaler_2020-08-14_purplewave-new-infostealer-russia",
+        "segment": 66,
+        "source": "Zscaler",
+        "publication_date": "2020-08-14",
+        "evidence_text": "PurpleWave is capable of stealing credentials, autofills data, card data, cookies, and browser history from Chromium and Mozilla.",
+        "trigger": "<implicit>",
+        "direction": "active",
+        "confidence": "medium",
+        "head_mention": "PurpleWave",
+        "tail_mention": "stealing credentials",
+        "head_type": "MALWARE",
+        "tail_type": "TACTIC",
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": false,
+          "date_mentions": [],
+          "unresolved_dates": [],
+          "event_time": null,
+          "dates": [],
           "method": "regex_best_effort"
         },
         "verification_status": "unverified",
@@ -139234,6 +139663,9 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": false,
+          "date_mentions": [],
+          "unresolved_dates": [],
+          "event_time": null,
           "dates": [],
           "method": "regex_best_effort"
         },
@@ -139263,6 +139695,21 @@
         "scope": {
           "campaign": "TA543",
           "campaign_mentioned": true,
+          "date_mentions": [
+            {
+              "text": "2019",
+              "start": "2019-01-01",
+              "end": "2019-12-31",
+              "precision": "year",
+              "kind": "explicit"
+            }
+          ],
+          "unresolved_dates": [],
+          "event_time": {
+            "start": "2019-01-01",
+            "end": "2019-12-31",
+            "n_dates": 1
+          },
           "dates": [
             "2019"
           ],
@@ -139294,6 +139741,9 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": false,
+          "date_mentions": [],
+          "unresolved_dates": [],
+          "event_time": null,
           "dates": [],
           "method": "regex_best_effort"
         },
@@ -139323,6 +139773,9 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": false,
+          "date_mentions": [],
+          "unresolved_dates": [],
+          "event_time": null,
           "dates": [],
           "method": "regex_best_effort"
         },
@@ -139352,6 +139805,9 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": false,
+          "date_mentions": [],
+          "unresolved_dates": [],
+          "event_time": null,
           "dates": [],
           "method": "regex_best_effort"
         },
@@ -139381,6 +139837,21 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": false,
+          "date_mentions": [
+            {
+              "text": "June 8, 2021",
+              "start": "2021-06-08",
+              "end": "2021-06-08",
+              "precision": "day",
+              "kind": "explicit"
+            }
+          ],
+          "unresolved_dates": [],
+          "event_time": {
+            "start": "2021-06-08",
+            "end": "2021-06-08",
+            "n_dates": 1
+          },
           "dates": [
             "June 8, 2021"
           ],
@@ -139412,6 +139883,9 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": false,
+          "date_mentions": [],
+          "unresolved_dates": [],
+          "event_time": null,
           "dates": [],
           "method": "regex_best_effort"
         },
@@ -139441,6 +139915,9 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": false,
+          "date_mentions": [],
+          "unresolved_dates": [],
+          "event_time": null,
           "dates": [],
           "method": "regex_best_effort"
         },
@@ -139470,6 +139947,9 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": false,
+          "date_mentions": [],
+          "unresolved_dates": [],
+          "event_time": null,
           "dates": [],
           "method": "regex_best_effort"
         },
@@ -139499,6 +139979,9 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": false,
+          "date_mentions": [],
+          "unresolved_dates": [],
+          "event_time": null,
           "dates": [],
           "method": "regex_best_effort"
         },
@@ -139528,6 +140011,9 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": true,
+          "date_mentions": [],
+          "unresolved_dates": [],
+          "event_time": null,
           "dates": [],
           "method": "regex_best_effort"
         },
@@ -139557,6 +140043,9 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": false,
+          "date_mentions": [],
+          "unresolved_dates": [],
+          "event_time": null,
           "dates": [],
           "method": "regex_best_effort"
         },
@@ -139586,6 +140075,9 @@
         "scope": {
           "campaign": "ReconHellcat",
           "campaign_mentioned": true,
+          "date_mentions": [],
+          "unresolved_dates": [],
+          "event_time": null,
           "dates": [],
           "method": "regex_best_effort"
         },
@@ -139615,6 +140107,9 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": false,
+          "date_mentions": [],
+          "unresolved_dates": [],
+          "event_time": null,
           "dates": [],
           "method": "regex_best_effort"
         },
@@ -139644,6 +140139,9 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": false,
+          "date_mentions": [],
+          "unresolved_dates": [],
+          "event_time": null,
           "dates": [],
           "method": "regex_best_effort"
         },
@@ -139673,6 +140171,9 @@
         "scope": {
           "campaign": "BlackSoul",
           "campaign_mentioned": true,
+          "date_mentions": [],
+          "unresolved_dates": [],
+          "event_time": null,
           "dates": [],
           "method": "regex_best_effort"
         },
@@ -139702,6 +140203,9 @@
         "scope": {
           "campaign": "ReconHellcat",
           "campaign_mentioned": true,
+          "date_mentions": [],
+          "unresolved_dates": [],
+          "event_time": null,
           "dates": [],
           "method": "regex_best_effort"
         },
@@ -139731,6 +140235,9 @@
         "scope": {
           "campaign": "ReconHellcat",
           "campaign_mentioned": true,
+          "date_mentions": [],
+          "unresolved_dates": [],
+          "event_time": null,
           "dates": [],
           "method": "regex_best_effort"
         },
@@ -139760,6 +140267,9 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": false,
+          "date_mentions": [],
+          "unresolved_dates": [],
+          "event_time": null,
           "dates": [],
           "method": "regex_best_effort"
         },
@@ -139789,6 +140299,9 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": false,
+          "date_mentions": [],
+          "unresolved_dates": [],
+          "event_time": null,
           "dates": [],
           "method": "regex_best_effort"
         },
@@ -139818,6 +140331,9 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": true,
+          "date_mentions": [],
+          "unresolved_dates": [],
+          "event_time": null,
           "dates": [],
           "method": "regex_best_effort"
         },
@@ -139847,6 +140363,9 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": true,
+          "date_mentions": [],
+          "unresolved_dates": [],
+          "event_time": null,
           "dates": [],
           "method": "regex_best_effort"
         },
@@ -139876,6 +140395,9 @@
         "scope": {
           "campaign": "Njrat",
           "campaign_mentioned": true,
+          "date_mentions": [],
+          "unresolved_dates": [],
+          "event_time": null,
           "dates": [],
           "method": "regex_best_effort"
         },
@@ -139905,6 +140427,9 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": false,
+          "date_mentions": [],
+          "unresolved_dates": [],
+          "event_time": null,
           "dates": [],
           "method": "regex_best_effort"
         },
@@ -139934,6 +140459,9 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": false,
+          "date_mentions": [],
+          "unresolved_dates": [],
+          "event_time": null,
           "dates": [],
           "method": "regex_best_effort"
         },
@@ -139963,6 +140491,9 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": false,
+          "date_mentions": [],
+          "unresolved_dates": [],
+          "event_time": null,
           "dates": [],
           "method": "regex_best_effort"
         },
@@ -139992,6 +140523,22 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": false,
+          "date_mentions": [
+            {
+              "text": "2019 - 09 - 21",
+              "start": "2019-09-21",
+              "end": "2020-01-13",
+              "precision": "day",
+              "kind": "explicit",
+              "open_ended": true
+            }
+          ],
+          "unresolved_dates": [],
+          "event_time": {
+            "start": "2019-09-21",
+            "end": "2020-01-13",
+            "n_dates": 1
+          },
           "dates": [
             "2019 - 09 - 21"
           ],
@@ -140023,6 +140570,22 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": false,
+          "date_mentions": [
+            {
+              "text": "2019 - 09 - 21",
+              "start": "2019-09-21",
+              "end": "2020-01-13",
+              "precision": "day",
+              "kind": "explicit",
+              "open_ended": true
+            }
+          ],
+          "unresolved_dates": [],
+          "event_time": {
+            "start": "2019-09-21",
+            "end": "2020-01-13",
+            "n_dates": 1
+          },
           "dates": [
             "2019 - 09 - 21"
           ],
@@ -140054,6 +140617,9 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": false,
+          "date_mentions": [],
+          "unresolved_dates": [],
+          "event_time": null,
           "dates": [],
           "method": "regex_best_effort"
         },
@@ -140083,6 +140649,9 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": false,
+          "date_mentions": [],
+          "unresolved_dates": [],
+          "event_time": null,
           "dates": [],
           "method": "regex_best_effort"
         },
@@ -140112,6 +140681,9 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": false,
+          "date_mentions": [],
+          "unresolved_dates": [],
+          "event_time": null,
           "dates": [],
           "method": "regex_best_effort"
         },
@@ -140141,6 +140713,9 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": false,
+          "date_mentions": [],
+          "unresolved_dates": [],
+          "event_time": null,
           "dates": [],
           "method": "regex_best_effort"
         },
@@ -140170,6 +140745,9 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": false,
+          "date_mentions": [],
+          "unresolved_dates": [],
+          "event_time": null,
           "dates": [],
           "method": "regex_best_effort"
         },
@@ -140199,6 +140777,9 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": true,
+          "date_mentions": [],
+          "unresolved_dates": [],
+          "event_time": null,
           "dates": [],
           "method": "regex_best_effort"
         },
@@ -140228,6 +140809,9 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": false,
+          "date_mentions": [],
+          "unresolved_dates": [],
+          "event_time": null,
           "dates": [],
           "method": "regex_best_effort"
         },
@@ -140257,6 +140841,9 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": false,
+          "date_mentions": [],
+          "unresolved_dates": [],
+          "event_time": null,
           "dates": [],
           "method": "regex_best_effort"
         },
@@ -140286,6 +140873,9 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": false,
+          "date_mentions": [],
+          "unresolved_dates": [],
+          "event_time": null,
           "dates": [],
           "method": "regex_best_effort"
         },
@@ -140315,6 +140905,9 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": false,
+          "date_mentions": [],
+          "unresolved_dates": [],
+          "event_time": null,
           "dates": [],
           "method": "regex_best_effort"
         },
@@ -140344,6 +140937,9 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": false,
+          "date_mentions": [],
+          "unresolved_dates": [],
+          "event_time": null,
           "dates": [],
           "method": "regex_best_effort"
         },
@@ -140373,6 +140969,9 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": false,
+          "date_mentions": [],
+          "unresolved_dates": [],
+          "event_time": null,
           "dates": [],
           "method": "regex_best_effort"
         },
@@ -140402,6 +141001,9 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": false,
+          "date_mentions": [],
+          "unresolved_dates": [],
+          "event_time": null,
           "dates": [],
           "method": "regex_best_effort"
         },
@@ -140431,6 +141033,9 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": false,
+          "date_mentions": [],
+          "unresolved_dates": [],
+          "event_time": null,
           "dates": [],
           "method": "regex_best_effort"
         },
@@ -140460,6 +141065,9 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": false,
+          "date_mentions": [],
+          "unresolved_dates": [],
+          "event_time": null,
           "dates": [],
           "method": "regex_best_effort"
         },
@@ -140489,6 +141097,9 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": false,
+          "date_mentions": [],
+          "unresolved_dates": [],
+          "event_time": null,
           "dates": [],
           "method": "regex_best_effort"
         },
@@ -140518,6 +141129,41 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": false,
+          "date_mentions": [],
+          "unresolved_dates": [],
+          "event_time": null,
+          "dates": [],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
+      }
+    },
+    {
+      "source": "ENT_1143",
+      "target": "ENT_585",
+      "relation": "USES_TECHNIQUE",
+      "properties": {
+        "document": "lab52_2019-05-30_leviathan-geostrategy-and-ttp-technical",
+        "segment": 89,
+        "source": "Lab52",
+        "publication_date": "2019-05-30",
+        "evidence_text": "Leviathan collects passwords to access other computers in the network.",
+        "trigger": "<implicit>",
+        "direction": "active",
+        "confidence": "medium",
+        "head_mention": "Leviathan",
+        "tail_mention": "collects passwords",
+        "head_type": "GROUP",
+        "tail_type": "TACTIC",
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": false,
+          "date_mentions": [],
+          "unresolved_dates": [],
+          "event_time": null,
           "dates": [],
           "method": "regex_best_effort"
         },
@@ -140547,6 +141193,9 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": false,
+          "date_mentions": [],
+          "unresolved_dates": [],
+          "event_time": null,
           "dates": [],
           "method": "regex_best_effort"
         },
@@ -140576,6 +141225,9 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": false,
+          "date_mentions": [],
+          "unresolved_dates": [],
+          "event_time": null,
           "dates": [],
           "method": "regex_best_effort"
         },
@@ -140605,6 +141257,9 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": true,
+          "date_mentions": [],
+          "unresolved_dates": [],
+          "event_time": null,
           "dates": [],
           "method": "regex_best_effort"
         },
@@ -140634,6 +141289,9 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": false,
+          "date_mentions": [],
+          "unresolved_dates": [],
+          "event_time": null,
           "dates": [],
           "method": "regex_best_effort"
         },
@@ -140663,6 +141321,11 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": false,
+          "date_mentions": [],
+          "unresolved_dates": [
+            "5 August"
+          ],
+          "event_time": null,
           "dates": [
             "5 August"
           ],
@@ -140694,6 +141357,9 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": false,
+          "date_mentions": [],
+          "unresolved_dates": [],
+          "event_time": null,
           "dates": [],
           "method": "regex_best_effort"
         },
@@ -140723,6 +141389,9 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": false,
+          "date_mentions": [],
+          "unresolved_dates": [],
+          "event_time": null,
           "dates": [],
           "method": "regex_best_effort"
         },
@@ -140752,6 +141421,9 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": false,
+          "date_mentions": [],
+          "unresolved_dates": [],
+          "event_time": null,
           "dates": [],
           "method": "regex_best_effort"
         },
@@ -140781,6 +141453,9 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": false,
+          "date_mentions": [],
+          "unresolved_dates": [],
+          "event_time": null,
           "dates": [],
           "method": "regex_best_effort"
         },
@@ -140810,6 +141485,9 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": false,
+          "date_mentions": [],
+          "unresolved_dates": [],
+          "event_time": null,
           "dates": [],
           "method": "regex_best_effort"
         },
@@ -140839,6 +141517,9 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": false,
+          "date_mentions": [],
+          "unresolved_dates": [],
+          "event_time": null,
           "dates": [],
           "method": "regex_best_effort"
         },
@@ -140868,6 +141549,9 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": false,
+          "date_mentions": [],
+          "unresolved_dates": [],
+          "event_time": null,
           "dates": [],
           "method": "regex_best_effort"
         },
@@ -140897,6 +141581,21 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": false,
+          "date_mentions": [
+            {
+              "text": "September 2020",
+              "start": "2020-09-01",
+              "end": "2020-09-30",
+              "precision": "month",
+              "kind": "explicit"
+            }
+          ],
+          "unresolved_dates": [],
+          "event_time": {
+            "start": "2020-09-01",
+            "end": "2020-09-30",
+            "n_dates": 1
+          },
           "dates": [
             "September 2020"
           ],
@@ -140928,6 +141627,21 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": false,
+          "date_mentions": [
+            {
+              "text": "April 17, 2019",
+              "start": "2019-04-17",
+              "end": "2019-04-17",
+              "precision": "day",
+              "kind": "explicit"
+            }
+          ],
+          "unresolved_dates": [],
+          "event_time": {
+            "start": "2019-04-17",
+            "end": "2019-04-17",
+            "n_dates": 1
+          },
           "dates": [
             "April 17, 2019"
           ],
@@ -140959,6 +141673,9 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": false,
+          "date_mentions": [],
+          "unresolved_dates": [],
+          "event_time": null,
           "dates": [],
           "method": "regex_best_effort"
         },
@@ -140988,6 +141705,21 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": false,
+          "date_mentions": [
+            {
+              "text": "this year",
+              "start": "2020-01-01",
+              "end": "2020-12-31",
+              "precision": "year",
+              "kind": "relative"
+            }
+          ],
+          "unresolved_dates": [],
+          "event_time": {
+            "start": "2020-01-01",
+            "end": "2020-12-31",
+            "n_dates": 1
+          },
           "dates": [
             "this year"
           ],
@@ -141019,6 +141751,9 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": false,
+          "date_mentions": [],
+          "unresolved_dates": [],
+          "event_time": null,
           "dates": [],
           "method": "regex_best_effort"
         },
@@ -141048,6 +141783,9 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": false,
+          "date_mentions": [],
+          "unresolved_dates": [],
+          "event_time": null,
           "dates": [],
           "method": "regex_best_effort"
         },
@@ -141077,6 +141815,9 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": false,
+          "date_mentions": [],
+          "unresolved_dates": [],
+          "event_time": null,
           "dates": [],
           "method": "regex_best_effort"
         },
@@ -141106,6 +141847,9 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": false,
+          "date_mentions": [],
+          "unresolved_dates": [],
+          "event_time": null,
           "dates": [],
           "method": "regex_best_effort"
         },
@@ -141135,6 +141879,9 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": false,
+          "date_mentions": [],
+          "unresolved_dates": [],
+          "event_time": null,
           "dates": [],
           "method": "regex_best_effort"
         },
@@ -141164,6 +141911,9 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": false,
+          "date_mentions": [],
+          "unresolved_dates": [],
+          "event_time": null,
           "dates": [],
           "method": "regex_best_effort"
         },
@@ -141193,6 +141943,9 @@
         "scope": {
           "campaign": "Remcos RAT",
           "campaign_mentioned": true,
+          "date_mentions": [],
+          "unresolved_dates": [],
+          "event_time": null,
           "dates": [],
           "method": "regex_best_effort"
         },
@@ -141222,6 +141975,9 @@
         "scope": {
           "campaign": "Remcos RAT",
           "campaign_mentioned": true,
+          "date_mentions": [],
+          "unresolved_dates": [],
+          "event_time": null,
           "dates": [],
           "method": "regex_best_effort"
         },
@@ -141251,6 +142007,9 @@
         "scope": {
           "campaign": "Remcos RAT",
           "campaign_mentioned": true,
+          "date_mentions": [],
+          "unresolved_dates": [],
+          "event_time": null,
           "dates": [],
           "method": "regex_best_effort"
         },
@@ -141280,6 +142039,9 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": true,
+          "date_mentions": [],
+          "unresolved_dates": [],
+          "event_time": null,
           "dates": [],
           "method": "regex_best_effort"
         },
@@ -141309,6 +142071,11 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": true,
+          "date_mentions": [],
+          "unresolved_dates": [
+            "January of 2020"
+          ],
+          "event_time": null,
           "dates": [
             "January of 2020"
           ],
@@ -141340,6 +142107,11 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": true,
+          "date_mentions": [],
+          "unresolved_dates": [
+            "January of 2020"
+          ],
+          "event_time": null,
           "dates": [
             "January of 2020"
           ],
@@ -141371,6 +142143,11 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": true,
+          "date_mentions": [],
+          "unresolved_dates": [
+            "January of 2020"
+          ],
+          "event_time": null,
           "dates": [
             "January of 2020"
           ],
@@ -141402,6 +142179,9 @@
         "scope": {
           "campaign": "APT10",
           "campaign_mentioned": true,
+          "date_mentions": [],
+          "unresolved_dates": [],
+          "event_time": null,
           "dates": [],
           "method": "regex_best_effort"
         },
@@ -141431,6 +142211,9 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": true,
+          "date_mentions": [],
+          "unresolved_dates": [],
+          "event_time": null,
           "dates": [],
           "method": "regex_best_effort"
         },
@@ -141460,6 +142243,9 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": false,
+          "date_mentions": [],
+          "unresolved_dates": [],
+          "event_time": null,
           "dates": [],
           "method": "regex_best_effort"
         },
@@ -141489,6 +142275,9 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": false,
+          "date_mentions": [],
+          "unresolved_dates": [],
+          "event_time": null,
           "dates": [],
           "method": "regex_best_effort"
         },
@@ -141518,6 +142307,21 @@
         "scope": {
           "campaign": "TA544 Ursnif",
           "campaign_mentioned": true,
+          "date_mentions": [
+            {
+              "text": "2021",
+              "start": "2021-01-01",
+              "end": "2021-12-31",
+              "precision": "year",
+              "kind": "explicit"
+            }
+          ],
+          "unresolved_dates": [],
+          "event_time": {
+            "start": "2021-01-01",
+            "end": "2021-12-31",
+            "n_dates": 1
+          },
           "dates": [
             "2021"
           ],
@@ -141549,6 +142353,21 @@
         "scope": {
           "campaign": "TA544 Ursnif",
           "campaign_mentioned": true,
+          "date_mentions": [
+            {
+              "text": "2021",
+              "start": "2021-01-01",
+              "end": "2021-12-31",
+              "precision": "year",
+              "kind": "explicit"
+            }
+          ],
+          "unresolved_dates": [],
+          "event_time": {
+            "start": "2021-01-01",
+            "end": "2021-12-31",
+            "n_dates": 1
+          },
           "dates": [
             "2021"
           ],
@@ -141580,6 +142399,9 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": false,
+          "date_mentions": [],
+          "unresolved_dates": [],
+          "event_time": null,
           "dates": [],
           "method": "regex_best_effort"
         },
@@ -141609,6 +142431,9 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": true,
+          "date_mentions": [],
+          "unresolved_dates": [],
+          "event_time": null,
           "dates": [],
           "method": "regex_best_effort"
         },
@@ -141638,6 +142463,9 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": true,
+          "date_mentions": [],
+          "unresolved_dates": [],
+          "event_time": null,
           "dates": [],
           "method": "regex_best_effort"
         },
@@ -141667,6 +142495,21 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": false,
+          "date_mentions": [
+            {
+              "text": "2020",
+              "start": "2020-01-01",
+              "end": "2020-12-31",
+              "precision": "year",
+              "kind": "explicit"
+            }
+          ],
+          "unresolved_dates": [],
+          "event_time": {
+            "start": "2020-01-01",
+            "end": "2020-12-31",
+            "n_dates": 1
+          },
           "dates": [
             "2020"
           ],
@@ -141698,6 +142541,9 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": false,
+          "date_mentions": [],
+          "unresolved_dates": [],
+          "event_time": null,
           "dates": [],
           "method": "regex_best_effort"
         },
@@ -141727,6 +142573,41 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": false,
+          "date_mentions": [],
+          "unresolved_dates": [],
+          "event_time": null,
+          "dates": [],
+          "method": "regex_best_effort"
+        },
+        "verification_status": "unverified",
+        "method": "rule_based_v3"
+      }
+    },
+    {
+      "source": "ENT_1141",
+      "target": "ENT_161",
+      "relation": "USES_TECHNIQUE",
+      "properties": {
+        "document": "proofpoint_2021-10-19_whatta-ta-ta505-ramps-activity",
+        "segment": 3,
+        "source": "Proofpoint",
+        "publication_date": "2021-10-19",
+        "evidence_text": "The prominent TA505 has returned to distributing large volumes of malicious emails affecting most industries.",
+        "trigger": "<implicit>",
+        "direction": "active",
+        "confidence": "medium",
+        "head_mention": "TA505",
+        "tail_mention": "distributing large volumes of malicious emails",
+        "head_type": "GROUP",
+        "tail_type": "TECHNIQUE",
+        "polarity": "positive",
+        "certainty": "asserted",
+        "scope": {
+          "campaign": null,
+          "campaign_mentioned": false,
+          "date_mentions": [],
+          "unresolved_dates": [],
+          "event_time": null,
           "dates": [],
           "method": "regex_best_effort"
         },
@@ -141756,6 +142637,9 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": false,
+          "date_mentions": [],
+          "unresolved_dates": [],
+          "event_time": null,
           "dates": [],
           "method": "regex_best_effort"
         },
@@ -141785,6 +142669,9 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": false,
+          "date_mentions": [],
+          "unresolved_dates": [],
+          "event_time": null,
           "dates": [],
           "method": "regex_best_effort"
         },
@@ -141814,6 +142701,9 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": false,
+          "date_mentions": [],
+          "unresolved_dates": [],
+          "event_time": null,
           "dates": [],
           "method": "regex_best_effort"
         },
@@ -141843,6 +142733,9 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": false,
+          "date_mentions": [],
+          "unresolved_dates": [],
+          "event_time": null,
           "dates": [],
           "method": "regex_best_effort"
         },
@@ -141872,6 +142765,9 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": false,
+          "date_mentions": [],
+          "unresolved_dates": [],
+          "event_time": null,
           "dates": [],
           "method": "regex_best_effort"
         },
@@ -141901,6 +142797,9 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": false,
+          "date_mentions": [],
+          "unresolved_dates": [],
+          "event_time": null,
           "dates": [],
           "method": "regex_best_effort"
         },
@@ -141930,6 +142829,9 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": false,
+          "date_mentions": [],
+          "unresolved_dates": [],
+          "event_time": null,
           "dates": [],
           "method": "regex_best_effort"
         },
@@ -141959,6 +142861,9 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": false,
+          "date_mentions": [],
+          "unresolved_dates": [],
+          "event_time": null,
           "dates": [],
           "method": "regex_best_effort"
         },
@@ -141988,6 +142893,9 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": false,
+          "date_mentions": [],
+          "unresolved_dates": [],
+          "event_time": null,
           "dates": [],
           "method": "regex_best_effort"
         },
@@ -142017,6 +142925,9 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": true,
+          "date_mentions": [],
+          "unresolved_dates": [],
+          "event_time": null,
           "dates": [],
           "method": "regex_best_effort"
         },
@@ -142046,6 +142957,9 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": false,
+          "date_mentions": [],
+          "unresolved_dates": [],
+          "event_time": null,
           "dates": [],
           "method": "regex_best_effort"
         },
@@ -142075,6 +142989,9 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": false,
+          "date_mentions": [],
+          "unresolved_dates": [],
+          "event_time": null,
           "dates": [],
           "method": "regex_best_effort"
         },
@@ -142104,6 +143021,9 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": false,
+          "date_mentions": [],
+          "unresolved_dates": [],
+          "event_time": null,
           "dates": [],
           "method": "regex_best_effort"
         },
@@ -142133,6 +143053,9 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": false,
+          "date_mentions": [],
+          "unresolved_dates": [],
+          "event_time": null,
           "dates": [],
           "method": "regex_best_effort"
         },
@@ -142162,6 +143085,9 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": false,
+          "date_mentions": [],
+          "unresolved_dates": [],
+          "event_time": null,
           "dates": [],
           "method": "regex_best_effort"
         },
@@ -142191,6 +143117,9 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": true,
+          "date_mentions": [],
+          "unresolved_dates": [],
+          "event_time": null,
           "dates": [],
           "method": "regex_best_effort"
         },
@@ -142220,6 +143149,9 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": false,
+          "date_mentions": [],
+          "unresolved_dates": [],
+          "event_time": null,
           "dates": [],
           "method": "regex_best_effort"
         },
@@ -142249,6 +143181,21 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": false,
+          "date_mentions": [
+            {
+              "text": "2017",
+              "start": "2017-01-01",
+              "end": "2017-12-31",
+              "precision": "year",
+              "kind": "explicit"
+            }
+          ],
+          "unresolved_dates": [],
+          "event_time": {
+            "start": "2017-01-01",
+            "end": "2017-12-31",
+            "n_dates": 1
+          },
           "dates": [
             "2017"
           ],
@@ -142280,6 +143227,21 @@
         "scope": {
           "campaign": "TinyNuke",
           "campaign_mentioned": true,
+          "date_mentions": [
+            {
+              "text": "2018",
+              "start": "2018-01-01",
+              "end": "2018-12-31",
+              "precision": "year",
+              "kind": "explicit"
+            }
+          ],
+          "unresolved_dates": [],
+          "event_time": {
+            "start": "2018-01-01",
+            "end": "2018-12-31",
+            "n_dates": 1
+          },
           "dates": [
             "2018"
           ],
@@ -142311,6 +143273,21 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": true,
+          "date_mentions": [
+            {
+              "text": "2017",
+              "start": "2017-01-01",
+              "end": "2017-12-31",
+              "precision": "year",
+              "kind": "explicit"
+            }
+          ],
+          "unresolved_dates": [],
+          "event_time": {
+            "start": "2017-01-01",
+            "end": "2017-12-31",
+            "n_dates": 1
+          },
           "dates": [
             "2017"
           ],
@@ -142342,6 +143319,21 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": true,
+          "date_mentions": [
+            {
+              "text": "2017",
+              "start": "2017-01-01",
+              "end": "2017-12-31",
+              "precision": "year",
+              "kind": "explicit"
+            }
+          ],
+          "unresolved_dates": [],
+          "event_time": {
+            "start": "2017-01-01",
+            "end": "2017-12-31",
+            "n_dates": 1
+          },
           "dates": [
             "2017"
           ],
@@ -142373,6 +143365,28 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": true,
+          "date_mentions": [
+            {
+              "text": "2021",
+              "start": "2021-01-01",
+              "end": "2021-12-31",
+              "precision": "year",
+              "kind": "explicit"
+            },
+            {
+              "text": "2018",
+              "start": "2018-01-01",
+              "end": "2018-12-31",
+              "precision": "year",
+              "kind": "explicit"
+            }
+          ],
+          "unresolved_dates": [],
+          "event_time": {
+            "start": "2018-01-01",
+            "end": "2021-12-31",
+            "n_dates": 2
+          },
           "dates": [
             "2021",
             "2018"
@@ -142405,6 +143419,9 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": false,
+          "date_mentions": [],
+          "unresolved_dates": [],
+          "event_time": null,
           "dates": [],
           "method": "regex_best_effort"
         },
@@ -142434,6 +143451,21 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": false,
+          "date_mentions": [
+            {
+              "text": "In April 2021",
+              "start": "2021-04-01",
+              "end": "2021-04-30",
+              "precision": "month",
+              "kind": "explicit"
+            }
+          ],
+          "unresolved_dates": [],
+          "event_time": {
+            "start": "2021-04-01",
+            "end": "2021-04-30",
+            "n_dates": 1
+          },
           "dates": [
             "In April 2021"
           ],
@@ -142465,6 +143497,21 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": false,
+          "date_mentions": [
+            {
+              "text": "2014",
+              "start": "2014-01-01",
+              "end": "2014-12-31",
+              "precision": "year",
+              "kind": "explicit"
+            }
+          ],
+          "unresolved_dates": [],
+          "event_time": {
+            "start": "2014-01-01",
+            "end": "2014-12-31",
+            "n_dates": 1
+          },
           "dates": [
             "2014"
           ],
@@ -142496,6 +143543,9 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": true,
+          "date_mentions": [],
+          "unresolved_dates": [],
+          "event_time": null,
           "dates": [],
           "method": "regex_best_effort"
         },
@@ -142525,6 +143575,22 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": false,
+          "date_mentions": [
+            {
+              "text": "2007",
+              "start": "2007-01-01",
+              "end": "2021-04-28",
+              "precision": "year",
+              "kind": "explicit",
+              "open_ended": true
+            }
+          ],
+          "unresolved_dates": [],
+          "event_time": {
+            "start": "2007-01-01",
+            "end": "2021-04-28",
+            "n_dates": 1
+          },
           "dates": [
             "2007"
           ],
@@ -142556,6 +143622,22 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": false,
+          "date_mentions": [
+            {
+              "text": "2007",
+              "start": "2007-01-01",
+              "end": "2021-04-28",
+              "precision": "year",
+              "kind": "explicit",
+              "open_ended": true
+            }
+          ],
+          "unresolved_dates": [],
+          "event_time": {
+            "start": "2007-01-01",
+            "end": "2021-04-28",
+            "n_dates": 1
+          },
           "dates": [
             "2007"
           ],
@@ -142587,6 +143669,9 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": true,
+          "date_mentions": [],
+          "unresolved_dates": [],
+          "event_time": null,
           "dates": [],
           "method": "regex_best_effort"
         },
@@ -142616,6 +143701,22 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": false,
+          "date_mentions": [
+            {
+              "text": "2004",
+              "start": "2004-01-01",
+              "end": "2021-04-28",
+              "precision": "year",
+              "kind": "explicit",
+              "open_ended": true
+            }
+          ],
+          "unresolved_dates": [],
+          "event_time": {
+            "start": "2004-01-01",
+            "end": "2021-04-28",
+            "n_dates": 1
+          },
           "dates": [
             "2004"
           ],
@@ -142647,6 +143748,22 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": false,
+          "date_mentions": [
+            {
+              "text": "2004",
+              "start": "2004-01-01",
+              "end": "2021-04-28",
+              "precision": "year",
+              "kind": "explicit",
+              "open_ended": true
+            }
+          ],
+          "unresolved_dates": [],
+          "event_time": {
+            "start": "2004-01-01",
+            "end": "2021-04-28",
+            "n_dates": 1
+          },
           "dates": [
             "2004"
           ],
@@ -142678,6 +143795,22 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": false,
+          "date_mentions": [
+            {
+              "text": "2004",
+              "start": "2004-01-01",
+              "end": "2021-04-28",
+              "precision": "year",
+              "kind": "explicit",
+              "open_ended": true
+            }
+          ],
+          "unresolved_dates": [],
+          "event_time": {
+            "start": "2004-01-01",
+            "end": "2021-04-28",
+            "n_dates": 1
+          },
           "dates": [
             "2004"
           ],
@@ -142709,6 +143842,22 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": false,
+          "date_mentions": [
+            {
+              "text": "2004",
+              "start": "2004-01-01",
+              "end": "2021-04-28",
+              "precision": "year",
+              "kind": "explicit",
+              "open_ended": true
+            }
+          ],
+          "unresolved_dates": [],
+          "event_time": {
+            "start": "2004-01-01",
+            "end": "2021-04-28",
+            "n_dates": 1
+          },
           "dates": [
             "2004"
           ],
@@ -142740,6 +143889,9 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": true,
+          "date_mentions": [],
+          "unresolved_dates": [],
+          "event_time": null,
           "dates": [],
           "method": "regex_best_effort"
         },
@@ -142769,6 +143921,9 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": false,
+          "date_mentions": [],
+          "unresolved_dates": [],
+          "event_time": null,
           "dates": [],
           "method": "regex_best_effort"
         },
@@ -142798,6 +143953,9 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": false,
+          "date_mentions": [],
+          "unresolved_dates": [],
+          "event_time": null,
           "dates": [],
           "method": "regex_best_effort"
         },
@@ -142827,6 +143985,9 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": false,
+          "date_mentions": [],
+          "unresolved_dates": [],
+          "event_time": null,
           "dates": [],
           "method": "regex_best_effort"
         },
@@ -142856,6 +144017,9 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": false,
+          "date_mentions": [],
+          "unresolved_dates": [],
+          "event_time": null,
           "dates": [],
           "method": "regex_best_effort"
         },
@@ -142885,6 +144049,9 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": false,
+          "date_mentions": [],
+          "unresolved_dates": [],
+          "event_time": null,
           "dates": [],
           "method": "regex_best_effort"
         },
@@ -142914,6 +144081,9 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": false,
+          "date_mentions": [],
+          "unresolved_dates": [],
+          "event_time": null,
           "dates": [],
           "method": "regex_best_effort"
         },
@@ -142943,6 +144113,9 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": false,
+          "date_mentions": [],
+          "unresolved_dates": [],
+          "event_time": null,
           "dates": [],
           "method": "regex_best_effort"
         },
@@ -142972,6 +144145,9 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": false,
+          "date_mentions": [],
+          "unresolved_dates": [],
+          "event_time": null,
           "dates": [],
           "method": "regex_best_effort"
         },
@@ -143001,6 +144177,9 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": false,
+          "date_mentions": [],
+          "unresolved_dates": [],
+          "event_time": null,
           "dates": [],
           "method": "regex_best_effort"
         },
@@ -143030,6 +144209,9 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": false,
+          "date_mentions": [],
+          "unresolved_dates": [],
+          "event_time": null,
           "dates": [],
           "method": "regex_best_effort"
         },
@@ -143059,6 +144241,9 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": false,
+          "date_mentions": [],
+          "unresolved_dates": [],
+          "event_time": null,
           "dates": [],
           "method": "regex_best_effort"
         },
@@ -143088,6 +144273,9 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": false,
+          "date_mentions": [],
+          "unresolved_dates": [],
+          "event_time": null,
           "dates": [],
           "method": "regex_best_effort"
         },
@@ -143117,6 +144305,9 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": false,
+          "date_mentions": [],
+          "unresolved_dates": [],
+          "event_time": null,
           "dates": [],
           "method": "regex_best_effort"
         },
@@ -143146,6 +144337,11 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": false,
+          "date_mentions": [],
+          "unresolved_dates": [
+            "In late June"
+          ],
+          "event_time": null,
           "dates": [
             "In late June"
           ],
@@ -143177,6 +144373,9 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": false,
+          "date_mentions": [],
+          "unresolved_dates": [],
+          "event_time": null,
           "dates": [],
           "method": "regex_best_effort"
         },
@@ -143206,6 +144405,9 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": false,
+          "date_mentions": [],
+          "unresolved_dates": [],
+          "event_time": null,
           "dates": [],
           "method": "regex_best_effort"
         },
@@ -143235,6 +144437,9 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": false,
+          "date_mentions": [],
+          "unresolved_dates": [],
+          "event_time": null,
           "dates": [],
           "method": "regex_best_effort"
         },
@@ -143264,6 +144469,21 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": false,
+          "date_mentions": [
+            {
+              "text": "December 2021",
+              "start": "2021-12-01",
+              "end": "2021-12-31",
+              "precision": "month",
+              "kind": "explicit"
+            }
+          ],
+          "unresolved_dates": [],
+          "event_time": {
+            "start": "2021-12-01",
+            "end": "2021-12-31",
+            "n_dates": 1
+          },
           "dates": [
             "December 2021"
           ],
@@ -143295,6 +144515,21 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": false,
+          "date_mentions": [
+            {
+              "text": "December 2021",
+              "start": "2021-12-01",
+              "end": "2021-12-31",
+              "precision": "month",
+              "kind": "explicit"
+            }
+          ],
+          "unresolved_dates": [],
+          "event_time": {
+            "start": "2021-12-01",
+            "end": "2021-12-31",
+            "n_dates": 1
+          },
           "dates": [
             "December 2021"
           ],
@@ -143326,6 +144561,9 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": false,
+          "date_mentions": [],
+          "unresolved_dates": [],
+          "event_time": null,
           "dates": [],
           "method": "regex_best_effort"
         },
@@ -143355,6 +144593,9 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": false,
+          "date_mentions": [],
+          "unresolved_dates": [],
+          "event_time": null,
           "dates": [],
           "method": "regex_best_effort"
         },
@@ -143384,6 +144625,9 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": false,
+          "date_mentions": [],
+          "unresolved_dates": [],
+          "event_time": null,
           "dates": [],
           "method": "regex_best_effort"
         },
@@ -143413,6 +144657,9 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": false,
+          "date_mentions": [],
+          "unresolved_dates": [],
+          "event_time": null,
           "dates": [],
           "method": "regex_best_effort"
         },
@@ -143442,6 +144689,9 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": false,
+          "date_mentions": [],
+          "unresolved_dates": [],
+          "event_time": null,
           "dates": [],
           "method": "regex_best_effort"
         },
@@ -143471,6 +144721,21 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": false,
+          "date_mentions": [
+            {
+              "text": "2017",
+              "start": "2017-01-01",
+              "end": "2017-12-31",
+              "precision": "year",
+              "kind": "explicit"
+            }
+          ],
+          "unresolved_dates": [],
+          "event_time": {
+            "start": "2017-01-01",
+            "end": "2017-12-31",
+            "n_dates": 1
+          },
           "dates": [
             "2017"
           ],
@@ -143502,6 +144767,9 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": true,
+          "date_mentions": [],
+          "unresolved_dates": [],
+          "event_time": null,
           "dates": [],
           "method": "regex_best_effort"
         },
@@ -143531,6 +144799,9 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": true,
+          "date_mentions": [],
+          "unresolved_dates": [],
+          "event_time": null,
           "dates": [],
           "method": "regex_best_effort"
         },
@@ -143560,6 +144831,9 @@
         "scope": {
           "campaign": null,
           "campaign_mentioned": false,
+          "date_mentions": [],
+          "unresolved_dates": [],
+          "event_time": null,
           "dates": [],
           "method": "regex_best_effort"
         },

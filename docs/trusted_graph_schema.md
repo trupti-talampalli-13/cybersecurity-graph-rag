@@ -44,7 +44,7 @@ Relation edges carry provenance and trust:
 | `confidence` | `high`, `medium` or `low` (extraction confidence) |
 | `polarity` | `positive`, or `negative` when a negation cue ("never", "not", "n't") directly precedes the trigger |
 | `certainty` | `asserted`, or `hedged` ("likely", "potentially", "allegedly"); hedged assertions also have `low` confidence |
-| `scope` | best-effort context from the sentence only: `campaign` (a campaign name found by pattern, or null), `campaign_mentioned`, `dates` (dates named in the sentence), `method`. Not a campaign model |
+| `scope` | best-effort context from the sentence only: `campaign` (a campaign name found by pattern, or null), `campaign_mentioned`, `dates` (dates named in the sentence, as written), `date_mentions` (those that could be parsed into absolute ranges), `unresolved_dates` (those that could not, e.g. a month with no year), `event_time` (earliest start and latest end of the parsed dates, or null), `method`. Not a campaign model |
 | `verification_status` | `unverified` until the semantic verifier sets `supported`, `contradicted` or `insufficient_evidence` |
 | `trust_level` | `trusted`, `candidate` or `low` (see below) |
 | `trust_reasons` | why a relation is not `trusted`, e.g. `malware_or_tool_headed`, `tail_type_mismatch` |
@@ -59,12 +59,15 @@ One record per assertion, using the field names of the project plan:
 |---|---|
 | `assertion_id` | `A00001`, ... (stable for a given build) |
 | `claim_key` | `subject_id\|predicate\|object_id`: assertions with the same key make the same claim |
+| `claim_text` | the claim as one plain sentence using canonical entity names ("TA505 uses Dridex."), negated for a negative assertion ("TA505 does not use Dridex."); for claim-level verification |
+| `claim_text_surface` | the same sentence using the report's own wording for the two entities, usually closer to the evidence sentence |
 | `subject`, `subject_id`, `subject_type` | canonical entity name, graph node id and entity type |
 | `predicate` | `USES`, `USES_TECHNIQUE`, `EXPLOITS` or `TARGETS` |
 | `object`, `object_id`, `object_type` | the same for the object |
 | `polarity` | `positive` or `negative` |
 | `publication_date` | date of the report (not necessarily when the activity happened) |
-| `scope` | `{campaign, campaign_mentioned, dates, method}` as above |
+| `event_start`, `event_end` | the span of the dates the sentence names, from `scope.event_time` (null when none can be parsed; use `publication_date` as the fallback). A date after "since" is open-ended and runs to the report date. This is the span of dates *mentioned*, which may include dates that are not when the activity happened |
+| `scope` | `{campaign, campaign_mentioned, dates, date_mentions, unresolved_dates, event_time, method}` as above. Each `date_mentions` item has `text`, `start`, `end`, `precision` (`day`, `month`, `year`), `kind` (`explicit`, or `relative` for "this year"/"last year", resolved against the report date) and `open_ended` when it follows "since" |
 | `evidence_sentence` | the sentence the assertion comes from |
 | `source_document`, `source_vendor`, `segment_id` | report id, vendor and sentence position |
 | `subject_mention`, `object_mention`, `trigger`, `direction` | surface text and the trigger phrase |
@@ -81,14 +84,14 @@ One record per distinct claim, collecting every assertion that makes it. Nothing
 
 | Field | Meaning |
 |---|---|
-| `claim_key`, `subject`, `subject_id`, `predicate`, `object`, `object_id` | the claim |
+| `claim_key`, `claim_text`, `subject`, `subject_id`, `predicate`, `object`, `object_id` | the claim, with `claim_text` as its positive plain-sentence form |
 | `n_assertions`, `n_positive`, `n_negative`, `polarities` | how many assertions, and which polarities occur |
 | `has_polarity_conflict` | true when the claim has both a positive and a negative assertion |
 | `n_reports`, `reports`, `n_vendors`, `vendors` | distinct source reports and vendors (several sentences from one report count once) |
 | `first_publication_date`, `last_publication_date` | range of the report dates |
-| `assertions` | one summary per assertion: `assertion_id`, `polarity`, `publication_date`, `source_document`, `source_vendor`, `certainty`, `trust_level`, `campaign` |
+| `assertions` | one summary per assertion: `assertion_id`, `polarity`, `publication_date`, `event_start`, `event_end`, `source_document`, `source_vendor`, `certainty`, `trust_level`, `campaign` |
 
-Current build: 137 claims, 3 in more than one report, none with both polarities. A claim repeated in reports from different years (for example APT28 using Zebrocy, in 2020 and 2021) is repeated support over time, not a conflict. `has_polarity_conflict` is only a candidate flag: whether two assertions really conflict also depends on scope and time, which this file does not decide.
+Current build: 141 claims, 3 in more than one report, none with both polarities. A claim repeated in reports from different years (for example APT28 using Zebrocy, in 2020 and 2021) is repeated support over time, not a conflict. `has_polarity_conflict` is only a candidate flag: whether two assertions really conflict also depends on scope and time, which this file does not decide.
 
 ## Trust levels
 
