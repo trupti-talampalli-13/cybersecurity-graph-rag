@@ -9,7 +9,7 @@ import unittest
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "src"))
-from extract_relations import find_relations  # noqa: E402
+from extract_relations import extract_scope, find_assertions, find_relations  # noqa: E402
 
 
 def segment(text, *mentions):
@@ -243,6 +243,69 @@ class UsesFixesFromHumanReview(unittest.TestCase):
         text = "We followed Squirrelwaffle that is being used to deliver Cobalt Strike."
         self.assertIn(("USES", "Squirrelwaffle", "Cobalt Strike"),
                       relations(text, ("Squirrelwaffle", "MALWARE"), ("Cobalt Strike", "MALWARE")))
+
+
+def assertions(text, *mentions):
+    """(relation, head, tail, polarity, certainty, confidence) for every assertion, positive or negative."""
+    return {(rel, h["text"], t["text"], pol, cert, conf)
+            for rel, h, t, _, _, conf, pol, cert in find_assertions(segment(text, *mentions), {})}
+
+
+class AssertionContext(unittest.TestCase):
+    """Polarity, certainty and scope: the context the contradiction-resolution stage needs."""
+
+    def test_never_used_is_a_negative_assertion(self):
+        found = assertions("TA505 never used Emotet and only used TrickBot for a short period.",
+                           ("TA505", "GROUP"), ("Emotet", "MALWARE"))
+        self.assertEqual({(r[0], r[1], r[2], r[3]) for r in found}, {("USES", "TA505", "Emotet", "negative")})
+
+    def test_did_not_use_is_a_negative_assertion(self):
+        found = assertions("TA505 did not use Emotet in this campaign.", ("TA505", "GROUP"), ("Emotet", "MALWARE"))
+        self.assertEqual({r[3] for r in found}, {"negative"})
+
+    def test_never_seen_x_use_y_is_a_negative_assertion(self):
+        found = assertions("We have never seen TA505 use Emotet.", ("TA505", "GROUP"), ("Emotet", "MALWARE"))
+        self.assertEqual({(r[0], r[1], r[2], r[3]) for r in found}, {("USES", "TA505", "Emotet", "negative")})
+
+    def test_negative_assertions_are_not_plain_relations(self):
+        seg = segment("TA505 never used Emotet.", ("TA505", "GROUP"), ("Emotet", "MALWARE"))
+        self.assertEqual(find_relations(seg, {}), [])
+
+    def test_distant_negation_is_not_a_negative_assertion(self):
+        text = "We do not have visibility into the actual Fancy Lazarus DDoS attacks against banks."
+        self.assertEqual(assertions(text, ("Fancy Lazarus", "GROUP"), ("banks", "SECTOR")), set())
+
+    def test_positive_assertion_has_positive_polarity_and_asserted_certainty(self):
+        found = assertions("APT29 frequently uses Cobalt Strike.", ("APT29", "GROUP"), ("Cobalt Strike", "MALWARE"))
+        self.assertEqual({(r[3], r[4]) for r in found}, {("positive", "asserted")})
+
+    def test_hedged_assertion_is_marked_hedged_with_low_confidence(self):
+        found = assertions("Winnti was likely used to target Gravity.", ("Winnti", "GROUP"), ("Gravity", "ORG"))
+        self.assertEqual({(r[3], r[4], r[5]) for r in found}, {("positive", "hedged", "low")})
+
+    def test_scope_names_a_dubbed_campaign_and_dates(self):
+        seg = {"clean_text": "In March 2020 TA413 ran a campaign dubbed Sepulcher against Europe.",
+               "entities": [{"text": "March 2020", "type": "DATE"}]}
+        scope = extract_scope(seg)
+        self.assertEqual((scope["campaign"], scope["campaign_mentioned"], scope["dates"]),
+                         ("Sepulcher", True, ["March 2020"]))
+
+    def test_scope_takes_a_named_campaign_before_the_word(self):
+        seg = {"clean_text": "The Squid Game campaign delivered Dridex.", "entities": []}
+        self.assertEqual(extract_scope(seg)["campaign"], "Squid Game")
+
+    def test_scope_generic_campaign_has_no_name(self):
+        seg = {"clean_text": "A phishing campaign delivered Dridex.", "entities": []}
+        scope = extract_scope(seg)
+        self.assertEqual((scope["campaign"], scope["campaign_mentioned"]), (None, True))
+
+    def test_scope_without_campaign_or_date(self):
+        scope = extract_scope({"clean_text": "TA505 uses Dridex.", "entities": []})
+        self.assertEqual((scope["campaign"], scope["campaign_mentioned"], scope["dates"]), (None, False, []))
+
+    def test_date_spacing_is_cleaned(self):
+        seg = {"clean_text": "On May 18 , 2021 TA505 ...", "entities": [{"text": "May 18 , 2021", "type": "DATE"}]}
+        self.assertEqual(extract_scope(seg)["dates"], ["May 18, 2021"])
 
 
 if __name__ == "__main__":

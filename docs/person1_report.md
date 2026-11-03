@@ -64,8 +64,8 @@ overlap ("the same algorithm as", "overlapped with"), reasons ("since", "based o
 negated or disputed claims ("we've never seen TA505 use Emotet"), clauses with a new subject, markdown link titles,
 reporting vendors named as victims, organizations that are only part of a product name ("Microsoft Office"), generic
 words ("ransomware", "APT") as techniques or actors, self-relations, and a malware named as subject when its group is the
-real one. Hedged relations ("likely", "potentially") are kept at `low` confidence. 35 regression tests cover these cases,
-28 of which fail on the original extractor. Every relation stores its evidence sentence, trigger, direction, report,
+real one. Hedged relations ("likely", "potentially") are kept at `low` confidence. 56 extractor tests cover these cases
+(28 of the first 35 fail on the original extractor). Every relation stores its evidence sentence, trigger, direction, report,
 vendor, date, the two mentions and their types, and a confidence.
 
 Result: 184 relation instances (137 distinct triples) from 49 of the 120 reports: `TARGETS` 94, `USES` 70,
@@ -141,6 +141,19 @@ mentions (428), and relations (184). Every relation carries a `trust_level`:
 | `low` | 11 | hedged wording or a subject borrowed from a nearby sentence |
 
 `human_verified` is always false, and the build validates endpoints, provenance fields, dates and confidence values.
+
+**Assertion context.** Every relation is stored as an assertion that keeps the context a later contradiction-resolution
+stage needs: subject, predicate, object, **polarity** (positive, or negative when a negation cue such as "never used"
+directly precedes the trigger), publication date, a best-effort **scope** (a named campaign and the dates the sentence
+mentions), evidence sentence, source document, **certainty** (asserted or hedged), confidence, trust level and
+**verification status** (`unverified` until the semantic verifier sets it). Negative assertions are kept in their own
+graph layer, never as plain relation edges, and are always `candidate`. `data/assertions.jsonl` lists every assertion in
+these fields. Two caveats matter for the next stage. First, the 120 gold-tagged reports contain **no** negative
+assertions, and only 3 of the 137 distinct claims appear in more than one report (none contradicting another), so this
+corpus cannot test contradiction resolution without added or constructed conflicting statements; the negation path is
+covered by unit tests and an end-to-end check with an injected record, not by real corpus examples. Second, scope comes
+from one sentence only (19 of 184 assertions name a campaign, 43 name a date), so a missing scope does not mean
+"same scope".
 The policy follows the human review; on these gold-tagged reports the candidate relations looked about as accurate as the
 trusted ones, so it is conservative here. The original graph and relation file are unchanged. Field definitions and a
 loading example are in `docs/trusted_graph_schema.md`.
@@ -161,11 +174,13 @@ graphs for the best-connected actors and malware (Winnti Group, Leviathan, Cobal
   labelled by AI reviewers), so the 184 relations are a small, conservative subset of what the reports state.
 - Some linked nodes carry the wrong type in the source linking data; sectors are almost never linked.
 - Each relation is one sentence of one vendor report. Reports can disagree, so always show the evidence and date.
+- Polarity, certainty and scope come from simple patterns and have not been evaluated against labelled examples:
+  negation is detected only when a cue sits just before the trigger, and campaign names are regex guesses.
 
 ## 11. Reproducibility
 
 Steps 1 to 8 use only the Python standard library and take about a minute. A clean copy of the repository reproduced nine
-output files, the NER predictions and all figures byte for byte, and all 48 tests pass. The model weights (about 500 MB)
+output files, the NER predictions and all figures byte for byte, and all 76 tests pass. The model weights (about 500 MB)
 are not stored in Git and must be obtained separately or retrained with `src/train_ner.py`. See the README for the
 commands, `requirements.txt` for the optional packages, and `data/*audit*.csv` with
 `docs/extracted_relations_audit_instructions.md` for the review sheets.
