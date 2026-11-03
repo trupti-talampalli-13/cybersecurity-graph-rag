@@ -6,6 +6,7 @@ Files (all in `data/`; `cti_knowledge_graph.json` and `relations.jsonl` are the 
 |---|---|
 | `cti_knowledge_graph_trusted.json` | Full layered graph. Every edge has a `layer`; every relation has a `trust_level`. |
 | `assertions.jsonl` | **Every assertion, positive and negative, with its full context, one JSON object per line. Use this for retrieval and contradiction resolution.** |
+| `claims.jsonl` | The same assertions grouped by claim (subject, predicate, object): one record per claim with every assertion about it. The starting point for comparing assertions. |
 | `relations_trusted.jsonl` | Only the `trusted` positive assertions, in the same format as `assertions.jsonl`. |
 | `relations.jsonl` | All automatic assertions as extracted (originals, flat), including negative ones. |
 
@@ -57,6 +58,7 @@ One record per assertion, using the field names of the project plan:
 | Field | Meaning |
 |---|---|
 | `assertion_id` | `A00001`, ... (stable for a given build) |
+| `claim_key` | `subject_id\|predicate\|object_id`: assertions with the same key make the same claim |
 | `subject`, `subject_id`, `subject_type` | canonical entity name, graph node id and entity type |
 | `predicate` | `USES`, `USES_TECHNIQUE`, `EXPLOITS` or `TARGETS` |
 | `object`, `object_id`, `object_type` | the same for the object |
@@ -72,6 +74,21 @@ One record per assertion, using the field names of the project plan:
 | `layer`, `method` | `relation` or `negative_assertion`; `rule_based_v3` |
 
 **What the context does and does not give you.** Assertions from different reports can be grouped by (`subject_id`, `predicate`, `object_id`) and compared on `polarity` and `publication_date`. `scope` is only what a single sentence names, so two assertions about different campaigns will often both have `campaign: null`; do not treat a null scope as "same scope". On the 120 gold-tagged reports there are **no** negative assertions and only 3 of 137 distinct claims appear in more than one report, so this corpus does not by itself contain contradictions or temporal updates to resolve.
+
+## Claims (`claims.jsonl`)
+
+One record per distinct claim, collecting every assertion that makes it. Nothing is resolved here; the file only puts the evidence for a claim in one place.
+
+| Field | Meaning |
+|---|---|
+| `claim_key`, `subject`, `subject_id`, `predicate`, `object`, `object_id` | the claim |
+| `n_assertions`, `n_positive`, `n_negative`, `polarities` | how many assertions, and which polarities occur |
+| `has_polarity_conflict` | true when the claim has both a positive and a negative assertion |
+| `n_reports`, `reports`, `n_vendors`, `vendors` | distinct source reports and vendors (several sentences from one report count once) |
+| `first_publication_date`, `last_publication_date` | range of the report dates |
+| `assertions` | one summary per assertion: `assertion_id`, `polarity`, `publication_date`, `source_document`, `source_vendor`, `certainty`, `trust_level`, `campaign` |
+
+Current build: 137 claims, 3 in more than one report, none with both polarities. A claim repeated in reports from different years (for example APT28 using Zebrocy, in 2020 and 2021) is repeated support over time, not a conflict. `has_polarity_conflict` is only a candidate flag: whether two assertions really conflict also depends on scope and time, which this file does not decide.
 
 ## Trust levels
 

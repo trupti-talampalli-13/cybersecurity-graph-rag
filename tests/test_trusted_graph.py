@@ -8,7 +8,7 @@ import unittest
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "src"))
-from build_trusted_graph import assertion_row, assign_trust, validate  # noqa: E402
+from build_trusted_graph import assertion_row, assign_trust, check_claims, group_claims, validate  # noqa: E402
 
 SCHEMA = {
     "USES": {"head": ["GROUP", "MALWARE"], "tail": ["MALWARE", "TOOL"]},
@@ -146,6 +146,76 @@ class AssertionContext(unittest.TestCase):
         self.assertEqual((row["subject"], row["predicate"], row["object"], row["polarity"]),
                          ("TA505", "USES", "Dridex", "positive"))
         self.assertEqual(row["evidence_sentence"], "TA505 uses Dridex.")
+
+
+def make_assertion(i, subject="A", predicate="USES", obj="B", polarity="positive", date="2021-01-01",
+                   doc="report1", vendor="Proofpoint", campaign=None):
+    return {"assertion_id": f"A{i:05d}", "claim_key": f"{subject}|{predicate}|{obj}",
+            "subject": subject, "subject_id": subject, "predicate": predicate, "object": obj, "object_id": obj,
+            "polarity": polarity, "publication_date": date, "source_document": doc, "source_vendor": vendor,
+            "certainty": "asserted", "trust_level": "trusted",
+            "scope": {"campaign": campaign, "campaign_mentioned": False, "dates": [], "method": "regex_best_effort"}}
+
+
+class ClaimGrouping(unittest.TestCase):
+    def test_assertion_row_has_a_claim_key(self):
+        g = small_graph()
+        nodes = {n["id"]: n for n in g["nodes"]}
+        self.assertEqual(assertion_row("A00001", g["edges"][0], nodes)["claim_key"], "A|USES|B")
+
+    def test_same_subject_predicate_object_form_one_claim(self):
+        claims = group_claims([make_assertion(1), make_assertion(2, doc="report2")])
+        self.assertEqual(len(claims), 1)
+        self.assertEqual(claims[0]["n_assertions"], 2)
+
+    def test_different_predicate_or_object_are_separate_claims(self):
+        claims = group_claims([make_assertion(1), make_assertion(2, predicate="TARGETS"), make_assertion(3, obj="C")])
+        self.assertEqual(len(claims), 3)
+
+    def test_reports_and_vendors_are_counted_once_each(self):
+        claims = group_claims([make_assertion(1, doc="r1"), make_assertion(2, doc="r1"),
+                               make_assertion(3, doc="r2", vendor="Zscaler")])
+        c = claims[0]
+        self.assertEqual((c["n_assertions"], c["n_reports"], c["n_vendors"]), (3, 2, 2))
+
+    def test_dates_give_the_first_and_last_publication_date(self):
+        claims = group_claims([make_assertion(1, date="2021-04-28"), make_assertion(2, date="2020-09-22")])
+        self.assertEqual((claims[0]["first_publication_date"], claims[0]["last_publication_date"]),
+                         ("2020-09-22", "2021-04-28"))
+
+    def test_both_polarities_are_flagged_as_a_polarity_conflict(self):
+        claims = group_claims([make_assertion(1), make_assertion(2, polarity="negative", doc="report2")])
+        c = claims[0]
+        self.assertTrue(c["has_polarity_conflict"])
+        self.assertEqual((c["n_positive"], c["n_negative"], c["polarities"]), (1, 1, ["negative", "positive"]))
+
+    def test_a_single_polarity_is_not_a_conflict(self):
+        self.assertFalse(group_claims([make_assertion(1), make_assertion(2)])[0]["has_polarity_conflict"])
+
+    def test_claim_keeps_each_assertions_summary(self):
+        c = group_claims([make_assertion(1, campaign="Squid Game")])[0]
+        self.assertEqual(c["assertions"][0]["campaign"], "Squid Game")
+        self.assertEqual(c["assertions"][0]["assertion_id"], "A00001")
+
+    def test_claims_are_in_a_stable_order(self):
+        items = [make_assertion(1, subject="Z"), make_assertion(2, subject="A")]
+        self.assertEqual([c["subject"] for c in group_claims(items)], ["A", "Z"])
+        self.assertEqual([c["subject"] for c in group_claims(list(reversed(items)))], ["A", "Z"])
+
+    def test_check_accepts_a_sound_grouping(self):
+        items = [make_assertion(1), make_assertion(2, doc="r2"), make_assertion(3, obj="C")]
+        self.assertEqual(check_claims(items, group_claims(items)), [])
+
+    def test_check_reports_a_missing_assertion(self):
+        items = [make_assertion(1), make_assertion(2, obj="C")]
+        claims = group_claims(items[:1])
+        self.assertTrue(any("exactly once" in p for p in check_claims(items, claims)))
+
+    def test_check_reports_an_assertion_under_the_wrong_claim(self):
+        items = [make_assertion(1), make_assertion(2, obj="C")]
+        claims = group_claims(items)
+        claims[0]["assertions"][0]["assertion_id"], claims[1]["assertions"][0]["assertion_id"] =             claims[1]["assertions"][0]["assertion_id"], claims[0]["assertions"][0]["assertion_id"]
+        self.assertTrue(any("wrong claim" in p for p in check_claims(items, claims)))
 
 
 if __name__ == "__main__":

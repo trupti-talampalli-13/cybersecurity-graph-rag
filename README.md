@@ -73,7 +73,7 @@ From the repository root, in order (about a minute in total):
 | 5. Relation candidates | `python src/build_relation_candidates.py`, then `python src/filter_relation_candidates.py` | `data/annoctr_relation_candidates*.jsonl` |
 | 6. Base graph | `python src/build_knowledge_graph.py` | `data/knowledge_graph.json` |
 | 7. Relations | `python src/extract_relations.py` | `data/relations.jsonl`, `data/cti_knowledge_graph.json` |
-| 8. Trusted graph | `python src/build_trusted_graph.py` | `data/cti_knowledge_graph_trusted.json`, `data/relations_trusted.jsonl`, `data/assertions.jsonl` |
+| 8. Trusted graph | `python src/build_trusted_graph.py` | `data/cti_knowledge_graph_trusted.json`, `data/relations_trusted.jsonl`, `data/assertions.jsonl`, `data/claims.jsonl` |
 | 9. Figures | `python src/visualize_graph.py` | `figures/` |
 
 The steps are deterministic: running them again gives identical files.
@@ -83,6 +83,7 @@ The steps are deterministic: running them again gives identical files.
 | File | Contents |
 |---|---|
 | `data/assertions.jsonl` | One record per assertion: subject, predicate, object, polarity, publication date, scope, evidence sentence, source document, certainty, confidence, trust level, verification status. Use this for retrieval. |
+| `data/claims.jsonl` | The assertions grouped by claim (subject, predicate, object): repeats, reports, vendors, dates and whether both polarities occur. The input for comparing assertions. |
 | `data/cti_knowledge_graph_trusted.json` | The graph in layers (mentions, candidate links, relations, negative assertions); relations carry a `trust_level`. |
 | `data/relations_trusted.jsonl` | Only the relations marked `trusted`. |
 | `data/cti_knowledge_graph.json`, `data/relations.jsonl` | The unlayered originals. |

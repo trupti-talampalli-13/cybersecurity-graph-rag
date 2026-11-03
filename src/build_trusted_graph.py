@@ -23,6 +23,8 @@ were right 75-80% of the time, malware-headed `USES`/`TARGETS` far less often.
 Writes: data/cti_knowledge_graph_trusted.json   full layered graph
         data/relations_trusted.jsonl            only the `trusted` positive relations, flat, for retrieval
         data/assertions.jsonl                   every assertion (positive and negative) with its full context
+        data/claims.jsonl                       assertions grouped by claim (subject, predicate, object), so
+                                                repeated, dated and opposing assertions can be compared
 
 Run from the cti_graph_rag directory:  python src/build_trusted_graph.py
 """
@@ -112,6 +114,7 @@ def assertion_row(assertion_id, edge, nodes):
     p, s, o = edge["properties"], nodes[edge["source"]], nodes[edge["target"]]
     return {
         "assertion_id": assertion_id,
+        "claim_key": f"{s['id']}|{edge['relation']}|{o['id']}",   # same subject, predicate and object
         "subject": s.get("name"), "subject_id": s["id"], "subject_type": s.get("entity_type"),
         "predicate": edge["relation"],
         "object": o.get("name"), "object_id": o["id"], "object_type": o.get("entity_type"),
@@ -127,6 +130,61 @@ def assertion_row(assertion_id, edge, nodes):
         "verification_status": p["verification_status"], "human_verified": p["human_verified"],
         "layer": p["layer"], "method": p["method"],
     }
+
+
+def group_claims(assertions):
+    """Group assertions that make the same claim (same subject, predicate and object).
+
+    One record per claim, with every assertion about it, so a later stage can see in one place whether a claim
+    is repeated, by how many reports and vendors, over what dates, and whether both polarities occur.
+    Nothing is resolved here: the grouping only collects the evidence."""
+    groups = {}
+    for a in assertions:
+        groups.setdefault(a["claim_key"], []).append(a)
+    claims = []
+    for key in sorted(groups):
+        items = groups[key]
+        first = items[0]
+        dates = sorted(a["publication_date"] for a in items)
+        polarities = sorted({a["polarity"] for a in items})
+        reports = sorted({a["source_document"] for a in items})
+        vendors = sorted({a["source_vendor"] for a in items})
+        claims.append({
+            "claim_key": key,
+            "subject": first["subject"], "subject_id": first["subject_id"],
+            "predicate": first["predicate"],
+            "object": first["object"], "object_id": first["object_id"],
+            "n_assertions": len(items),
+            "n_positive": sum(a["polarity"] == "positive" for a in items),
+            "n_negative": sum(a["polarity"] == "negative" for a in items),
+            "polarities": polarities,
+            "has_polarity_conflict": len(polarities) > 1,
+            "n_reports": len(reports), "reports": reports,
+            "n_vendors": len(vendors), "vendors": vendors,
+            "first_publication_date": dates[0], "last_publication_date": dates[-1],
+            "assertions": [{"assertion_id": a["assertion_id"], "polarity": a["polarity"],
+                            "publication_date": a["publication_date"], "source_document": a["source_document"],
+                            "source_vendor": a["source_vendor"], "certainty": a["certainty"],
+                            "trust_level": a["trust_level"], "campaign": a["scope"]["campaign"]}
+                           for a in items],
+        })
+    return claims
+
+
+def check_claims(assertions, claims):
+    """Every assertion must appear in exactly one claim, and each claim must agree with its assertions."""
+    problems = []
+    listed = [x["assertion_id"] for c in claims for x in c["assertions"]]
+    if sorted(listed) != sorted(a["assertion_id"] for a in assertions):
+        problems.append("claims do not cover every assertion exactly once")
+    by_id = {a["assertion_id"]: a for a in assertions}
+    for c in claims:
+        for x in c["assertions"]:
+            if by_id[x["assertion_id"]]["claim_key"] != c["claim_key"]:
+                problems.append(f"{x['assertion_id']} is filed under the wrong claim")
+        if c["n_assertions"] != len(c["assertions"]) or c["n_positive"] + c["n_negative"] != c["n_assertions"]:
+            problems.append(f"counts disagree in {c['claim_key']}")
+    return problems
 
 
 def main():
@@ -168,6 +226,10 @@ def main():
                                         e["source"], e["target"], e["properties"]["polarity"]))
     assertions = [assertion_row(f"A{i:05d}", e, nodes) for i, e in enumerate(assertion_edges, 1)]
     positive_levels = Counter(a["trust_level"] for a in assertions if a["polarity"] == "positive")
+    claims = group_claims(assertions)
+    claim_problems = check_claims(assertions, claims)
+    if claim_problems:
+        raise SystemExit("claim grouping failed:\n" + "\n".join(claim_problems[:20]))
 
     graph["metadata"].update({
         "name": "CTI Knowledge Graph (layered, provenance-aware, with trust levels)",
@@ -204,6 +266,9 @@ def main():
                       "'candidate' is conservative for this graph.",
         "relation_trust_counts": dict(positive_levels),
         "negative_assertion_count": sum(1 for a in assertions if a["polarity"] == "negative"),
+        "claim_count": len(claims),
+        "claims_in_more_than_one_report": sum(c["n_reports"] > 1 for c in claims),
+        "claims_with_polarity_conflict": sum(c["has_polarity_conflict"] for c in claims),
     })
     problems = validate(graph)
     if problems:
@@ -218,14 +283,20 @@ def main():
     with open(DATA / "assertions.jsonl", "w", encoding="utf-8") as f:
         for a in assertions:
             f.write(json.dumps(a, ensure_ascii=False) + "\n")
+    with open(DATA / "claims.jsonl", "w", encoding="utf-8") as f:
+        for c in claims:
+            f.write(json.dumps(c, ensure_ascii=False) + "\n")
 
     print("Validation passed.")
     print(f"Positive relations by trust level: {dict(positive_levels)}; "
           f"negative assertions: {graph['metadata']['negative_assertion_count']}")
     for (rel, pol, level), n in sorted(counts.items()):
         print(f"  {rel:15s} {pol:9s} {level:10s} {n}")
+    print(f"Claims: {len(claims)} distinct; {graph['metadata']['claims_in_more_than_one_report']} in more than one "
+          f"report; {graph['metadata']['claims_with_polarity_conflict']} with both polarities")
     print(f"Wrote data/cti_knowledge_graph_trusted.json ({len(graph['nodes'])} nodes, {len(graph['edges'])} edges), "
-          f"data/relations_trusted.jsonl ({len(trusted)} trusted) and data/assertions.jsonl ({len(assertions)} assertions)")
+          f"data/relations_trusted.jsonl ({len(trusted)} trusted), data/assertions.jsonl ({len(assertions)}) "
+          f"and data/claims.jsonl ({len(claims)})")
 
 
 if __name__ == "__main__":
