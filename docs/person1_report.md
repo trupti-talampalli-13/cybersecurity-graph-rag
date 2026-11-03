@@ -153,7 +153,10 @@ assertions, and only 3 of the 137 distinct claims appear in more than one report
 corpus cannot test contradiction resolution without added or constructed conflicting statements; the negation path is
 covered by unit tests and an end-to-end check with an injected record, not by real corpus examples. Second, scope comes
 from one sentence only (19 of 184 assertions name a campaign, 43 name a date), so a missing scope does not mean
-"same scope".
+"same scope". `data/claims.jsonl` groups the assertions by claim (subject, predicate, object), recording for each claim
+how many reports and vendors repeat it, the span of report dates and whether both polarities occur: 137 claims, 3 in
+more than one report, none with both polarities. It only collects evidence; deciding whether two assertions support,
+contradict or update each other is left to the next stage.
 The policy follows the human review; on these gold-tagged reports the candidate relations looked about as accurate as the
 trusted ones, so it is conservative here. The original graph and relation file are unchanged. Field definitions and a
 loading example are in `docs/trusted_graph_schema.md`.
@@ -180,7 +183,7 @@ graphs for the best-connected actors and malware (Winnti Group, Leviathan, Cobal
 ## 11. Reproducibility
 
 Steps 1 to 8 use only the Python standard library and take about a minute. A clean copy of the repository reproduced nine
-output files, the NER predictions and all figures byte for byte, and all 76 tests pass. The model weights (about 500 MB)
+output files, the NER predictions and all figures byte for byte, and all 88 tests pass. The model weights (about 500 MB)
 are not stored in Git and must be obtained separately or retrained with `src/train_ner.py`. See the README for the
 commands, `requirements.txt` for the optional packages, and `data/*audit*.csv` with
 `docs/extracted_relations_audit_instructions.md` for the review sheets.
