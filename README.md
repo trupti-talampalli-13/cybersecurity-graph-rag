@@ -28,26 +28,11 @@ python src/prepare_annocr.py
 
 `src/prepare_annocr.py` reads `../anno-ctr-lrec-coling-2024/AnnoCTR/ner_json/train.json` only. It uses the provided `all_tags` BIO labels to reconstruct entity spans, takes document and segment IDs from each record ID, and writes JSON Lines records with `document`, `segment`, `text`, and `entities` to `data/train_segments.jsonl`. It does not preprocess the original corpus in place, and this step does not combine the train, development, and test splits.
 
-The repository contains derived AnnoCTR knowledge-graph artifacts:
+The repository contains a derived AnnoCTR knowledge-graph artifact:
 
 - `data/knowledge_graph.json`
-- `data/semantic_knowledge_graph.json`
-- `data/semantic_knowledge_graph_verified.json`
 
-These graphs are outputs of the project pipeline, not substitutes for the full original corpus. Intermediate segments, entity tables, candidate sets, predictions, annotations, and audit results are generated or handled separately and are not all tracked in Git; check `.gitignore` and `git status` before adding generated data.
-
-### AZERG: Auxiliary Relation-Extraction Dataset
-
-AZERG is a separate benchmark used for relation-extraction experiments; it is not the source corpus for the AnnoCTR knowledge graph. The dataset is published as [QCRI/AZERG-Dataset on Hugging Face](https://huggingface.co/datasets/QCRI/AZERG-Dataset). `data/azerg/` in this repository contains T3 and T4 train/test files, plus cleaned T4 train/test JSONL files.
-
-To download the four source splits and regenerate the cleaned T4 files, run from the repository root:
-
-```powershell
-python src/download_azerg.py
-python src/prepare_azerg.py
-```
-
-`src/prepare_azerg.py` extracts source entity, target entity, passage text, and the labeled relation from the T4 records. It writes `data/azerg/t4_train_clean.jsonl` and `data/azerg/t4_test_clean.jsonl`. The T3 files are retained in their original format by the download step.
+This graph is an output of the project pipeline, not substitutes for the full original corpus. Intermediate segments, entity tables, candidate sets, predictions, annotations, and audit results are generated or handled separately and are not all tracked in Git; check `.gitignore` and `git status` before adding generated data.
 
 ## Knowledge graph pipeline
 
@@ -72,7 +57,7 @@ From the repository root, in order (about a minute in total):
 | 4. Link | `python src/link_entities.py` | `data/linked_entities_candidates.jsonl` |
 | 5. Relation candidates | `python src/build_relation_candidates.py`, then `python src/filter_relation_candidates.py` | `data/annoctr_relation_candidates*.jsonl` |
 | 6. Base graph | `python src/build_knowledge_graph.py` | `data/knowledge_graph.json` |
-| 7. Relations | `python src/extract_relations.py` | `data/relations.jsonl`, `data/cti_knowledge_graph.json` |
+| 7. Relations | `python src/extract_relations.py` | `data/relations.jsonl`, `data/cti_knowledge_graph.json` (intermediate files, not tracked in Git; step 8 reads them) |
 | 8. Trusted graph | `python src/build_trusted_graph.py` | `data/cti_knowledge_graph_trusted.json`, `data/relations_trusted.jsonl`, `data/assertions.jsonl`, `data/claims.jsonl` |
 | 9. Figures | `python src/visualize_graph.py` | `figures/` |
 
@@ -87,7 +72,6 @@ The steps are deterministic: running them again gives identical files.
 | `data/constructed_conflicts.jsonl` | 153 labelled assertion pairs for testing contradiction resolution: supports, contradicts, temporal update, scope variant, complements, insufficient evidence (60 of the 153, so the label mix is not natural), unrelated. 120 include a constructed assertion (marked); 33 use real ones only. Built by `src/build_constructed_conflicts.py` to the written criteria in `src/resolve_assertions.py`, so it checks consistency with those criteria, not that they are right. |
 | `data/cti_knowledge_graph_trusted.json` | The graph in layers (mentions, candidate links, relations, negative assertions); relations carry a `trust_level`. |
 | `data/relations_trusted.jsonl` | Only the relations marked `trusted`. |
-| `data/cti_knowledge_graph.json`, `data/relations.jsonl` | The unlayered originals. |
 | `figures/` | Count charts, network graphs and `graph_interactive.html`. |
 
 Field definitions and a loading example are in [`docs/trusted_graph_schema.md`](docs/trusted_graph_schema.md).
@@ -134,12 +118,10 @@ python -m unittest tests.test_extract_relations tests.test_trusted_graph
 
 The accuracy reviews are in `data/*audit*.csv` (instructions in `docs/extracted_relations_audit_instructions.md`). The recall check is `data/recall_check_sheet.csv`, scored with `python src/score_recall_check.py <filled sheet>` (instructions in `docs/recall_check_instructions.md`). Labels from AI reviewers are kept separately in `data/llm_review/`.
 
-## Semantic Relation Verification
+## Earlier experiments
 
-The V1 NLI and Hybrid outputs are preserved as baselines. The separate,
-deterministic V2 rule verifier and its conservative decision policy are
-documented in [`docs/semantic_verifier_v2_implementation.md`](docs/semantic_verifier_v2_implementation.md).
+The AZERG relation-extraction experiments, the relation validators (versions 1 to 6), the NLI and hybrid semantic verifiers, the semantic knowledge graphs and the audit and annotation scripts were removed from the tracked files in a cleanup. They are still in the repository history: restore any of them from the tag `before-cleanup` (for example `git checkout before-cleanup -- src/relation_specific_validator_v6.py`).
 
 ## Data Tracking
 
-The full AnnoCTR corpus remains in its upstream repository and is not copied into this repository. Selected AZERG input splits and the three derived knowledge-graph JSON files are tracked here. Generated predictions, annotations, audits, and other intermediate outputs are selectively excluded; do not assume that every file under `data/` should be committed. Check redistribution terms before sharing any dataset files.
+The full AnnoCTR corpus remains in its upstream repository and is not copied into this repository. The final graph and assertion files under `data/` are tracked. Generated predictions, annotations, audits, and other intermediate outputs are selectively excluded; do not assume that every file under `data/` should be committed. Check redistribution terms before sharing any dataset files.
