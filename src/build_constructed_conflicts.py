@@ -88,6 +88,10 @@ def main():
         if a["claim_key"] not in seen:
             seen.add(a["claim_key"])
             bases.append(a)
+    # time-based cases need both sides on the same time basis, so their base assertions have no event span
+    timed = [a for a in bases if not a["event_start"]]
+    spanned = [a for a in bases if a["event_start"]]
+    unscoped = [a for a in bases if not a["scope"].get("campaign")]
     cases = []
 
     def add(label, criterion, a, b, constructed_a, constructed_b):
@@ -109,12 +113,12 @@ def main():
         b = variant(a, f"S{len(cases)}", publication_date=shift(a["publication_date"], rng.randint(200, 600)))
         add("supports", "same claim, same polarity, a later report", a, b, False, True)
 
-    for a in rng.sample(bases, PER_TYPE):
+    for a in rng.sample(timed, PER_TYPE):
         b = variant(a, f"K{len(cases)}", polarity="negative",
                     publication_date=after(a, rng.randint(0, 60)))
         add("contradicts", f"opposite polarity, same claim, periods within {NEAR_DAYS} days", a, b, False, True)
 
-    for a in rng.sample(bases, PER_TYPE):
+    for a in rng.sample(timed, PER_TYPE):
         b = variant(a, f"T{len(cases)}", polarity="negative",
                     publication_date=after(a, rng.randint(FAR_DAYS + 135, FAR_DAYS + 800)))
         add("temporal_update", f"opposite polarity, same claim, periods at least {FAR_DAYS} days apart", a, b,
@@ -133,11 +137,25 @@ def main():
                     publication_date=after(a, rng.randint(0, 60)))
         add("insufficient_evidence", "opposite polarity, but the denial is hedged", a, b, False, True)
 
-    for a in rng.sample(bases, PER_TYPE):
+    for a in rng.sample(timed, PER_TYPE):
         b = variant(a, f"G{len(cases)}", polarity="negative",
                     publication_date=after(a, rng.randint(NEAR_DAYS + 60, FAR_DAYS - 60)))
         add("insufficient_evidence", f"opposite polarity, periods {NEAR_DAYS}-{FAR_DAYS} days apart", a, b,
             False, True)
+
+    # one side names a campaign and the other does not: not compared
+    for a in rng.sample(unscoped, PER_TYPE):
+        b = variant(a, f"M{len(cases)}", polarity="negative", campaign="Operation Beta",
+                    publication_date=after(a, rng.randint(0, 60)))
+        add("insufficient_evidence", "opposite polarity, one side names a campaign and the other does not",
+            a, b, False, True)
+
+    # an event span against a bare publication date: the second says nothing about when it happened
+    for a in rng.sample(spanned, min(PER_TYPE, len(spanned))):
+        b = variant(a, f"E{len(cases)}", polarity="negative",
+                    publication_date=after(a, rng.randint(FAR_DAYS + 135, FAR_DAYS + 800)))
+        add("insufficient_evidence", "opposite polarity, an event span against a bare publication date, no overlap",
+            a, b, False, True)
 
     by_subject = {}
     for a in bases:
