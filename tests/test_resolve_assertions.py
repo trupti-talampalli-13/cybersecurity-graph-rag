@@ -10,7 +10,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "src"))
-from resolve_assertions import (FAR_DAYS, LABELS, NEAR_DAYS, classify_pair, gap_days,  # noqa: E402
+from resolve_assertions import (FAR_DAYS, LABELS, NEAR_DAYS, classify_pair, explain_pair, gap_days,  # noqa: E402
                                 normalize_campaign, period, scope_relation, time_basis)
 
 
@@ -164,3 +164,24 @@ class ConstructedSet(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class ReasonCodes(unittest.TestCase):
+    def test_every_decision_carries_reason_codes_and_the_evidence_caveat(self):
+        pairs = [(make(), make(subject="Z")), (make(), make(obj="C")), (make(), make()),
+                 (make(), make(polarity="negative")), (make(), make(polarity="negative", certainty="hedged")),
+                 (make(), make(polarity="negative", date="2023-01-01")),
+                 (make(campaign="X"), make(polarity="negative", campaign="Y")),
+                 (make(campaign="X"), make(polarity="negative"))]
+        for a, b in pairs:
+            label, codes = explain_pair(a, b)
+            self.assertEqual(label, classify_pair(a, b))
+            self.assertIn("EVIDENCE_NOT_VERIFIED", codes)
+            self.assertGreater(len(codes), 1)
+
+    def test_codes_name_the_rule_that_fired(self):
+        far = make(polarity="negative", date=days_later("2021-01-01", 500))
+        self.assertEqual(explain_pair(make(), far)[1][-1], "PERIODS_FAR_APART")
+        self.assertEqual(explain_pair(make(), make(polarity="negative", certainty="hedged"))[1][-1], "HEDGED_CLAIM")
+        self.assertEqual(explain_pair(make(campaign="X"), make(polarity="negative"))[1][-1],
+                         "CAMPAIGN_ON_ONE_SIDE_ONLY")
