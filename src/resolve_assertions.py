@@ -90,32 +90,48 @@ def campaigns_differ(a, b):
     return scope_relation(a, b) == "different"
 
 
-def classify_pair(a, b):
-    """Return one of LABELS for two assertion records."""
+def explain_pair(a, b):
+    """Return (label, reason_codes) for two assertion records.
+
+    The reason codes name the rule that fired, so a decision can be traced. EVIDENCE_NOT_VERIFIED is on every
+    result: this classifier never reads the evidence sentences, so a negative assertion might only report that
+    something was not observed in one investigation, which is not a claim that it never happens.
+    """
+    codes = ["EVIDENCE_NOT_VERIFIED"]
     if a["subject_id"] != b["subject_id"] or a["predicate"] != b["predicate"]:
-        return "unrelated"
+        return "unrelated", codes + ["DIFFERENT_SUBJECT_OR_PREDICATE"]
     if a["object_id"] != b["object_id"]:
-        both_positive = a["polarity"] == b["polarity"] == "positive"
-        return "complements" if both_positive else "unrelated"
+        if a["polarity"] == b["polarity"] == "positive":
+            return "complements", codes + ["DIFFERENT_OBJECT_BOTH_POSITIVE"]
+        return "unrelated", codes + ["DIFFERENT_OBJECT_NEGATIVE_INVOLVED"]
     # same claim from here on
     scope = scope_relation(a, b)
     if a["polarity"] == b["polarity"]:
-        return "scope_variant" if scope == "different" else "supports"
-    # opposite polarity
+        if scope == "different":
+            return "scope_variant", codes + ["SAME_POLARITY", "DIFFERENT_CAMPAIGN"]
+        return "supports", codes + ["SAME_POLARITY"]
+    codes.append("OPPOSITE_POLARITY")
     if a["certainty"] == "hedged" or b["certainty"] == "hedged":
-        return "insufficient_evidence"
+        return "insufficient_evidence", codes + ["HEDGED_CLAIM"]
     if scope == "different":
-        return "scope_variant"
+        return "scope_variant", codes + ["DIFFERENT_CAMPAIGN"]
     if scope == "mixed":
-        return "insufficient_evidence"
+        return "insufficient_evidence", codes + ["CAMPAIGN_ON_ONE_SIDE_ONLY"]
     gap = gap_days(a, b)
     if time_basis(a) != time_basis(b):      # an event span against a bare publication date
-        return "contradicts" if gap == 0 else "insufficient_evidence"
+        if gap == 0:
+            return "contradicts", codes + ["EVENT_SPAN_OVERLAPS_PUBLICATION_DATE"]
+        return "insufficient_evidence", codes + ["EVENT_SPAN_VS_PUBLICATION_DATE_NO_OVERLAP"]
     if gap <= NEAR_DAYS:
-        return "contradicts"
+        return "contradicts", codes + ["PERIODS_CLOSE"]
     if gap >= FAR_DAYS:
-        return "temporal_update"
-    return "insufficient_evidence"
+        return "temporal_update", codes + ["PERIODS_FAR_APART"]
+    return "insufficient_evidence", codes + ["PERIODS_NEITHER_CLOSE_NOR_FAR"]
+
+
+def classify_pair(a, b):
+    """Return one of LABELS for two assertion records."""
+    return explain_pair(a, b)[0]
 
 
 def main():
@@ -131,7 +147,8 @@ def main():
     print(f"{a['claim_text']}  vs  {b['claim_text']}")
     print(f"periods {period(a)} ({time_basis(a)}) and {period(b)} ({time_basis(b)}), gap {gap_days(a, b)} days, "
           f"scope {scope_relation(a, b)}")
-    print("->", classify_pair(a, b))
+    label, codes = explain_pair(a, b)
+    print("->", label, codes)
 
 
 if __name__ == "__main__":
