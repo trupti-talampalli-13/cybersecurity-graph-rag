@@ -10,7 +10,8 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "src"))
-from resolve_assertions import FAR_DAYS, LABELS, NEAR_DAYS, classify_pair, gap_days, period  # noqa: E402
+from resolve_assertions import (FAR_DAYS, LABELS, NEAR_DAYS, classify_pair, gap_days,  # noqa: E402
+                                normalize_campaign, period, scope_relation, time_basis)
 
 
 def make(obj="B", polarity="positive", date="2021-01-01", certainty="asserted", campaign=None, subject="A",
@@ -73,10 +74,48 @@ class DecisionCriteria(unittest.TestCase):
         self.assertEqual(classify_pair(make(), make(subject="Z")), "unrelated")
         self.assertEqual(classify_pair(make(), make(predicate="TARGETS")), "unrelated")
 
-    def test_the_event_span_is_used_instead_of_the_publication_date(self):
+    def test_event_spans_are_compared_with_event_spans(self):
         old_event = make(date="2021-01-01", event=("2015-01-01", "2015-12-31"))
-        negative_now = make(polarity="negative", date="2021-01-10")
-        self.assertEqual(classify_pair(old_event, negative_now), "temporal_update")
+        denial_in_2021 = make(polarity="negative", date="2021-01-10", event=("2021-01-01", "2021-01-31"))
+        self.assertEqual(classify_pair(old_event, denial_in_2021), "temporal_update")
+
+    def test_an_event_span_against_a_bare_publication_date_is_not_a_temporal_update(self):
+        # B is silent on when it happened: it may be about 2015 too, so nothing can be decided
+        old_event = make(date="2021-01-01", event=("2015-01-01", "2015-12-31"))
+        silent_denial = make(polarity="negative", date="2021-01-10")
+        self.assertEqual(classify_pair(old_event, silent_denial), "insufficient_evidence")
+
+    def test_a_mixed_time_basis_is_a_contradiction_only_when_the_periods_overlap(self):
+        span = make(event=("2020-01-01", "2020-12-31"))
+        inside = make(polarity="negative", date="2020-06-01")
+        self.assertEqual(classify_pair(span, inside), "contradicts")
+
+    def test_time_basis(self):
+        self.assertEqual(time_basis(make(event=("2020-01-01", "2020-12-31"))), "event")
+        self.assertEqual(time_basis(make()), "publication")
+
+    def test_the_plans_example_scoped_use_against_an_unscoped_denial(self):
+        report_a = make(date="2023-06-01")                                   # X uses Y
+        report_b = make(polarity="negative", date="2025-06-01")              # X does not use Y
+        report_c = make(date="2025-06-15", campaign="Campaign B")            # X uses Y in Campaign B
+        self.assertEqual(classify_pair(report_a, report_b), "temporal_update")
+        self.assertEqual(classify_pair(report_a, report_c), "supports")
+        self.assertEqual(classify_pair(report_b, report_c), "insufficient_evidence")
+
+    def test_a_mixed_scope_with_opposite_polarity_is_not_compared(self):
+        self.assertEqual(classify_pair(make(campaign="Alpha"), make(polarity="negative")), "insufficient_evidence")
+        self.assertEqual(classify_pair(make(), make(polarity="negative", campaign="Alpha")), "insufficient_evidence")
+
+    def test_a_mixed_scope_with_the_same_polarity_still_supports(self):
+        self.assertEqual(classify_pair(make(campaign="Alpha"), make()), "supports")
+
+    def test_campaign_names_are_compared_without_filler_words(self):
+        self.assertEqual(normalize_campaign("Operation  Alpha"), "alpha")
+        self.assertEqual(normalize_campaign("The Alpha Campaign"), "alpha")
+        self.assertEqual(scope_relation(make(campaign="Operation Alpha"), make(campaign="alpha campaign")), "same")
+        self.assertEqual(scope_relation(make(campaign="Alpha"), make(campaign="Beta")), "different")
+        self.assertEqual(scope_relation(make(), make()), "same")
+        self.assertEqual(scope_relation(make(campaign="Alpha"), make()), "mixed")
 
     def test_overlapping_periods_have_no_gap(self):
         a = make(event=("2020-01-01", "2020-12-31"))

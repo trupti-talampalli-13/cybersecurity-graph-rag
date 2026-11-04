@@ -177,17 +177,23 @@ is a transparent baseline for the next stage, not a finished resolver, and it do
 | Label | Rule |
 |---|---|
 | supports | same claim, same polarity, compatible scope |
-| contradicts | opposite polarity, same claim, compatible scope, periods overlap or are within 90 days |
-| temporal update | opposite polarity, same claim, periods at least 365 days apart |
+| contradicts | opposite polarity, same claim, same scope, periods overlap or are within 90 days |
+| temporal update | opposite polarity, same claim, same scope, periods at least 365 days apart |
 | scope variant | same claim, two different named campaigns |
 | complements | same subject and predicate, both positive, different objects |
-| insufficient evidence | opposite polarity but a hedged denial, or periods 90 to 365 days apart |
+| insufficient evidence | opposite polarity but a hedged denial, exactly one side names a campaign, one period is an event span and the other only a publication date (and they do not overlap), or periods 90 to 365 days apart |
 | unrelated | different subject or predicate |
 
-An assertion's period is its event span when it has one, otherwise its publication date. Because the corpus has no real
-conflicts, `data/constructed_conflicts.jsonl` holds 123 labelled pairs built from real assertions by controlled changes (an
+An assertion's period is its event span when it has one, otherwise its publication date. Two campaign names are the same
+after dropping words such as "operation" and "campaign"; a name on one side only is a mixed scope, which is not compared when the
+polarities are opposite. The 90 and 365 day thresholds are round numbers (about a quarter and a year), not derived from data,
+and results change abruptly at them; they are parameters to tune on labelled real pairs. The classifier is pairwise, so it does
+not reason over a timeline of three or more assertions, and it compares entity ids, so aliases (APT28 and Sofacy) are not
+matched. Because the corpus has no real
+conflicts, `data/constructed_conflicts.jsonl` holds 153 labelled pairs built from real assertions by controlled changes (an
 opposite-polarity statement, a later date, a different campaign, a hedge); 33 use only real assertions (the repeated claims,
-different objects of one subject, unrelated pairs) and 90 include a constructed assertion, which is marked. The labels come
+different objects of one subject, unrelated pairs) and 120 include a constructed assertion, which is marked. Sixty of the 153 are `insufficient_evidence`, so the label mix is
+not a natural one. The labels come
 from the same criteria the classifier applies, so the set checks that a resolver applies the criteria consistently; it does not
 show that the criteria are right, or how often conflicts occur in real reports. Judging that needs independent human labels on
 real report pairs.
@@ -217,7 +223,7 @@ graphs for the best-connected actors and malware (Winnti Group, Leviathan, Cobal
 ## 11. Reproducibility
 
 Steps 1 to 8 use only the Python standard library and take about a minute. A clean copy of the repository reproduced nine
-output files, the NER predictions and all figures byte for byte, and all 137 tests pass. The model weights (about 500 MB)
+output files, the NER predictions and all figures byte for byte, and all 144 tests pass. The model weights (about 500 MB)
 are not stored in Git and must be obtained separately or retrained with `src/train_ner.py`. See the README for the
 commands, `requirements.txt` for the optional packages, and `data/*audit*.csv` with
 `docs/extracted_relations_audit_instructions.md` for the review sheets.
