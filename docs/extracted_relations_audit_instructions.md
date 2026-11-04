@@ -1,6 +1,7 @@
 # Audit of `extract_relations.py` relations
 
-Review every row of `data/extracted_relations_audit_template.csv`. Each row is one
+Generate the sheet with `python src/create_extracted_relations_audit.py`, then review every row of
+`data/extracted_relations_audit_template.csv` (not tracked in Git). Each row is one
 automatically extracted relation (`head` -> `relation` -> `tail`) with its evidence
 sentence. The trigger, direction and confidence columns are system outputs, not labels.
 
